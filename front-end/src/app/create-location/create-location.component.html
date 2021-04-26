@@ -1,0 +1,113 @@
+<div class="row">
+  <div class="col-sm-2">
+    <app-menu></app-menu>
+  </div>
+
+  <div class="col-sm-10" >
+    <app-header></app-header>
+    <div class="header bg-primary pb-6" style="background-color: #fff !important;">
+        </div>
+<div class="container">
+<div class="p-3 ">
+      <div class="container-fluid mt--6">
+        <div class="row justify-content-center">
+        <div class=" col ">
+      <div class="card" >
+        <div class="card-header bg-transparent">
+          <h5 class="mb-0">Ajouter une nouvelle location</h5>
+        </div>
+
+          <!--button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button-->
+  <form method="POST" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+
+    <div class="card-body">
+    <div class="row row1">
+        <div class="col">
+        <label for="date_entree" class="form-label"><b>Date entrée</b></label>
+        <input type="date" class="form-control" aria-label="date_entree" id="date_entree" name="date_entree" [(ngModel)]="location.date_entree">
+      </div>
+      <div class="col">
+        <label for="date_sortie" class="form-label"><b>Date Sortie</b></label>
+        <input type="date" class="form-control"  aria-label="date_sortie" id="date_sortie" name="date_sortie" [(ngModel)]="location.date_sortie">
+      </div>
+    </div>
+    <br>
+    <div class="row row1">
+      <div class="col">
+      <label for="user_id" class="form-label"><b>Locataire</b></label>
+      <select class="form-control" name="user_id" [(ngModel)]="location.user_id">
+        <option>Locataire</option>
+        <option  *ngFor="let user of users" value="{{ user.id }}">{{ user.nom }}-{{ user.prenom }}</option>
+      </select>
+    </div>
+    <div class="col">
+      <label for="bien_id" class="form-label"><b>Bien </b></label>
+      <select class="form-control" name="bien_id" [(ngModel)]="location.bien_id">
+        <option>Bien</option>
+        <option  *ngFor="let bien of biens" value="{{ bien.id }}">{{ bien.identifiant }}</option>
+      </select>
+    </div>
+  </div>
+  <br>
+    <div class="row row1">
+      <div class="col">
+        <label for="montant" class="form-label"><b>Mantant</b></label>
+        <input type="text" class="form-control" placeholder="Mantant" aria-label="montant" id="montant" name="montant" [(ngModel)]="location.montant">
+      </div>
+      <div class="col">
+        <label for="type" class="form-label"><b>Type</b></label>
+        <select class="form-control" aria-label="Default select example" id="type" name="type" [(ngModel)]="location.type">
+          <option selected>Type</option>
+          <option value="Personnel">Personnel</option>
+          <option value="Professionnel">Professionnel</option>
+        </select>
+      </div>
+    </div>
+  <br>
+  <div class="row row1">
+    <div class="col">
+      <label for="identifiant" class="form-label"><b>Identifiant(Obligatoire et unique)</b></label>
+      <input type="text" class="form-control" placeholder="Identifiant(Obligatoire et unique)" aria-label="identifiant" id="identifiant" name="identifiant" [(ngModel)]="location.identifiant">
+    </div>
+    <div class="col">
+      <label for="duree" class="form-label"><b>Duree (Nombre de mois)</b></label>
+      <input type="text" class="form-control" placeholder="Duree (Nombre de mois)" aria-label="duree" id="duree" name="duree" [(ngModel)]="location.duree">
+    </div>
+  </div>
+<br>
+  <!--div class="text-center"><h5 class="title"><b>Documents justificatifs</b></h5></div>
+    <span (click)="addForm()" class="btn btn-secondary">+</span>
+   <div class="row row1 " *ngFor="let obj of dataarray">
+    <div class="col">
+      <div class="mb-3">
+        <label for="nom_doc" class="form-label"><b>Nom du document</b></label>
+        <input class="form-control" type="text" id="nom_doc" name="nom" placeholder="Nom du document" [(ngModel)]="obj.nom">
+      </div>
+    </div>
+    <div class="col">
+      <div class="mb-3">
+        <label for="doc" class="form-label"><b>Fichier joint (format accepté : PNG, JPG, JPEG, Word, PDF)</b></label>
+        <input class="form-control" type="file" id="doc" name="doc" [(ngModel)]="obj.doc">
+      </div>
+    </div>
+   </div-->
+   <div class="pull-right">
+    <div class="buttons">
+    <button type="button" class="btn btn-primary" style="background-color: #5e72e4 !important;">Annuler</button>
+    <button type="submit" (click)="alert()" class="btn btn-success" style="background-color: #5e72e4 !important;">Enregistrer</button>
+    </div>
+  </div>
+  </div>
+
+  </form>
+  </div>
+  </div>
+  </div>
+  <app-footer></app-footer>
+  </div>
+  </div>
+
+  </div>
+  </div>
+  </div>
+

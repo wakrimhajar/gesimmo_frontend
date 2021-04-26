@@ -1,0 +1,92 @@
+
+<div class="row">
+  <div class="col-sm-2">
+  <app-menu></app-menu>
+  </div>
+  <div class="col-sm-10" >
+  <app-header></app-header>
+<div class="header bg-primary pb-6" style="background-color: #fff !important;" ></div>
+  <!-- Page content -->
+  <div class="container">
+    <div class="p-3 ">
+     <div class="container-fluid mt--6">
+    <div class="row justify-content-center">
+      <div class=" col ">
+        <div class="card">
+          <div class="card-header bg-transparent">
+            <h3 class="mb-0">Charges</h3>
+          </div>
+              <!-- Card body -->
+              <div class="card" style="width: 100%">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-lg-2 text-left"><span class="card-title" style="color: #5e72e4;"><b>Filtrer</b></span><!--span style="color: grey"> Utilisez les options pour filtrer</span--></div>
+                          <div class=" col-10 text-right">
+                            <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;color: white" (click)="listActif()">Actifs </button>
+                            <button type="button"  class="btn btn-secondary" style="background-color: #5e72e4; color: white" routerLink="/create-charge">Nouveau </button>
+                          </div>
+                        </div>
+                        <div class="input-group mb-2">
+                        <input type="date" name="" class="form-control" style="width: 20%; top:20px; margin-right: 20px; margin-left: 2px;">
+                        <select class="form-control" aria-label="Default select example" style="width: 19%" >
+                          <option selected>Tout les biens</option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                        <select class="form-control" aria-label="Default select example" style="width: 19%">
+                          <option selected>Toutes les locations</option>
+                          <option value="1">Toutes les locations</option>
+                        </select>
+                        <select class="form-control" aria-label="Default select example" style="width: 19%">
+                          <option selected>Tout les locataires</option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                        <select class="form-control" aria-label="Default select example" style="width: 19%">
+                          <option selected>Tout les états</option>
+                          <option value="1">Tout les états</option>
+                          <option value="2">Payé</option>
+                          <option value="3">Impayée</option>
+                          <option value="3">En attente</option>
+                        </select>
+                      </div>
+                      </div>
+                      <div class="input-group mb-3" style="width: 90%;"> <input type="text" class="form-control" placeholder="Chercher">
+                         <div class="input-group-append" style="width: 50px;"><button class="btn btn-primary" style="background-color: #5e72e4 !important;"><i class="fas fa-search"></i></button></div>
+                      </div>
+                    </div>
+                    <div class="table-responsive" *ngIf="table">
+                      <table class="table " >
+                      <thead class="thead-light">
+                        <tr >
+                          <th scope="col">Date Paiement</th>
+                          <th scope="col">Type</th>
+                          <th scope="col">Description</th>
+                          <th scope="col">Montant</th>
+                          <th scope="col">Nombre relance</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody >
+                        <tr *ngFor="let charge of charges">
+                          <td>{{charge.date_paiement}}</td>
+                          <td>{{charge.type}}</td>
+                          <td>{{charge.description}}</td>
+                          <td>{{charge.montant}}</td>
+                          <td>{{charge.nbt_relance}}</td>
+                          <td><a style="background-color: #5e72e4 !important;"  class="btn btn-primary" (click)="detailfacture(charge.id)" >Détails</a>
+                      </td>
+                        </tr>
+                      </tbody>
+                      </table>
+  </div>
+              </div>
+            </div>
+          </div>
+</div>
+</div>
+<app-footer></app-footer>
+</div>
+</div>

@@ -1,0 +1,257 @@
+<!--
+<div class="row">
+  <div class="col-sm-2">
+    <app-menu></app-menu>
+  </div>
+
+  <div class="col-sm-10" >
+    <app-header></app-header>
+    <div class="header bg-primary pb-6" style="background-color: #5e72e4 !important;">
+  <div class="container">
+    <div class="p-3 ">
+      <div class="container-fluid mt--6">
+        <div class="row justify-content-center">
+        <div class=" col ">
+      <div class="card" >
+        <div class="card-header bg-transparent">
+          <h5 class="mb-0">Ajouter un nouveau proprietaire</h5>
+        </div>
+
+<form  method="POST" #f="ngForm" (ngSubmit)="onSubmitform(f)"  enctype="multipart/form-data">
+    <div class="card-body">
+      <div class="text-center"><h5 class="title"><b>Identification du proprietaire</b></h5></div>
+    <div class="row row1">
+        <div class="col">
+        <label for="Civilité" class="form-label"><b>Civilité</b></label>
+        <select class="form-control" aria-label="Default select example" id="Civilité" name="civilite" [(ngModel)]="user.civilite">
+          <option selected>Civilité</option>
+          <option value="Mlle">Mlle</option>
+          <option value="Mdme">Mdme</option>
+          <option value="Mr">Mr</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="Prenom" class="form-label"><b>Prenom</b></label>
+        <input type="text" class="form-control" placeholder="Prenom" aria-label="Prenom" id="Prenom" name="prenom" [(ngModel)]="user.prenom">
+      </div>
+      <div class="col">
+        <label for="Nom" class="form-label"><b>Nom</b></label>
+        <input type="text" class="form-control" placeholder="Nom" aria-label="Nom" id="Nom" name="nom"[(ngModel)]="user.nom">
+      </div>
+    </div>
+    <br>
+    <div class="row row1">
+      <div class="col">
+        <label for="Adresse" class="form-label"><b>Adresse</b></label>
+        <input type="text" class="form-control" placeholder="Adresse" aria-label="Adresse" id="Adresse" name="adresse" [(ngModel)]="user.adresse">
+      </div>
+      <div class="col">
+        <label for="Telephone" class="form-label"><b>Telephone</b></label>
+        <input type="text" class="form-control" placeholder="Telephone" aria-label="Telephone" id="Telephone" name="telephone" [(ngModel)]="user.telephone">
+      </div>
+      <div class="col">
+        <label for="CIN" class="form-label"><b>N° CIN</b></label>
+       <input type="text" class="form-control" placeholder="N° CIN" aria-label="CIN" id="CIN" name="CIN" [(ngModel)]="user.CIN">
+     </div>
+    </div>
+<br>
+    <div class="text-center"><h5 class="title"><b>Création du compte</b></h5></div>
+    <div class="row row1">
+
+      <div class="col">
+        <input type="hidden" class="form-control" value="proprietaire"  aria-label="role" [(ngModel)]="user.role">
+        <label for="Email" class="form-label"><b>Email</b></label>
+        <input type="Email" class="form-control" placeholder="Email" aria-label="Email" id="Email" name="email" [(ngModel)]="user.email">
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="password" class="form-label"><b>Mot de passe</b></label>
+          <input class="form-control" type="password" id="password" placeholder="Mot de passe" name="password" [(ngModel)]="user.password">
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="mb-3">
+          <label for="Image" class="form-label"><b>Image</b></label>
+          <input class="form-control" type="file"  id="Image" name="image" [(ngModel)]="user.image">
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="text-center"><h5 class="title"><b>Documents justificatifs</b></h5></div>
+    <span  class="btn btn-secondary">+</span>
+   <div class="row row1 " >
+    <div class="col">
+      <div class="mb-3">
+        <label for="nom_doc" class="form-label"><b>Nom du document</b></label>
+        <input class="form-control" type="text" id="nom_doc" name="nom" placeholder="Nom du document" >
+      </div>
+    </div>
+    <div class="col">
+      <div class="mb-3">
+        <label for="doc" class="form-label"><b>Fichier joint (format accepté : PNG, JPG, JPEG, Word, PDF)</b></label>
+        <input class="form-control" type="file" id="doc" name="doc">
+      </div>
+    </div>
+   </div>
+   <div class="pull-right">
+    <div class="buttons">
+    <button type="button" class="btn btn-primary" style="background-color: #5e72e4 !important;">Annuler</button>
+    <button type="submit"  class="btn btn-success" style="background-color: #5e72e4 !important;">Editer</button>
+    </div>
+  </div>
+ </div>
+ </form>
+
+</div>
+</div>
+</div>
+
+    <app-footer></app-footer>
+    </div>
+
+-->
+
+
+
+
+<div class="row">
+  <div class="col-sm-2">
+    <app-menu></app-menu>
+  </div>
+
+  <div class="col-sm-10" >
+    <app-header></app-header>
+    <div class="header bg-primary pb-6" style="background-color: #fff !important;">
+        </div>
+  <div class="container">
+    <div class="p-3 ">
+      <div class="container-fluid mt--6">
+        <div class="row justify-content-center">
+        <div class=" col ">
+      <div class="card" >
+        <div class="card-header bg-transparent">
+          <h5 class="mb-0">Ajouter un nouveau proprietaire</h5>
+        </div>
+
+<form method="POST" #f="ngForm" (ngSubmit)="onSubmitform(f)"  enctype="multipart/form-data">
+    <div class="card-body">
+      <div class="text-center"><h5 class="title"><b>Identification du proprietaire</b></h5></div>
+    <div class="row row1">
+        <div class="col">
+        <label for="Civilité" class="form-label"><b>Civilité</b></label>
+        <select class="form-control" aria-label="Default select example" id="Civilité" name="civilite" [(ngModel)]="user.civilite">
+          <option selected>Civilité</option>
+          <option value="Mlle">Mlle</option>
+          <option value="Mdme">Mdme</option>
+          <option value="Mr">Mr</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="Prenom" class="form-label"><b>Prenom</b></label>
+        <input type="text" class="form-control" placeholder="Prenom" aria-label="Prenom" id="Prenom" name="prenom" [(ngModel)]="user.prenom">
+      </div>
+      <div class="col">
+        <label for="Nom" class="form-label"><b>Nom</b></label>
+        <input type="text" class="form-control" placeholder="Nom" aria-label="Nom" id="Nom" name="nom"[(ngModel)]="user.nom">
+      </div>
+    </div>
+    <br>
+    <div class="row row1">
+      <div class="col">
+        <label for="Adresse" class="form-label"><b>Adresse</b></label>
+        <input type="text" class="form-control" placeholder="Adresse" aria-label="Adresse" id="Adresse" name="adresse" [(ngModel)]="user.adresse">
+      </div>
+      <div class="col">
+        <label for="Telephone" class="form-label"><b>Telephone</b></label>
+        <input type="text" class="form-control" placeholder="Telephone" aria-label="Telephone" id="Telephone" name="telephone" [(ngModel)]="user.telephone">
+      </div>
+      <div class="col">
+        <label for="CIN" class="form-label"><b>N° CIN</b></label>
+       <input type="text" class="form-control" placeholder="N° CIN" aria-label="CIN" id="CIN" name="CIN" [(ngModel)]="user.CIN">
+     </div>
+    </div>
+<br>
+    <div class="text-center"><h5 class="title"><b>Création du compte</b></h5></div>
+    <div class="row row1">
+
+      <div class="col">
+        <input type="hidden" class="form-control" value="proprietaire"  aria-label="role" [(ngModel)]="user.role">
+        <label for="Email" class="form-label"><b>Email</b></label>
+        <input type="Email" class="form-control" placeholder="Email" aria-label="Email" id="Email" name="email" [(ngModel)]="user.email">
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="password" class="form-label"><b>Mot de passe</b></label>
+          <input class="form-control" type="password" id="password" placeholder="Mot de passe" name="password" [(ngModel)]="user.password">
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="mb-3">
+          <label for="Image" class="form-label"><b>Image</b></label>
+          <input class="form-control" type="file"  id="Image"  name="image" [(ngModel)]="user.image" >
+  <!---->
+        </div>
+      </div>
+
+    </div>
+    <div class="text-center"><h5 class="title"><b>Documents justificatifs</b></h5></div>
+    <span  class="btn btn-secondary">+</span>
+   <div class="row row1 " >
+    <div class="col">
+      <div class="mb-3">
+        <label for="nom_doc" class="form-label"><b>Nom du document</b></label>
+        <input class="form-control" type="text" id="nom_doc" name="nom" placeholder="Nom du document" >
+      </div>
+    </div>
+    <div class="col">
+      <div class="mb-3">
+        <label for="doc" class="form-label"><b>Fichier joint (format accepté : PNG, JPG, JPEG, Word, PDF)</b></label>
+        <input class="form-control" type="file"  id="doc" name="doc" >
+      </div>
+    </div>
+   </div>
+   <div class="pull-right">
+    <div class="buttons">
+    <button type="button" class="btn btn-primary" style="background-color: #5e72e4 !important;">Annuler</button>
+    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success" style="background-color: #5e72e4 !important;">Editer</button>
+
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+      <div class="modal-content">
+        <div class=" text-center">
+          <div  class="container-fluid" >
+            <br>
+            <i class="fa fa-exclamation-triangle text-warning" style="font-size:100px !important;"></i>
+            <button hidden id="CloseButton" type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+          </div><br>
+        </div>
+        <h5 class=" text-center" >Etes vous sur de vouloir modifier</h5>
+        <div class=" text-center">
+          <button type="submit" class="btn btn-primary" (click)="onClick()"  style=" margin: 20px 20px;"><a style="color: black" >Confirmer</a></button>
+          <button type="button" class="btn btn-secondary" (click)="close()" style=" margin: 20px 20px;"><a style="color: black" >Annuler</a></button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+  </div>
+  </div>
+ </div>
+ </form>
+
+</div>
+</div>
+</div>
+
+    <app-footer></app-footer>
+    </div>
+  </div>
+</div>
+</div>
+
+

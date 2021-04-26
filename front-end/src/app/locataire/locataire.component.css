@@ -1,0 +1,25 @@
+.header {
+  padding-left: 20px;
+}
+.container-fluid {
+  margin-left: 5px;
+}
+.input-group {
+  margin: 15px;
+}
+select {
+  margin: 20px;
+}
+.input-group input {
+  margin-left: 60px;
+}
+.form-control-sm {
+  /*width: 50%;*/
+  margin-top: 10px;
+}
+.modal-dialog {
+  width: 100%;
+}
+.header-body {
+  margin-left: 0px;
+}

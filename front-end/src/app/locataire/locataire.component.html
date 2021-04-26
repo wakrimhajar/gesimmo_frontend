@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-sm-2">
+<app-menu></app-menu>
+</div>
+<div class="col-sm-10" >
+<app-header></app-header>
+<div class="header bg-primaryy pb-6 " style="background-color: #FFF !important;" ></div>
+<div class="container">
+ <div class="p-3 ">
+  <div class="container-fluid mt--6">
+    <div class="row justify-content-center">
+      <div class=" col ">
+        <div class="card">
+          <div class="card-header bg-transparent">
+            <h3 class="mb-0">Gestion Locataire</h3>
+          </div>
+              <!-- Card body -->
+              <div class="card" style="width: 100%">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-lg-2 text-left"><span class="card-title" style="color: #5e72e4"><b>Filtrer</b></span><!--span style="color: grey"> Utilisez les options pour filtrer</span--></div>
+                          <div class=" col-10 text-right">
+                            <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;color: white" (click)="listActif()">Actifs </button>
+                            <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;color: white" (click)="listArchiv()">Archive </button>
+                            <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-secondary" style="background-color: #5e72e4; color: white">Nouveau </button>
+                          </div>
+                        </div>
+                        <select class="form-control" aria-label="Default select example" style="width: 19%" >
+                          <option selected>Tout les biens</option>
+                          <option value="1">Appartement</option>
+                          <option value="2">Bureaux</option>
+                          <option value="3">Parking</option>
+                        </select>
+                      </div>
+                      <div class="input-group mb-3" style="width: 90%;"> <input type="text" class="form-control" placeholder="Chercher">
+                         <div class="input-group-append" style="width: 50px;"><button class="btn btn-primary" style="background-color: #5e72e4 !important;"><i class="fas fa-search"></i></button></div>
+                      </div>
+                    </div>
+                    <div class="modal" id="myModal">
+                      <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header text-center">
+                          <h5 class="modal-title">Ajouter Locataire</h5>
+                          <button id="CloseButton" type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                        </div>
+                        <div class="modal-body text-center">
+                          <button type="button" (click)="onClick()" routerLink="/create-loc-phy" class="btn btn-warning" color="black" style=" margin: 20px 20px;"><a style="color: black;">Personne physique</a></button>
+                          <button type="button" (click)="onClick()" routerLink="/create-loc-mor" class="btn btn-success" style=" margin: 20px 20px;"><a style="color: black" >Personne moral</a></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="table-responsive" *ngIf="table">
+                    <table class="table " >
+                    <thead class="thead-light">
+                      <tr >
+                        <th scope="col">Image</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prenom</th>
+                        <th scope="col">Societe</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Telephone</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody >
+                      <tr *ngFor="let user of users">
+                        <th ><img src="{{ user.image }}" class="image"  style="width: 50px;height: 50px;border-radius: 50%;"></th>
+                        <td >{{user.nom}}</td>
+                        <td>{{user.prenom}}</td>
+                        <td>{{user.nom_societe}}</td>
+                        <td>{{user.email}}</td>
+                        <th>{{user.telephone}}</th>
+                        <td><a style="background-color: #5e72e4 !important;" (click)="detaillocataire(user.id)"  class="btn btn-primary" >Détails</a>
+                    </td>
+                      </tr>
+                    </tbody>
+                    </table>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<app-footer></app-footer>
+</div>
+</div>

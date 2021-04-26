@@ -1,0 +1,12 @@
+.header {
+  padding-left: 20px;
+}
+.container-fluid {
+  padding-left: 40px;
+}
+.col-sm-10 {
+  right: 0%;
+}
+.card-stats {
+  height: 197px;
+}

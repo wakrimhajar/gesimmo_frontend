@@ -1,0 +1,19 @@
+export class Bien
+{
+  id:any;
+  identifiant:any;
+  adresse:any;
+  surface:any;
+  type:any;
+  statut:any;
+  porte:any;
+  code_postal:any;
+  loyer_mensuel:any;
+  syndic:any;
+  taxe_habitation:any;
+  archive:any;
+  nbr_piece:any;
+  equipement:any;
+  etage:any;
+  user_id:any;
+}

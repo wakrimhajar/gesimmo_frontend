@@ -1,0 +1,79 @@
+<div class="row">
+  <div class="col-sm-2">
+  <app-menu></app-menu>
+  </div>
+  <div class="col-sm-10" >
+  <app-header></app-header>
+<div class="header bg-primary pb-6"style="background-color: #fff !important;"></div>
+  <div class="container">
+    <div class="p-3 ">
+  <div class="container-fluid mt--6">
+    <div class="row justify-content-center">
+      <div class=" col ">
+        <div class="card">
+          <div class="card-header bg-transparent">
+            <h3 class="mb-0">Gestion Location</h3>
+          </div>
+              <!-- Card body -->
+              <div class="card" style="width: 100%">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-lg-2 text-left"><span class="card-title" style="color: #5e72e4"><b>Filtrer</b></span><!--span style="color: grey"> Utilisez les options pour filtrer</span--></div>
+                          <div class=" col-10 text-right">
+                            <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;color: white" (click)="listActif()">Actifs </button>
+                            <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;color: white" (click)="listArchiv()">Archive </button>
+                            <button type="button"  class="btn btn-secondary" style="background-color: #5e72e4; color: white" routerLink="/create-location">Nouveau </button>
+                          </div>
+                        </div>
+                        <div class="input-group mb-2">
+                        <input type="date" class="form-control" name="" style="width: 20%; top:20px; margin-right: 20px; margin-left: 2px;">
+                        <select class="form-control" aria-label="Default select example" style="width: 20%">
+                          <option selected>Tout les biens</option>
+                          <option value="1">Appartement</option>
+                          <option value="2">Bureaux</option>
+                          <option value="3">Parking</option>
+                        </select>
+                        <select class="form-control" aria-label="Default select example" style="width: 20%">
+                          <option selected>Tout type</option>
+                          <option value="1">Tout type</option>
+                          <option value="2">Bail d'habitation</option>
+                          <option value="3">Bail professionel</option>
+                        </select>
+                      </div>
+                      </div>
+                      <div class="input-group mb-3" style="width: 90%;"> <input type="text" class="form-control" value="Chercher...">
+                         <div class="input-group-append" style="width: 50px;"><button class="btn btn-primary" style="background-color: #5e72e4 !important;"><i class="fas fa-search"></i></button></div>
+                      </div>
+                    </div>
+                    <div class="table-responsive" *ngIf="table">
+                      <table class="table " >
+                      <thead class="thead-light">
+                        <tr >
+                          <th scope="col">Date entrée</th>
+                          <th scope="col">Date sortie</th>
+                          <th scope="col">Montant</th>
+                          <th scope="col">Type</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody >
+                        <tr *ngFor="let location of locations">
+                          <td>{{location.date_entree}}</td>
+                          <td>{{location.date_sortie}}</td>
+                          <td>{{location.montant}}</td>
+                          <td>{{location.type}}</td>
+                          <td><a style="background-color: #5e72e4 !important;"  class="btn btn-primary" (click)="detaillocation(location.id)">Détails</a>
+                      </td>
+                        </tr>
+                      </tbody>
+                      </table>
+        </div>
+  </div>
+              </div>
+            </div>
+          </div>
+</div>
+</div>
+<app-footer></app-footer>
+</div>
+</div>

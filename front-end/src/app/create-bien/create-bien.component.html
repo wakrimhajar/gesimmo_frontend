@@ -1,0 +1,168 @@
+<div class="row">
+  <div class="col-sm-2">
+    <app-menu></app-menu>
+  </div>
+
+  <div class="col-sm-10" >
+    <app-header></app-header>
+    <div class="header bg-primary pb-6" style="background-color: #fff !important;">
+        </div>
+<div class="container">
+<div class="p-3 ">
+      <div class="container-fluid mt--6">
+        <div class="row justify-content-center">
+        <div class=" col ">
+      <div class="card" >
+        <div class="card-header bg-transparent">
+          <h5 class="mb-0">Ajouter un nouveau bien</h5>
+        </div>
+
+
+
+
+
+          <!--button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button-->
+  <form  method="POST" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+
+    <div class="card-body">
+    <div class="row row1">
+        <div class="col">
+        <label for="adresse" class="form-label"><b>Adresse</b></label>
+        <input type="text" class="form-control" placeholder="Adresse" aria-label="adresse" id="adresse" name="adresse" [(ngModel)]="bien.adresse">
+      </div>
+      <div class="col">
+        <label for="code_postal" class="form-label"><b>Code Postale</b></label>
+        <input type="text" class="form-control" placeholder="Code Postale" aria-label="code_postal" id="code_postal" name="code_postal" [(ngModel)]="bien.code_postal">
+      </div>
+      <div class="col">
+        <label for="surface" class="form-label"><b>Surface</b></label>
+        <input type="text" class="form-control"  aria-label="surface" id="surface" placeholder="Surface" name="surface" [(ngModel)]="bien.surface">
+      </div>
+      <!--div class="col">
+        <label for="statut" class="form-label"><b>Statut</b></label>
+        <select class="form-control" id="statut" name="statut" [(ngModel)]="bien.statut">
+          <option value=" ">Type</option>
+          <option value="Occupé">Occupé</option>
+          <option value="Libre">Libre</option>
+        </select>
+      </div-->
+    </div>
+    <br>
+    <div class="row row1">
+      <div class="col">
+      <label for="loyer_mensuel" class="form-label"><b>Loyer mensuel</b></label>
+      <input type="text" class="form-control" aria-label="loyer_mensuel" id="loyer_mensuel" placeholder="Loyer mensuel" name="loyer_mensuel" [(ngModel)]="bien.loyer_mensuel">
+    </div>
+    <div class="col">
+      <label for="syndic" class="form-label"><b>Syndic </b></label>
+      <input type="text" class="form-control" aria-label="syndic" id="syndic" placeholder="Syndic" name="syndic" [(ngModel)]="bien.syndic">
+    </div>
+    <div class="col">
+      <label for="taxe_habitation" class="form-label"><b>Taxe d'habitation </b></label>
+      <input type="text" class="form-control" aria-label="taxe_habitation" id="taxe_habitation" placeholder="Taxe d'habitation" name="taxe_habitation" [(ngModel)]="bien.taxe_habitation">
+    </div>
+  </div>
+  <br>
+  <div class="row row1">
+    <div class="col">
+      <label for="etage" class="form-label"><b>Etage</b></label>
+      <input type="text" class="form-control" placeholder="Etage" aria-label="etage" id="etage" name="etage" [(ngModel)]="bien.etage">
+    </div>
+    <div class="col">
+      <label for="porte" class="form-label"><b>Porte</b></label>
+      <input type="text" class="form-control" placeholder="Porte" aria-label="porte" id="porte" name="porte" [(ngModel)]="bien.porte">
+    </div>
+    <div class="col">
+      <label for="user_id" class="form-label"><b>Proprietaire</b></label>
+      <select class="form-control" name="user_id" [(ngModel)]="bien.user_id">
+        <option>Proprietaire</option>
+        <option  *ngFor="let user of users" value="{{ user.id }}">{{ user.nom }}-{{ user.prenom }}</option>
+      </select>
+    </div>
+  </div>
+  <br>
+    <div class="row row1">
+      <div class="col">
+        <label for="nbr_piece" class="form-label"><b>Nombre piece</b></label>
+        <input type="text" class="form-control" placeholder="Nombre relance" aria-label="nbr_piece" id="nbr_piece" name="nbr_piece" [(ngModel)]="bien.nbr_piece">
+      </div>
+      <div class="col">
+        <label for="type" class="form-label"><b>Type</b></label>
+        <select class="form-control" id="type" name="type" [(ngModel)]="bien.type">
+          <option value=" ">Type</option>
+          <option value="Appartement">Appartement</option>
+          <option value="Bureau">Bureau</option>
+          <option value="Parking">Parking</option>
+          <option value="Studio">Studio</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="identifiant" class="form-label"><b>Identifiant (Obligatoire et unique)</b></label>
+        <input type="text" class="form-control" placeholder="Identifiant (Obligatoire et unique)" aria-label="identifiant" id="identifiant" name="identifiant" [(ngModel)]="bien.identifiant">
+      </div>
+    </div>
+  <br>
+  <div class="row row1">
+    <div class="col">
+      <label for="nbr_piece" class="form-label"><b>Equipement</b></label>
+      <ng-multiselect-dropdown  name="equipement" [(ngModel)]="bien.equipement"
+          [placeholder]="'custom placeholder'"
+          [settings]="dropdownSettings"
+          [data]="dropdownList"
+          [(ngModel)]="selectedItems"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)">
+      </ng-multiselect-dropdown>
+    </div>
+  </div>
+<br>
+
+
+
+
+
+    <!--div class="text-center"><h5 class="title"><b>Documents justificatifs</b></h5></div>
+    <span (click)="addForm()" class="btn btn-secondary">+</span>
+   <div class="row row1 " *ngFor="let obj of dataarray">
+    <div class="col">
+      <div class="mb-3">
+        <label for="nom_doc" class="form-label"><b>Nom du document</b></label>
+        <input class="form-control" type="text" id="nom_doc" name="nom" placeholder="Nom du document" [(ngModel)]="obj.nom">
+      </div>
+    </div>
+    <div class="col">
+      <div class="mb-3">
+        <label for="doc" class="form-label"><b>Fichier joint (format accepté : PNG, JPG, JPEG, Word, PDF)</b></label>
+        <input class="form-control" type="file" id="doc" name="doc" [(ngModel)]="obj.doc">
+      </div>
+    </div>
+   </div-->
+   <br>
+   <div class="pull-right">
+    <div class="buttons">
+    <button type="button"  class="btn btn-primary" style="background-color: #5e72e4 !important;">Annuler</button>
+    <button type="submit" (click)="alert()" class="btn btn-success" style="background-color: #5e72e4 !important;">Enregistrer</button>
+    </div>
+  </div>
+  </div>
+
+  </form>
+  </div>
+  </div>
+  </div>
+
+
+
+  <app-footer></app-footer>
+  </div>
+  </div>
+
+  </div>
+  </div>
+  </div>
+
+
+
+
+
+

@@ -1,0 +1,97 @@
+<div class="row">
+  <div class="col-2">
+  <app-menu></app-menu>
+  </div>
+  <div class="col-10" >
+    <div class="main-content" id="panel">
+  <app-header></app-header>
+  <div class="header bg-primaryy pb-6 " style="background-color: #FFF !important;" ></div>
+  <div class="container">
+    <div class="p-3 ">
+  <div class="container-fluid mt--6" >
+    <div class="row justify-content-center">
+      <div class=" col ">
+        <div class="card" id="pdf">
+          <div class="card-header">
+            <h3>Fiche détaillé</h3>
+          </div>
+          <div class="card-body" >
+            <div class="container">
+              <div class="row">
+                <div class="col-6 p-4">
+                  <div class="row ">
+                      <img src="{{ user.image }}" class="image"  style="width: 100px;height: 100px;border-radius: 50%;">
+                  </div>
+                  <hr>
+                    <h4>Nom de societe :{{ user.nom_societe }}</h4>
+                  <hr>
+                    <h4>Nom de responsable :{{ user.nom }}</h4>
+                  <hr>
+                    <h4>Prenom de responsable:{{ user.prenom }}</h4>
+                  <hr>
+                    <h4>Regitre de commerce :{{ user.RC }}</h4>
+                </div>
+                <div class="col-6 pt-3 pb-3">
+                  <h4>CIN :{{ user.CIN }}</h4>
+                  <hr>
+                  <h4>Adresse :{{ user.adresse }}</h4>
+                  <hr>
+                  <h4>Role :{{ user.role }}</h4>
+                  <hr>
+                  <h4>Email :{{ user.email }}</h4>
+                  <hr>
+                  <h4>Telephone :{{ user.telephone }}</h4>
+                  <hr>
+                  <h4>Patente :{{ user.patente }}</h4>
+                  <hr>
+                  <h4>Statut :{{ user.statut_societe }}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer text-muted">
+              <div class="  text-left">
+                <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;">Impimer</button>
+              </div>
+              <div class="  text-right">
+                <button type="button" class="btn btn-secondary" routerLink="/locataire" style="background-color: #5e72e4;">Retour </button>
+                <button type="button" class="btn btn-secondary" (click)="createPdf()" style="background-color: #5e72e4;">Exporter </button>
+                <button type="button" class="btn btn-secondary"  data-toggle="modal" data-target="#myModal" style="background-color: #5e72e4;">Archiver</button>
+                <button type="button" class="btn btn-secondary" (click)="editer(user.id)" style="background-color: #5e72e4;">Editer</button>
+              </div>
+          </div>
+        </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<app-footer></app-footer>
+</div>
+</div>
+
+
+
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class=" text-center">
+      <div  class="container-fluid" >
+        <br>
+        <i class="fa fa-exclamation-triangle text-warning" style="font-size:100px !important;"></i>
+        <button hidden id="CloseButton" type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+      </div><br>
+    </div>
+    <h5 class=" text-center" >Etes vous sur de vouloir Archiver</h5>
+    <div class=" text-center">
+      <button type="submit" class="btn btn-primary"  (click)="archiver(user.id)" style=" margin: 20px 20px;"><a style="color: black" >Confirmer</a></button>
+      <button type="button" class="btn btn-secondary" (click)="close()" style=" margin: 20px 20px;"><a style="color: black" >Annuler</a></button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+

@@ -1,0 +1,18 @@
+.header {
+  padding-left: 20px;
+}
+.container-fluid {
+  margin-left: 5px;
+}
+.input-group {
+  margin: 15px;
+}
+select {
+  margin: 20px;
+}
+.input-group input {
+  margin-left: 60px;
+}
+.header-body {
+  margin-left: 0px;
+}

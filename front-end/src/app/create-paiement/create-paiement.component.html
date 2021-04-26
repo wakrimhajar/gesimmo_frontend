@@ -1,0 +1,99 @@
+<div class="row">
+  <div class="col-sm-2">
+    <app-menu></app-menu>
+  </div>
+
+  <div class="col-sm-10" >
+    <app-header></app-header>
+    <div class="header bg-primary pb-6" style="background-color: #fff !important;">
+
+        </div>
+<div class="container">
+<div class="p-3 ">
+      <div class="container-fluid mt--6">
+        <div class="row justify-content-center">
+        <div class=" col ">
+      <div class="card" >
+        <div class="card-header bg-transparent">
+          <h5 class="mb-0">Ajouter un paiement</h5>
+        </div>
+
+          <!--button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button-->
+  <form method="POST" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+
+    <div class="card-body">
+    <div class="row row1">
+        <div class="col">
+        <label for="date_paiement" class="form-label"><b>Date Paiement</b></label>
+        <input type="date" class="form-control" aria-label="date_paiement" id="date_paiement" name="date_paiement" [(ngModel)]="charge.date_paiement">
+      </div>
+      <div class="col">
+        <label for="loyer_mensuel" class="form-label"><b>Loyer mensuel</b></label>
+        <input type="text" class="form-control" placeholder="Loyer mensuel"  aria-label="loyer_mensuel" id="loyer_mensuel" name="loyer_mensuel" [(ngModel)]="charge.loyer_mensuel">
+      </div>
+    </div>
+    <br>
+    <div class="row row1">
+      <div class="col">
+      <label for="syndic" class="form-label"><b>Syndic</b></label>
+      <input type="text" class="form-control" placeholder="Syndic" aria-label="syndic" id="syndic" name="syndic" [(ngModel)]="charge.syndic">
+    </div>
+    <div class="col">
+      <label for="taxe" class="form-label"><b>Taxe </b></label>
+      <input type="text" class="form-control" placeholder="Taxe" aria-label="taxe" id="taxe" name="taxe" [(ngModel)]="charge.taxe">
+    </div>
+  </div>
+  <br>
+  <div class="row row1">
+    <div class="col">
+    <label for="location_id" class="form-label"><b>Location</b></label>
+    <select class="form-control" name="location_id" [(ngModel)]="charge.location_id">
+      <option>Location</option>
+      <option  *ngFor="let location of locations" value="{{ location.id }}">{{ location.identifiant }}</option>
+    </select>
+  </div>
+  <div class="col">
+    <label for="nbt_relance" class="form-label"><b>Nombre relance</b></label>
+    <input type="text" class="form-control" placeholder="Nombre relance" aria-label="nbt_relance" id="nbt_relance" name="nbt_relance" [(ngModel)]="charge.nbt_relance">
+  </div>
+
+</div>
+<br>
+    <!--div class="text-center"><h5 class="title"><b>Documents justificatifs</b></h5></div>
+    <span (click)="addForm()" class="btn btn-secondary">+</span>
+   <div class="row row1 " *ngFor="let obj of dataarray">
+    <div class="col">
+      <div class="mb-3">
+        <label for="nom_doc" class="form-label"><b>Nom du document</b></label>
+        <input class="form-control" type="text" id="nom_doc" name="nom" placeholder="Nom du document" [(ngModel)]="obj.nom">
+      </div>
+    </div>
+    <div class="col">
+      <div class="mb-3">
+        <label for="doc" class="form-label"><b>Fichier joint (format accepté : PNG, JPG, JPEG, Word, PDF)</b></label>
+        <input class="form-control" type="file" id="doc" name="doc" [(ngModel)]="obj.doc">
+      </div>
+    </div>
+   </div-->
+   <div class="pull-right">
+    <div class="buttons">
+    <button type="button" class="btn btn-primary" style="background-color: #5e72e4 !important;">Annuler</button>
+    <button type="submit" (click)="alert()" class="btn btn-success" style="background-color: #5e72e4 !important;">Enregistrer</button>
+    </div>
+  </div>
+  </div>
+
+  </form>
+  </div>
+  </div>
+  </div>
+  <app-footer></app-footer>
+  </div>
+  </div>
+
+  </div>
+  </div>
+  </div>
+
+
+

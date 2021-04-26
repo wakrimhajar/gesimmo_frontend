@@ -1,0 +1,9 @@
+.header {
+  padding-left: 20px;
+}
+.container-fluid {
+  margin-left: 20px;
+}
+.image:hover{
+  box-shadow: 0 0 2px 1px;
+}

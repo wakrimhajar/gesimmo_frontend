@@ -1,0 +1,15 @@
+.header {
+  padding-left: 20px;
+}
+.container-fluid {
+  margin-left: 20px;
+}
+.input-group {
+  margin: 15px;
+}
+select {
+  margin: 20px;
+}
+.input-group input {
+  margin-left: 60px;
+}

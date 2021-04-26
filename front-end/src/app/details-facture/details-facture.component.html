@@ -1,0 +1,119 @@
+<div class="row ">
+  <div class="col-2">
+  <app-menu></app-menu>
+  </div>
+  <div class="col-10 " >
+    <div class="main-content" >
+  <app-header></app-header>
+
+  <div class="header bg-primaryy pb-6 " style="background-color: #FFF !important;" ></div>
+  <div class="container">
+    <div class="p-3 ">
+  <div class="container-fluid mt--6">
+    <div class="row justify-content-center">
+      <div class=" col ">
+        <div class="card">
+          <div class="card-header">
+            <h3>Charge</h3>
+          </div>
+          <div class="card-body">
+            <div id="pdf">
+              <div class="container p-4 " >
+                <div class="p-2" >
+                  <div class="pb-4 m-2" style="background-color: #5e72e4; color: black;">
+                    <div class="pull-left">
+                      <p>GESIMMO</p>
+                    </div>
+                    <div class="pull-right">
+                      <p>Facture</p>
+                    </div>
+                  </div>
+ <br>
+                    <div class="row">
+
+                      <div class="col-sm ">
+                        <div>
+                          <p>Facturé a</p>
+                          <p>Almissaoui kawtar</p>
+                          <p>48 Casablanca</p>
+                          <p>11200</p>
+                        </div>
+                      </div>
+                      <div class="col-sm">
+                        <div class="pull-right ">
+                          <p>Facture N :{{ charge.id }} </p>
+                          <p>Date :{{ charge.date_paiement }}</p>
+                          <p>Echeance :{{ charge.date_paiement }}</p>
+                        </div>
+                      </div>
+                    </div> <br>
+                    <table  class="table" >
+                      <thead>
+                        <tr>
+                          <th scope="col">Date</th>
+                          <th scope="col">Description</th>
+                          <th scope="col">Montant</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">{{ charge.date_paiement }}</th>
+                          <td>{{ charge.description }}</td>
+                          <td>{{ charge.montant }}</td>
+                        </tr>
+                        <!--tr>
+                          <th scope="row">11/01/1021</th>
+                          <td>Eau</td>
+                          <td>200</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">11/01/1021</th>
+                          <td>Personnel</td>
+                          <td>100</td>
+                        </tr>-->
+                        <tr >
+                          <td scope="row"></td>
+                          <td >TOTAL HT :</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row"></th>
+                          <td>TVA 20% :</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row"></th>
+                          <td>Total</td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <br>
+                    <br>
+                    <div >
+                      <p>Condition et modalité de paiement :</p>
+                      <p>Le paiement est du le :{{ charge.date_paiement }}</p>
+                      <p>48 Casablanca</p>
+                      <p>11200</p>
+                    </div>
+                </div>
+              </div>
+              </div>
+          </div>
+          <div class="card-footer text-muted">
+              <div class="  text-left">
+                <button type="button" class="btn btn-secondary" routerLink="/charges" style="background-color: #5e72e4;">Retour </button>
+                <button type="button" class="btn btn-secondary" (click)="exportAsPDF()" style="background-color: #5e72e4;">Télécharger</button>
+              </div>
+          </div>
+        </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<app-footer></app-footer>
+</div>
+</div>
+

@@ -69,7 +69,7 @@ export class DetailsSocieteComponent implements OnInit {
 
     createPdf() {
 
-      this.Jarwis.getlocatairebyid(this.id)
+      this.Jarwis.getuserbyid(this.id)
       .subscribe(data => {
         //console.log(this.user)
       data[0]=this.id;
@@ -84,9 +84,9 @@ export class DetailsSocieteComponent implements OnInit {
       doc.setFontSize(18);
       doc.rect(15, 10,180,15);
       doc.text('FICHE TECHNIQUE', 80, 20);
-      
+
       var img=new Image();
-img.src='../assets/images/isga.png';
+img.src='../assets/images/ISGA.png';
 doc.addImage(img, 'png', 25, 30, 20, 20);
 doc.setFontSize(11);
 doc.text('Nom du société ', 25, 60);
@@ -96,7 +96,7 @@ doc.text(': '+this.user.statut_societe, 75, 70);
 doc.text('Patente ', 25, 80);
 doc.text(': '+this.user.patente, 75, 80);
 doc.text('Registre de commerce ', 25, 90);
-doc.text(': '+this.user.RC, 75, 90);  
+doc.text(': '+this.user.RC, 75, 90);
 doc.text('N° CIN du responsable ', 25, 100);
 doc.text(': '+this.user.CIN, 75, 100);
 doc.text('Nom de responsable ', 25, 110);
@@ -133,14 +133,14 @@ doc.setTextColor(100);
       doc.text('Patente ', 11, 120);
       doc.text(': '+this.user.patente, 60, 120);
       doc.text('Registre de commerce ', 11, 130);
-      doc.text(': '+this.user.RC, 60, 130);  
+      doc.text(': '+this.user.RC, 60, 130);
       doc.setTextColor(100);
        // below line for Open PDF document in new tab
        doc.output('dataurlnewwindow')
-  
-       // below line for Download PDF document  
+
+       // below line for Download PDF document
        doc.save('société.pdf');*/
-  
+
     }
 
 opensweetalert(){

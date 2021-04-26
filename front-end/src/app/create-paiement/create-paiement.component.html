@@ -33,28 +33,49 @@
       </div>
       <div class="col">
         <label for="loyer_mensuel" class="form-label"><b>Loyer mensuel</b></label>
-        <input type="text" class="form-control" placeholder="Loyer mensuel"  aria-label="loyer_mensuel" id="loyer_mensuel" name="loyer_mensuel" [(ngModel)]="charge.loyer_mensuel">
+        <input type="text" class="form-control" placeholder="Loyer mensuel"  aria-label="loyer_mensuel" id="loyer_mensuel" name="loyer_mensuel" [(ngModel)]="charge.loyer_mensuel"
+        required minlength="3" maxlength="10"  pattern="[0-9]{3}[0-9]{3}" ngModel #Mantant="ngModel">
+        <div *ngIf="Mantant.touched && Mantant.invalid " style="color: red;">
+          <div *ngIf="Mantant.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="Mantant.errors?.minlength">Minimum 3 caractéres !</div>
+          <div *ngIf="Mantant.errors?.pattern">Juste les nombres sont valides</div>
+        </div>
       </div>
     </div>
     <br>
     <div class="row row1">
       <div class="col">
       <label for="syndic" class="form-label"><b>Syndic</b></label>
-      <input type="text" class="form-control" placeholder="Syndic" aria-label="syndic" id="syndic" name="syndic" [(ngModel)]="charge.syndic">
+      <input type="text" class="form-control" placeholder="Syndic" aria-label="syndic" id="syndic" name="syndic" [(ngModel)]="charge.syndic"
+      required minlength="3" maxlength="10"  pattern="[0-9]{3}[0-9]{3}" ngModel #Syndic="ngModel">
+        <div *ngIf="Syndic.touched && Syndic.invalid " style="color: red;">
+          <div *ngIf="Syndic.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="Syndic.errors?.minlength">Minimum 3 caractéres !</div>
+          <div *ngIf="Syndic.errors?.pattern">Juste les nombres sont valides</div>
+        </div>
     </div>
     <div class="col">
       <label for="taxe" class="form-label"><b>Taxe </b></label>
-      <input type="text" class="form-control" placeholder="Taxe" aria-label="taxe" id="taxe" name="taxe" [(ngModel)]="charge.taxe">
+      <input type="text" class="form-control" placeholder="Taxe" aria-label="taxe" id="taxe" name="taxe" [(ngModel)]="charge.taxe"
+      required minlength="3" maxlength="10"  pattern="[0-9]{3}[0-9]{3}" ngModel #Taxe="ngModel">
+        <div *ngIf="Taxe.touched && Taxe.invalid " style="color: red;">
+          <div *ngIf="Taxe.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="Taxe.errors?.minlength">Minimum 3 caractéres !</div>
+          <div *ngIf="Taxe.errors?.pattern">Juste les nombres sont valides</div>
+        </div>
     </div>
   </div>
   <br>
   <div class="row row1">
     <div class="col">
     <label for="location_id" class="form-label"><b>Location</b></label>
-    <select class="form-control" name="location_id" [(ngModel)]="charge.location_id">
+    <select class="form-control" name="location_id" [(ngModel)]="charge.location_id" required ngModel #location="ngModel">
       <option>Location</option>
       <option  *ngFor="let location of locations" value="{{ location.id }}">{{ location.identifiant }}</option>
     </select>
+    <div *ngIf="location.touched && location.invalid " style="color: red;">
+      <div *ngIf="location.errors?.required">Champ obligatoire !</div>
+    </div>
   </div>
   <div class="col">
     <label for="nbt_relance" class="form-label"><b>Nombre relance</b></label>

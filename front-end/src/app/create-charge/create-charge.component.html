@@ -18,13 +18,17 @@
         </div>
 
           <!--button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button-->
-  <form method="POST" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+  <form method="POST" #f="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
 
     <div class="card-body">
     <div class="row row1">
         <div class="col">
         <label for="date_paiement" class="form-label"><b>Date Paiement</b></label>
-        <input type="date" class="form-control" aria-label="date_paiement" id="date_paiement" name="date_paiement" [(ngModel)]="charge.date_paiement">
+        <input type="date" class="form-control" aria-label="date_paiement" id="date_paiement" name="date_paiement" [(ngModel)]="charge.date_paiement"
+        required ngModel #entree="ngModel">
+        <div *ngIf="entree.touched && entree.invalid " style="color: red;">
+          <div *ngIf="entree.errors?.required">Champ obligatoire !</div>
+        </div>
       </div>
       <div class="col">
         <label for="nbt_relance" class="form-label"><b>Nombre relance</b></label>
@@ -35,36 +39,30 @@
     <div class="row row1">
       <div class="col">
         <label for="description" class="form-label"><b>Description </b></label>
-        <input type="text" class="form-control" placeholder="Description du charge" aria-label="description" id="description" name="description" [(ngModel)]="charge.description">
+        <input type="text" class="form-control" placeholder="Description du charge" aria-label="description" id="description" name="description" [(ngModel)]="charge.description"
+        required  pattern="[a-z A-Z]+" ngModel #Description="ngModel">
+        <div *ngIf="Description.touched && Description.invalid " style="color: red;">
+          <div *ngIf="Description.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="Description.errors?.pattern">Juste les caractéres sont valides</div>
+        </div>
       </div>
       <div class="col">
       <label for="montant" class="form-label"><b>Montant</b></label>
-      <input type="text" class="form-control" placeholder="Montant du charge" aria-label="montant" id="montant" name="montant" [(ngModel)]="charge.montant">
+      <input type="text" class="form-control" placeholder="Montant du charge" aria-label="montant" id="montant" name="montant" [(ngModel)]="charge.montant"
+      required minlength="3" maxlength="10"  pattern="[0-9]{5}" ngModel #Mantant="ngModel">
+        <div *ngIf="Mantant.touched && Mantant.invalid " style="color: red;">
+          <div *ngIf="Mantant.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="Mantant.errors?.minlength">Minimum 3 caractéres !</div>
+          <div *ngIf="Mantant.errors?.pattern">Juste les nombres sont valides</div>
+        </div>
     </div>
 
   </div>
   <br>
-
-    <!--div class="text-center"><h5 class="title"><b>Documents justificatifs</b></h5></div>
-    <span (click)="addForm()" class="btn btn-secondary">+</span>
-   <div class="row row1 " *ngFor="let obj of dataarray">
-    <div class="col">
-      <div class="mb-3">
-        <label for="nom_doc" class="form-label"><b>Nom du document</b></label>
-        <input class="form-control" type="text" id="nom_doc" name="nom" placeholder="Nom du document" [(ngModel)]="obj.nom">
-      </div>
-    </div>
-    <div class="col">
-      <div class="mb-3">
-        <label for="doc" class="form-label"><b>Fichier joint (format accepté : PNG, JPG, JPEG, Word, PDF)</b></label>
-        <input class="form-control" type="file" id="doc" name="doc" [(ngModel)]="obj.doc">
-      </div>
-    </div>
-   </div-->
    <div class="pull-right">
     <div class="buttons">
     <button type="button" class="btn btn-primary" style="background-color: #5e72e4 !important;">Annuler</button>
-    <button type="submit" (click)="alert()" class="btn btn-success" style="background-color: #5e72e4 !important;">Enregistrer</button>
+    <button type="submit" (click)="alert()" [disabled]="f.invalid" class="btn btn-success" style="background-color: #5e72e4 !important;">Enregistrer</button>
     </div>
   </div>
   </div>

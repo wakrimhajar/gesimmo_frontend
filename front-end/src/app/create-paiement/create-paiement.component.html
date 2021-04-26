@@ -19,13 +19,17 @@
         </div>
 
           <!--button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button-->
-  <form method="POST" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+  <form method="POST" #f="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
 
     <div class="card-body">
     <div class="row row1">
         <div class="col">
         <label for="date_paiement" class="form-label"><b>Date Paiement</b></label>
-        <input type="date" class="form-control" aria-label="date_paiement" id="date_paiement" name="date_paiement" [(ngModel)]="charge.date_paiement">
+        <input type="date" class="form-control" aria-label="date_paiement" id="date_paiement" name="date_paiement" [(ngModel)]="charge.date_paiement"
+        required ngModel #entree="ngModel">
+        <div *ngIf="entree.touched && entree.invalid " style="color: red;">
+          <div *ngIf="entree.errors?.required">Champ obligatoire !</div>
+        </div>
       </div>
       <div class="col">
         <label for="loyer_mensuel" class="form-label"><b>Loyer mensuel</b></label>
@@ -78,7 +82,7 @@
    <div class="pull-right">
     <div class="buttons">
     <button type="button" class="btn btn-primary" style="background-color: #5e72e4 !important;">Annuler</button>
-    <button type="submit" (click)="alert()" class="btn btn-success" style="background-color: #5e72e4 !important;">Enregistrer</button>
+    <button type="submit" (click)="alert()" [disabled]="f.invalid" class="btn btn-success" style="background-color: #5e72e4 !important;">Enregistrer</button>
     </div>
   </div>
   </div>

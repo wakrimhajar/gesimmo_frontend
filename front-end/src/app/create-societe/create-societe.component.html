@@ -16,22 +16,40 @@
         <div class="card-header bg-transparent">
           <h5 class="mb-0">Ajouter une nouvelle société</h5>
         </div>
-        <form method="POST" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+        <form method="POST" #f="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
 
         <div class="card-body">
         <div class="text-center"><h5 class="title"><b>Identification du Société</b></h5></div>
           <div class="row row1">
               <div class="col">
                 <label for="nom_societe" class="form-label"><b>Nom Société</b></label>
-                <input type="text" class="form-control" placeholder="Nom Société" aria-label="nom_societe" id="nom_societe" name="nom_societe" [(ngModel)]="user.nom_societe">
+                <input type="text" class="form-control" placeholder="Nom Société" aria-label="nom_societe" id="nom_societe" name="nom_societe" [(ngModel)]="user.nom_societe"
+                required minlength="3" maxlength="12" pattern="[a-z A-Z]+" ngModel #societe="ngModel">
+        <div *ngIf="societe.touched && societe.invalid " style="color: red;">
+          <div *ngIf="societe.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="societe.errors?.minlength">Minimum 3 caractéres !</div>
+          <div *ngIf="societe.errors?.pattern">Juste les caractéres sont valides</div>
+        </div>
             </div>
             <div class="col">
               <label for="nom" class="form-label"><b>Nom Responsable</b></label>
-                    <input type="text" class="form-control" placeholder="Nom Responsable" aria-label="nom" id="nom" name="nom" [(ngModel)]="user.nom">
+                    <input type="text" class="form-control" placeholder="Nom Responsable" aria-label="nom" id="nom" name="nom" [(ngModel)]="user.nom"
+                    required minlength="3" maxlength="12" pattern="[a-z A-Z]+" ngModel #nom="ngModel">
+        <div *ngIf="nom.touched && nom.invalid " style="color: red;">
+          <div *ngIf="nom.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="nom.errors?.minlength">Minimum 3 caractéres !</div>
+          <div *ngIf="nom.errors?.pattern">Juste les caractéres sont valides</div>
+        </div>
             </div>
             <div class="col">
               <label for="prenom" class="form-label"><b>Prenom Responsable</b></label>
-              <input type="text" class="form-control" placeholder="Prenom Responsable" aria-label="prenom" id="prenom" name="prenom" [(ngModel)]="user.prenom">
+              <input type="text" class="form-control" placeholder="Prenom Responsable" aria-label="prenom" id="prenom" name="prenom" [(ngModel)]="user.prenom"
+              required minlength="3" maxlength="12" pattern="[a-z A-Z]+" ngModel #prenom="ngModel">
+        <div *ngIf="prenom.touched && prenom.invalid " style="color: red;">
+          <div *ngIf="prenom.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="prenom.errors?.minlength">Minimum 3 caractéres !</div>
+          <div *ngIf="prenom.errors?.pattern">Juste les caractéres sont valides</div>
+        </div>
             </div>
           </div>
           <br>
@@ -42,18 +60,34 @@
             </div>
             <div class="col">
               <label for="Telephone" class="form-label"><b>Telephone</b></label>
-                    <input type="text" class="form-control" placeholder="Telephone" aria-label="Telephone" id="Telephone" name="telephone" [(ngModel)]="user.telephone">
+                    <input type="text" class="form-control" placeholder="Telephone" aria-label="Telephone" id="Telephone" name="telephone" [(ngModel)]="user.telephone"
+                    required minlength="10" maxlength="10"  pattern="[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}" ngModel #telephone="ngModel">
+        <div *ngIf="telephone.touched && telephone.invalid " style="color: red;">
+          <div *ngIf="telephone.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="telephone.errors?.minlength">Minimum 10 caractéres !</div>
+          <div *ngIf="telephone.errors?.pattern">Juste les nombres sont valides</div>
+        </div>
             </div>
             <div class="col">
               <label for="CIN" class="form-label"><b>N° CIN</b></label>
-                   <input type="text" class="form-control" placeholder="N° CIN" aria-label="CIN" id="CIN" name="CIN" [(ngModel)]="user.CIN">
+                   <input type="text" class="form-control" placeholder="N° CIN" aria-label="CIN" id="CIN" name="CIN" [(ngModel)]="user.CIN"
+                   required minlength="8" maxlength="10" ngModel #CIN="ngModel">
+                  <div *ngIf="CIN.touched && CIN.invalid " style="color: red;">
+                    <div *ngIf="CIN.errors?.required">Champ obligatoire !</div>
+                    <div *ngIf="CIN.errors?.minlength">Minimum 8 caractéres !</div>
+                  </div>
            </div>
           </div>
           <br>
           <div class="row row1">
             <div class="col">
               <label for="Registre" class="form-label"><b>Registre de commerce</b></label>
-                    <input type="text" class="form-control" placeholder="Registre de commerce" aria-label="Registre" id="Registre" name="RC" [(ngModel)]="user.RC">
+                    <input type="text" class="form-control" placeholder="Registre de commerce" aria-label="Registre" id="Registre" name="RC" [(ngModel)]="user.RC"
+                    required minlength="6" maxlength="10" ngModel #rc="ngModel">
+       <div *ngIf="rc.touched && rc.invalid " style="color: red;">
+        <div *ngIf="rc.errors?.required">Champ obligatoire !</div>
+        <div *ngIf="rc.errors?.minlength">Minimum 6 caractéres !</div>
+      </div>
             </div>
             <div class="col">
               <label for="Statut" class="form-label"><b>Statut Société</b></label>
@@ -70,13 +104,12 @@
             <div class="col">
               <input type="hidden" class="form-control" value="proprietaire"  aria-label="role" name="role" aria-label="role" [(ngModel)]="user.role">
                     <label for="Email" class="form-label"><b>Email</b></label>
-                    <input type="Email" class="form-control" placeholder="Email" aria-label="Email" id="Email" name="email" [(ngModel)]="user.email">
-            </div>
-            <div class="col">
-              <div class="mb-3">
-                <label for="password" class="form-label"><b>Mot de passe</b></label>
-                      <input class="form-control" type="password" id="password" placeholder="Mot de passe" name="password" [(ngModel)]="user.password">
-              </div>
+                    <input type="Email" class="form-control" placeholder="Email" aria-label="Email" id="Email" name="email" [(ngModel)]="user.email"
+                    required email  ngModel #email="ngModel">
+                    <div *ngIf="email.touched && email.invalid " style="color: red;">
+                      <div *ngIf="email.errors?.required">Champ obligatoire !</div>
+                      <div *ngIf="email.errors?.email">Email !</div>
+                    </div>
             </div>
             <div class="col">
               <div class="mb-3">
@@ -104,7 +137,7 @@
          <div class="pull-right">
           <div class="buttons">
           <button type="button" class="btn btn-primary" style="background-color: #5e72e4 !important;">Annuler</button>
-          <button type="submit" (click)="alert()" class="btn btn-success" style="background-color: #5e72e4 !important;">Enregistrer</button>
+          <button type="submit" (click)="alert()" [disabled]="f.invalid" class="btn btn-success" style="background-color: #5e72e4 !important;">Enregistrer</button>
           </div>
         </div>
       </div>

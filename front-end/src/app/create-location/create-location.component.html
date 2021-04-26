@@ -18,60 +18,94 @@
         </div>
 
           <!--button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button-->
-  <form method="POST" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+  <form method="POST" #f="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
 
     <div class="card-body">
     <div class="row row1">
         <div class="col">
         <label for="date_entree" class="form-label"><b>Date entrée</b></label>
-        <input type="date" class="form-control" aria-label="date_entree" id="date_entree" name="date_entree" [(ngModel)]="location.date_entree">
+        <input type="date" class="form-control" aria-label="date_entree" id="date_entree" name="date_entree" [(ngModel)]="location.date_entree"
+        required ngModel #entree="ngModel">
+        <div *ngIf="entree.touched && entree.invalid " style="color: red;">
+          <div *ngIf="entree.errors?.required">Champ obligatoire !</div>
+        </div>
       </div>
       <div class="col">
         <label for="date_sortie" class="form-label"><b>Date Sortie</b></label>
-        <input type="date" class="form-control"  aria-label="date_sortie" id="date_sortie" name="date_sortie" [(ngModel)]="location.date_sortie">
+        <input type="date" class="form-control"  aria-label="date_sortie" id="date_sortie" name="date_sortie" [(ngModel)]="location.date_sortie"
+        required ngModel #sortie="ngModel">
+        <div *ngIf="sortie.touched && sortie.invalid " style="color: red;">
+          <div *ngIf="sortie.errors?.required">Champ obligatoire !</div>
+        </div>
       </div>
     </div>
     <br>
     <div class="row row1">
       <div class="col">
       <label for="user_id" class="form-label"><b>Locataire</b></label>
-      <select class="form-control" name="user_id" [(ngModel)]="location.user_id">
+      <select class="form-control" name="user_id" [(ngModel)]="location.user_id" required ngModel #locataire="ngModel">
         <option>Locataire</option>
         <option  *ngFor="let user of users" value="{{ user.id }}">{{ user.nom }}-{{ user.prenom }}</option>
       </select>
+      <div *ngIf="locataire.touched && locataire.invalid " style="color: red;">
+        <div *ngIf="locataire.errors?.required">Champ obligatoire !</div>
+      </div>
     </div>
     <div class="col">
       <label for="bien_id" class="form-label"><b>Bien </b></label>
-      <select class="form-control" name="bien_id" [(ngModel)]="location.bien_id">
+      <select class="form-control" name="bien_id" [(ngModel)]="location.bien_id" required ngModel #bien="ngModel">
         <option>Bien</option>
         <option  *ngFor="let bien of biens" value="{{ bien.id }}">{{ bien.identifiant }}</option>
       </select>
+      <div *ngIf="bien.touched && bien.invalid " style="color: red;">
+        <div *ngIf="bien.errors?.required">Champ obligatoire !</div>
+      </div>
     </div>
   </div>
   <br>
     <div class="row row1">
       <div class="col">
         <label for="montant" class="form-label"><b>Mantant</b></label>
-        <input type="text" class="form-control" placeholder="Mantant" aria-label="montant" id="montant" name="montant" [(ngModel)]="location.montant">
+        <input type="text" class="form-control" placeholder="Mantant" aria-label="montant" id="montant" name="montant" [(ngModel)]="location.montant"
+      required minlength="3" maxlength="10"  pattern="[0-9]{3}[0-9]{3}" ngModel #Mantant="ngModel">
+        <div *ngIf="Mantant.touched && Mantant.invalid " style="color: red;">
+          <div *ngIf="Mantant.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="Mantant.errors?.minlength">Minimum 3 caractéres !</div>
+          <div *ngIf="Mantant.errors?.pattern">Juste les nombres sont valides</div>
+        </div>
       </div>
       <div class="col">
         <label for="type" class="form-label"><b>Type</b></label>
-        <select class="form-control" aria-label="Default select example" id="type" name="type" [(ngModel)]="location.type">
+        <select class="form-control" aria-label="Default select example" id="type" name="type" [(ngModel)]="location.type" required ngModel #type="ngModel">
           <option selected>Type</option>
           <option value="Personnel">Personnel</option>
           <option value="Professionnel">Professionnel</option>
         </select>
+        <div *ngIf="type.touched && type.invalid " style="color: red;">
+          <div *ngIf="type.errors?.required">Champ obligatoire !</div>
+        </div>
       </div>
     </div>
   <br>
   <div class="row row1">
     <div class="col">
       <label for="identifiant" class="form-label"><b>Identifiant(Obligatoire et unique)</b></label>
-      <input type="text" class="form-control" placeholder="Identifiant(Obligatoire et unique)" aria-label="identifiant" id="identifiant" name="identifiant" [(ngModel)]="location.identifiant">
+      <input type="text" class="form-control" placeholder="Identifiant(Obligatoire et unique)" aria-label="identifiant" id="identifiant" name="identifiant" [(ngModel)]="location.identifiant"
+      required minlength="3" maxlength="10" ngModel #identifiant="ngModel">
+       <div *ngIf="identifiant.touched && identifiant.invalid " style="color: red;">
+        <div *ngIf="identifiant.errors?.required">Champ obligatoire !</div>
+        <div *ngIf="identifiant.errors?.minlength">Minimum 3 caractéres !</div>
+      </div>
     </div>
     <div class="col">
       <label for="duree" class="form-label"><b>Duree (Nombre de mois)</b></label>
-      <input type="text" class="form-control" placeholder="Duree (Nombre de mois)" aria-label="duree" id="duree" name="duree" [(ngModel)]="location.duree">
+      <input type="text" class="form-control" placeholder="Duree (Nombre de mois)" aria-label="duree" id="duree" name="duree" [(ngModel)]="location.duree"
+      required  ngModel pattern="[0-9]{2}" #duree="ngModel">
+      <div *ngIf="duree.touched && duree.invalid " style="color: red;">
+       <div *ngIf="duree.errors?.required">Champ obligatoire !</div>
+       <div *ngIf="Mantant.errors?.pattern">Juste les nombres sont valides</div>
+
+     </div>
     </div>
   </div>
 <br>
@@ -94,7 +128,7 @@
    <div class="pull-right">
     <div class="buttons">
     <button type="button" class="btn btn-primary" style="background-color: #5e72e4 !important;">Annuler</button>
-    <button type="submit" (click)="alert()" class="btn btn-success" style="background-color: #5e72e4 !important;">Enregistrer</button>
+    <button type="submit" (click)="alert()" [disabled]="f.invalid" class="btn btn-success" style="background-color: #5e72e4 !important;">Enregistrer</button>
     </div>
   </div>
   </div>

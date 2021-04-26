@@ -62,31 +62,27 @@ export class DetailsLocationComponent implements OnInit {
     }, error => console.log(error));
     var doc = new jsPDF();
     doc.setFontSize(18);
-    
-    doc.text('Fiche détaillée du location', 70, 10);
+    doc.setFontSize(18);
+    doc.rect(15, 10,180,15);
+    doc.text('FICHE DE LOCATION', 80, 20);
     doc.setFontSize(11);
-    doc.text('Date d\'entrée ', 25, 30);
-    doc.text(': '+this.location.date_entree, 55, 30);
-    doc.text('Date de sortie ', 25, 40);
-    doc.text(': '+this.location.date_sortie, 55, 40);
     doc.text('L\'identifiant ', 25, 50);
     doc.text(': '+this.location.identifiant, 55, 50);
-    doc.text('Type de location ', 120, 30);
-    doc.text(': '+this.location.type, 160, 30);
-    doc.text('La durée ', 120, 40);
-    doc.text(': '+this.location.duree, 160, 40);
-    doc.text('Montant ', 120, 50);
-    doc.text(': '+this.location.montant, 160, 50);
-   /* var img=new Image();
-    img.src='../assets/images/loc.png';
-    doc.addImage(img,'png',10,50);*/
-    //doc.roundedRect();
+    doc.text('Date d\'entrée ', 25, 60);
+    doc.text(': '+this.location.date_entree, 55, 60);
+    doc.text('Date de sortie ', 25, 70);
+    doc.text(': '+this.location.date_sortie, 55, 70);
+    doc.text('Type de location ', 25, 80);
+    doc.text(': '+this.location.type, 55, 80);
+    doc.text('La durée ', 25, 90);
+    doc.text(': '+this.location.duree, 55, 90);
+    doc.text('Montant ', 25, 100);
+    doc.text(': '+this.location.montant, 55, 100);
     doc.setTextColor(100);
      // below line for Open PDF document in new tab
      doc.output('dataurlnewwindow')
-
      // below line for Download PDF document  
-     doc.save('locataire.pdf');
+     doc.save('location.pdf');
 
   }
 

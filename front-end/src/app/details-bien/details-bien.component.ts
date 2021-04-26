@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { JarwisService } from '../Services/jarwis.service';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Bien } from '../Model/bien';
-import jspdf from 'jspdf'
+import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas'
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
@@ -48,22 +48,53 @@ export class DetailsBienComponent implements OnInit {
     console.log('cliecked', id);
    this.router.navigate(['edit-bien', id])
   }
+  createPdf() {
+  this.Jarwis.getbienbyid(this.id)
+  .subscribe(data => {
+  data[0]=this.id;
+  console.log(data[0]);
+  this.bien= data[0];
+  console.log(data)
+  this.bien=data;
+  console.log(this.bien)
+  }, error => console.log(error));
+  var doc = new jsPDF();
+  doc.setFontSize(18);
+  doc.rect(15, 10,180,15);
+  doc.text('FICHE DE BIEN IMMOBILIER', 70, 20);
+  doc.setFontSize(11);
 
-  exportAsPDF()
-  {
-    var data = document.getElementById('pdf');
-    html2canvas(data as any).then(canvas => {
-      console.log(canvas);
-      const contentDataURL = canvas.toDataURL('image/png')
-      var imgHeight = canvas.height * 208 / canvas.width;
-      console.log(imgHeight);
-      let pdf = new jspdf('p', 'mm', 'a4'); //Generates PDF in landscape mode
-      // let pdf = new jspdf('p', 'cm', 'a4'); Generates PDF in portrait mode
-      pdf.addImage(contentDataURL, 'PNG', 0, 0,208,imgHeight);
-      pdf.save('bien.pdf');
-    });
+doc.text('Identifiant', 25, 50);
+doc.text(': '+this.bien.identifiant, 60, 50);
+doc.text('Type de bien ', 25, 60);
+doc.text(': '+this.bien.type, 60, 60);
+doc.text('Code postale ', 25, 70);
+doc.text(': '+this.bien.code_postal, 60, 70);
+doc.text('Adresse ', 25, 80);
+doc.text(': '+this.bien.adresse, 60, 80);
+doc.text('Surface ', 25, 90);
+doc.text(': '+this.bien.surface, 60, 90);
+doc.text('Status ', 25, 100);
+doc.text(': '+this.bien.statut, 60, 100);
+doc.text('Etage ', 25, 110);
+doc.text(': '+this.bien.etage, 60, 110);
+doc.text('Porte ', 25, 120);
+doc.text(': '+this.bien.porte, 60, 120);
+doc.text('Nombre de piece ', 25, 130);
+doc.text(': '+this.bien.nbr_piece, 60, 130);
+doc.text('Loyer mensuel ', 25, 140);
+doc.text(': '+this.bien.loyer_mensuel, 60, 140);  
+doc.text('Syndic ', 25, 150);
+doc.text(': '+this.bien.syndic, 60, 150);
+doc.text('Equipement' , 25, 160);
+doc.text(': '+this.bien.equipement, 60, 160);
+//doc.roundedRect();
+doc.setTextColor(100);
+// below line for Open PDF document in new tab
+doc.output('dataurlnewwindow')
+// below line for Download PDF document
+doc.save('bien.pdf');
   }
-
   opensweetalert(){
     Swal.fire({
       title: 'Succés',

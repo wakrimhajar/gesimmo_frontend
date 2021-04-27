@@ -15,6 +15,9 @@ import { stringify } from '@angular/compiler/src/util';
 export class DetailsFactureComponent implements OnInit {
 
   id :any;
+  x:any;
+  y:any;
+  total:any;
   public charge: Charge = new Charge;
   constructor(private route: ActivatedRoute,private router: Router,private Jarwis:JarwisService) { }
 
@@ -28,8 +31,14 @@ export class DetailsFactureComponent implements OnInit {
     this.charge= data[0];
     console.log(data)
     this.charge=data;
-    console.log(this.charge)
+    ////console.log(this.charge.montant)
+    this.y=this.charge.montant;
+    console.log(this.y);
+    this.x=this.y*0.2;
+    console.log(this.x);
+    this.total=this.y+this.x;
     }, error => console.log(error));
+
   }
 
   createPdf() {
@@ -61,7 +70,7 @@ export class DetailsFactureComponent implements OnInit {
     doc.text('48 Casablanca',80,60);
     doc.text('11200',80,65);
     doc.text('Facture N° :',150,50);
-    const idCharge=this.charge.id; 
+    const idCharge=this.charge.id;
     doc.text(idCharge.toString(),175,50);
     doc.text('Date :',150,55);
     doc.text(this.charge.date_paiement,175,55);
@@ -83,7 +92,7 @@ export class DetailsFactureComponent implements OnInit {
 
     doc.text('TVA ',85,106);
     doc.text((montant+mntTVA).toString(),165,116);
-    doc.text('20%',165,106);
+    doc.text(mntTVA.toString(),165,106);
     doc.line(85,110,200,110);
     doc.setLineWidth(0.1);
     doc.text('Total',85,116);
@@ -100,7 +109,7 @@ export class DetailsFactureComponent implements OnInit {
      // below line for Open PDF document in new tab
      doc.output('dataurlnewwindow')
 
-     // below line for Download PDF document  
+     // below line for Download PDF document
      doc.save('facture.pdf');
     /* var doc = new jsPDF();
      doc.setFontSize(18);
@@ -108,10 +117,10 @@ export class DetailsFactureComponent implements OnInit {
      doc.text('QUITTANCE DE LOYER', 70, 20);
      doc.setFontSize(11);
      doc.text('Madame / Monsieur ',11,40);
-     
+
       // below line for Open PDF document in new tab
       doc.output('dataurlnewwindow')
-      // below line for Download PDF document  
+      // below line for Download PDF document
       doc.save('quittance.pdf');*/
 
   }

@@ -38,11 +38,26 @@ export class EditBienComponent implements OnInit {
 
 
     this.dropdownList = [
-      { item_id: 1, item_text: 'Mumbai' },
-      { item_id: 2, item_text: 'Bangaluru' },
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' },
-      { item_id: 5, item_text: 'New Delhi' }
+      {  key: 1, value: 'Table' },
+      {  key: 2, value: 'Chaise' },
+      {  key: 3, value: 'Bureau' },
+      {  key: 4, value: 'Fauteuil' },
+      {  key: 5, value: 'Canapé' },
+      {  key: 6, value: 'Lit' },
+      {  key: 7, value: 'Commode' },
+      {  key: 8, value: 'Luminaire' },
+      {  key: 9, value: 'Television' },
+      {  key: 10, value: 'Meuble Télé ' },
+      {  key: 11, value: 'Vaisselle' },
+      {  key: 12, value: 'Tabouret' },
+      {  key: 13, value: 'Meuble de cuisine' },
+      {  key: 14, value: 'Wifi' },
+      {  key: 15, value: 'Ascenseur' },
+      {  key: 16, value: 'Materiel de jardin' },
+      {  key: 17, value: 'Haut parleur' },
+      {  key: 18, value: 'DVD et livres' },
+      {  key: 19, value: 'Produits de toilette' },
+      {  key: 20, value: 'Autres ' }
     ];
 
     /*this.selectedItems = [

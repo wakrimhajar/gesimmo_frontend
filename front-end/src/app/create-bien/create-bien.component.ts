@@ -26,11 +26,26 @@ export class CreateBienComponent implements OnInit {
     this.listActif();
 
     this.dropdownList = [
-      {  key: 1, value: 'Mumbai' },
-      {  key: 2, value: 'Bangaluru' },
-      {  key: 3, value: 'Pune' },
-      {  key: 4, value: 'Navsari' },
-      {  key: 5, value: 'New Delhi' }
+      {  key: 1, value: 'Table' },
+      {  key: 2, value: 'Chaise' },
+      {  key: 3, value: 'Bureau' },
+      {  key: 4, value: 'Fauteuil' },
+      {  key: 5, value: 'Canapé' },
+      {  key: 6, value: 'Lit' },
+      {  key: 7, value: 'Commode' },
+      {  key: 8, value: 'Luminaire' },
+      {  key: 9, value: 'Television' },
+      {  key: 10, value: 'Meuble Télé ' },
+      {  key: 11, value: 'Vaisselle' },
+      {  key: 12, value: 'Tabouret' },
+      {  key: 13, value: 'Meuble de cuisine' },
+      {  key: 14, value: 'Wifi' },
+      {  key: 15, value: 'Ascenseur' },
+      {  key: 16, value: 'Materiel de jardin' },
+      {  key: 17, value: 'Haut parleur' },
+      {  key: 18, value: 'DVD et livres' },
+      {  key: 19, value: 'Produits de toilette' },
+      {  key: 20, value: 'Autres ' }
     ];
     this.dropdownSettings= {
       singleSelection: false,

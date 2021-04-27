@@ -43,6 +43,7 @@ export class DetailsLocataireComponent implements OnInit {
 
         var element = document.getElementById("CloseButton") as any;
         element.click();
+        this.router.navigate(['locataire'])
   }
 
   editer(id:number){
@@ -100,7 +101,7 @@ export class DetailsLocataireComponent implements OnInit {
      // below line for Open PDF document in new tab
      doc.output('dataurlnewwindow')
 
-     // below line for Download PDF document  
+     // below line for Download PDF document
      doc.save('locataire.pdf');
 */
 this.Jarwis.getlocatairebyid(this.id)
@@ -143,7 +144,7 @@ doc.setTextColor(100);
  doc.output('dataurlnewwindow')
  // below line for Download PDF document
  doc.save('locataire.pdf');
- 
+
   }
   opensweetalert(){
     Swal.fire({

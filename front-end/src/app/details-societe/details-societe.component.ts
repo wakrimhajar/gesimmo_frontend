@@ -43,7 +43,7 @@ export class DetailsSocieteComponent implements OnInit {
 
         var element = document.getElementById("CloseButton") as any;
         element.click();
-
+        this.router.navigate(['societe']);
 
 
     }

@@ -29,6 +29,7 @@ export class DetailsBienComponent implements OnInit {
     //console.log(this.bien)
     console.log(this.bien)
     }, error => console.log(error));
+
   }
 
 
@@ -42,6 +43,14 @@ export class DetailsBienComponent implements OnInit {
         this.opensweetalert();
         else
         this.erreur();
+        this.router.navigate(['bien'])
+        var element = document.getElementById("CloseButton") as any;
+        element.click();
+  }
+
+  close(){
+    var element = document.getElementById("CloseButton") as any;
+    element.click();
   }
 
   editer(id:number){
@@ -83,7 +92,7 @@ doc.text(': '+this.bien.porte, 60, 120);
 doc.text('Nombre de piece ', 25, 130);
 doc.text(': '+this.bien.nbr_piece, 60, 130);
 doc.text('Loyer mensuel ', 25, 140);
-doc.text(': '+this.bien.loyer_mensuel, 60, 140);  
+doc.text(': '+this.bien.loyer_mensuel, 60, 140);
 doc.text('Syndic ', 25, 150);
 doc.text(': '+this.bien.syndic, 60, 150);
 doc.text('Equipement' , 25, 160);

@@ -16,12 +16,6 @@
         <div class="card-header bg-transparent">
           <h5 class="mb-0">Ajouter un nouveau bien</h5>
         </div>
-
-
-
-
-
-          <!--button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button-->
   <form  method="POST" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
 
     <div class="card-body">
@@ -109,31 +103,33 @@
   </div>
 <br>
 
-
-
-
-
-    <!--div class="text-center"><h5 class="title"><b>Documents justificatifs</b></h5></div>
-    <span (click)="addForm()" class="btn btn-secondary">+</span>
-   <div class="row row1 " *ngFor="let obj of dataarray">
-    <div class="col">
-      <div class="mb-3">
-        <label for="nom_doc" class="form-label"><b>Nom du document</b></label>
-        <input class="form-control" type="text" id="nom_doc" name="nom" placeholder="Nom du document" [(ngModel)]="obj.nom">
-      </div>
-    </div>
-    <div class="col">
-      <div class="mb-3">
-        <label for="doc" class="form-label"><b>Fichier joint (format accepté : PNG, JPG, JPEG, Word, PDF)</b></label>
-        <input class="form-control" type="file" id="doc" name="doc" [(ngModel)]="obj.doc">
-      </div>
-    </div>
-   </div-->
    <br>
    <div class="pull-right">
     <div class="buttons">
     <button type="button"  class="btn btn-primary" style="background-color: #5e72e4 !important;">Annuler</button>
-    <button type="submit"  class="btn btn-success" style="background-color: #5e72e4 !important;">Modifier</button>
+    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success" style="background-color: #5e72e4 !important;">Modifier</button>
+
+
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+      <div class="modal-content">
+        <div class=" text-center">
+          <div  class="container-fluid" >
+            <br>
+            <i class="fa fa-exclamation-triangle text-warning" style="font-size:100px !important;"></i>
+            <button hidden id="CloseButton" type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+          </div><br>
+        </div>
+        <h5 class=" text-center" >Etes vous sur de vouloir modifier</h5>
+        <div class=" text-center">
+          <button type="submit" class="btn btn-primary" (click)="onClick()"  style=" margin: 20px 20px;"><a style="color: black" >Confirmer</a></button>
+          <button type="button" class="btn btn-secondary" (click)="close()" style=" margin: 20px 20px;"><a style="color: black" >Annuler</a></button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
     </div>
   </div>
   </div>

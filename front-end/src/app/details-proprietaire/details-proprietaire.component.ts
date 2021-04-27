@@ -43,6 +43,7 @@ export class DetailsProprietaireComponent implements OnInit {
 
         var element = document.getElementById("CloseButton") as any;
         element.click();
+        this.router.navigate(['societe']);
     }
     editer(id:number){
       console.log('cliecked', id);
@@ -64,7 +65,7 @@ export class DetailsProprietaireComponent implements OnInit {
       this.router.navigate(['edit-morale', id]);
     }
 
-   
+
     createPdf() {
 
       this.Jarwis.getlocatairebyid(this.id)
@@ -78,7 +79,7 @@ export class DetailsProprietaireComponent implements OnInit {
       }, error => console.log(error));
       var doc = new jsPDF();
       doc.setFontSize(18);
-      
+
       doc.setFontSize(18);
 doc.rect(15, 10,180,15);
 doc.text('FICHE DE PROPRIETAIRE', 70, 20);
@@ -108,8 +109,8 @@ doc.setTextColor(100);
  doc.output('dataurlnewwindow')
  // below line for Download PDF document
  doc.save('propriétaire.pdf');
-     
-  
+
+
     }
 
 opensweetalert(){

@@ -42,6 +42,7 @@ export class DetailsLocationComponent implements OnInit {
         this.erreur();
         var element = document.getElementById("CloseButton") as any;
         element.click();
+        this.router.navigate(['location'])
   }
 
   editer(id:number){
@@ -81,7 +82,7 @@ export class DetailsLocationComponent implements OnInit {
     doc.setTextColor(100);
      // below line for Open PDF document in new tab
      doc.output('dataurlnewwindow')
-     // below line for Download PDF document  
+     // below line for Download PDF document
      doc.save('location.pdf');
 
   }

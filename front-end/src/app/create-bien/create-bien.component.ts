@@ -26,7 +26,7 @@ export class CreateBienComponent implements OnInit {
     this.listActif();
 
     this.dropdownList = [
-      { key: 1, value: 'Mumbai' },
+      {  key: 1, value: 'Mumbai' },
       {  key: 2, value: 'Bangaluru' },
       {  key: 3, value: 'Pune' },
       {  key: 4, value: 'Navsari' },

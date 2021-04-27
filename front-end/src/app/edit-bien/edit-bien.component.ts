@@ -61,8 +61,24 @@ export class EditBienComponent implements OnInit {
 
   }
   onSubmit() {
-    this.Jarwis.updatebien(this.id, this.bien).subscribe(
-      data => console.log(data), error => console.log(error)
+    var myFormData = new FormData();
+    myFormData.append('adresse',this.bien.adresse);
+    myFormData.append('user_id',this.bien.user_id);
+    myFormData.append('identifiant',this.bien.identifiant);
+    myFormData.append('code_postal',this.bien.code_postal);
+    myFormData.append('surface',this.bien.surface);
+    myFormData.append('loyer_mensuel',this.bien.loyer_mensuel);
+    myFormData.append('syndic',this.bien.syndic);
+    myFormData.append('taxe_habitation',this.bien.taxe_habitation);
+    myFormData.append('nbr_piece',this.bien.nbr_piece);
+    myFormData.append('etage',this.bien.etage);
+    myFormData.append('porte',this.bien.porte);
+    myFormData.append('type',this.bien.type);
+    var equipements=this.selectedItems.map((obj: { value: any; })=>obj.value).join(' , ');
+    console.log(equipements);
+    myFormData.append('equipement',equipements);
+    this.Jarwis.updatebien(this.id, myFormData).subscribe(
+      data => console.log(myFormData), error => console.log(error)
       );
     this.bien = new Bien();
     this.router.navigate(['/bien']);
@@ -105,6 +121,7 @@ onClick(){
     this.opensweetalert();
   else
     this.erreur();
+    this.router.navigate(['bien'])
 }
 
 onItemSelect(item: any) {
@@ -112,6 +129,12 @@ onItemSelect(item: any) {
 }
 onSelectAll(items: any) {
   console.log(items);
+}
+
+
+close(){
+  var element = document.getElementById("CloseButton") as any;
+  element.click();
 }
 
 }

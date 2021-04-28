@@ -17,11 +17,6 @@
           <h5 class="mb-0">Ajouter un nouveau bien</h5>
         </div>
 
-
-
-
-
-          <!--button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button-->
   <form  method="POST" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
 
     <div class="card-body">
@@ -38,14 +33,7 @@
         <label for="surface" class="form-label"><b>Surface</b></label>
         <input type="text" class="form-control"  aria-label="surface" id="surface" placeholder="Surface" name="surface" [(ngModel)]="bien.surface">
       </div>
-      <!--div class="col">
-        <label for="statut" class="form-label"><b>Statut</b></label>
-        <select class="form-control" id="statut" name="statut" [(ngModel)]="bien.statut">
-          <option value=" ">Type</option>
-          <option value="Occupé">Occupé</option>
-          <option value="Libre">Libre</option>
-        </select>
-      </div-->
+
     </div>
     <br>
     <div class="row row1">
@@ -65,42 +53,59 @@
   <br>
   <div class="row row1">
     <div class="col">
-      <label for="etage" class="form-label"><b>Etage</b></label>
-      <input type="text" class="form-control" placeholder="Etage" aria-label="etage" id="etage" name="etage" [(ngModel)]="bien.etage">
-    </div>
-    <div class="col">
-      <label for="porte" class="form-label"><b>Porte</b></label>
-      <input type="text" class="form-control" placeholder="Porte" aria-label="porte" id="porte" name="porte" [(ngModel)]="bien.porte">
+      <label for="identifiant" class="form-label"><b>Identifiant (Obligatoire et unique)</b></label>
+      <input type="text" class="form-control" placeholder="Identifiant (Obligatoire et unique)" aria-label="identifiant" id="identifiant" name="identifiant" [(ngModel)]="bien.identifiant">
     </div>
     <div class="col">
       <label for="user_id" class="form-label"><b>Proprietaire</b></label>
-      <select class="form-control" name="user_id" [(ngModel)]="bien.user_id">
+      <select class="form-control" id="user_id" name="user_id" [(ngModel)]="bien.user_id">
         <option>Proprietaire</option>
         <option  *ngFor="let user of users" value="{{ user.id }}">{{ user.nom }}-{{ user.prenom }}</option>
       </select>
     </div>
+    <div class="col">
+      <label for="type" class="form-label"><b>Type</b></label>
+      <select class="form-control" id="type" [(ngModel)]="optionValue"  name="type" [(ngModel)]="bien.type">
+        <option value=" ">Type</option>
+        <option value="Appartement">Appartement</option>
+        <option value="Bureau">Bureau</option>
+        <option value="Parking">Parking</option>
+        <option value="Studio">Studio</option>
+      </select>
+    </div>
   </div>
   <br>
-    <div class="row row1">
+  <div class="row row1">
+    <ng-container *ngIf="optionValue == 'Appartement'">
+      <div class="col">
+        <label for="etage" class="form-label"><b>Etage</b></label>
+        <input type="text" class="form-control" placeholder="Etage" aria-label="etage" id="etage" name="etage" [(ngModel)]="bien.etage">
+      </div>
+      <div class="col">
+        <label for="porte" class="form-label"><b>Porte</b></label>
+        <input type="text" class="form-control" placeholder="Porte" aria-label="porte" id="porte" name="porte" [(ngModel)]="bien.porte">
+      </div>
       <div class="col">
         <label for="nbr_piece" class="form-label"><b>Nombre piece</b></label>
         <input type="text" class="form-control" placeholder="Nombre relance" aria-label="nbr_piece" id="nbr_piece" name="nbr_piece" [(ngModel)]="bien.nbr_piece">
       </div>
+     </ng-container>
+
+     <ng-container *ngIf="optionValue == 'Bureau'">
       <div class="col">
-        <label for="type" class="form-label"><b>Type</b></label>
-        <select class="form-control" id="type" name="type" [(ngModel)]="bien.type">
-          <option value=" ">Type</option>
-          <option value="Appartement">Appartement</option>
-          <option value="Bureau">Bureau</option>
-          <option value="Parking">Parking</option>
-          <option value="Studio">Studio</option>
-        </select>
+        <label for="etage" class="form-label"><b>Etage</b></label>
+        <input type="text" class="form-control" placeholder="Etage" aria-label="etage" id="etage" name="etage" [(ngModel)]="bien.etage">
       </div>
       <div class="col">
-        <label for="identifiant" class="form-label"><b>Identifiant (Obligatoire et unique)</b></label>
-        <input type="text" class="form-control" placeholder="Identifiant (Obligatoire et unique)" aria-label="identifiant" id="identifiant" name="identifiant" [(ngModel)]="bien.identifiant">
+        <label for="porte" class="form-label"><b>Porte</b></label>
+        <input type="text" class="form-control" placeholder="Porte" aria-label="porte" id="porte" name="porte" [(ngModel)]="bien.porte">
       </div>
-    </div>
+      <div class="col">
+        <label for="nbr_piece" class="form-label"><b>Nombre piece</b></label>
+        <input type="text" class="form-control" placeholder="Nombre piece" aria-label="nbr_piece" id="nbr_piece" name="nbr_piece" [(ngModel)]="bien.nbr_piece">
+      </div>
+     </ng-container>
+  </div>
   <br>
   <div class="row row1">
     <div class="col">

@@ -13,7 +13,7 @@ import { stringify } from '@angular/compiler/src/util';
   styleUrls: ['./create-bien.component.css']
 })
 export class CreateBienComponent implements OnInit {
-
+  optionValue:any;
   constructor(private Jarwis:JarwisService,private router:Router,private Token:TokenService) { }
   bien=new Bien;
   user = new User();

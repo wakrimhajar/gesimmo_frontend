@@ -21,7 +21,8 @@ export class CreateBienComponent implements OnInit {
   dropdownList:any = [];
   selectedItems:any = [];
   dropdownSettings:any = {};
-  //obj:any;
+  //filedata:any = [];
+  filedata=[] as any;
   ngOnInit(): void {
     this.listActif();
 
@@ -57,7 +58,14 @@ export class CreateBienComponent implements OnInit {
       allowSearchFilter: true
     };
   }
-
+  
+  fileEvent(e:any){
+     for(let i=0;i<e.target.files.length;i++){
+      var img = e.target.files[i];
+       this.filedata.push(img);
+     console.log(this.filedata);
+     }
+   }
   onSubmit(){
     var myFormData = new FormData();
     myFormData.append('adresse',this.bien.adresse);
@@ -75,6 +83,11 @@ export class CreateBienComponent implements OnInit {
     var equipements=this.selectedItems.map((obj: { value: any; })=>obj.value).join(' , ');
     console.log(equipements);
     myFormData.append('equipement',equipements);
+    for(let i=0;i<this.filedata.length;i++){
+     
+    myFormData.append('images', this.filedata[i]);
+    console.log(this.filedata[i]);}
+  
     this.Jarwis.addbien(myFormData).subscribe(
       data => console.log(myFormData), error => console.log(error));
     this.bien = new Bien();

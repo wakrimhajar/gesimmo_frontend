@@ -67,7 +67,7 @@
       <div class="col">
         <label for="montant" class="form-label"><b>Mantant</b></label>
         <input type="text" class="form-control" placeholder="Mantant" aria-label="montant" id="montant" name="montant" [(ngModel)]="location.montant"
-      required minlength="3" maxlength="10"  pattern="[0-9]{3}[0-9]{3}" ngModel #Mantant="ngModel">
+      required minlength="3" maxlength="10"  pattern="[0-9]{5}" ngModel #Mantant="ngModel">
         <div *ngIf="Mantant.touched && Mantant.invalid " style="color: red;">
           <div *ngIf="Mantant.errors?.required">Champ obligatoire !</div>
           <div *ngIf="Mantant.errors?.minlength">Minimum 3 caractéres !</div>
@@ -104,7 +104,6 @@
       <div *ngIf="duree.touched && duree.invalid " style="color: red;">
        <div *ngIf="duree.errors?.required">Champ obligatoire !</div>
        <div *ngIf="Mantant.errors?.pattern">Juste les nombres sont valides</div>
-
      </div>
     </div>
   </div>

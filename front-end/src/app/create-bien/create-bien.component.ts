@@ -59,7 +59,7 @@ export class CreateBienComponent implements OnInit {
       allowSearchFilter: true
     };
   }
-  
+
   fileEvent(e:any){
      for(let i=0;i<e.target.files.length;i++){
       var img = e.target.files[i];
@@ -84,8 +84,8 @@ export class CreateBienComponent implements OnInit {
     var equipements=this.selectedItems.map((obj: { value: any; })=>obj.value).join(' , ');
     console.log(equipements);
     myFormData.append('equipement',equipements);
-    for(let i=0;i<this.filedata.length;i++){ 
-   myFormData.append('images[]', this.filedata[i]);
+    for(let i=0;i<this.filedata.length;i++){
+    myFormData.append('images[]', this.filedata[i]);
     console.log(this.filedata[i]);}
   //  myFormData.append('images', this.filedata);
     this.Jarwis.addbien(myFormData).subscribe(

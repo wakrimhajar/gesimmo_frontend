@@ -17,21 +17,36 @@
           <h5 class="mb-0">Ajouter un nouveau bien</h5>
         </div>
 
-  <form  method="POST" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+  <form  method="POST" #f="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
 
     <div class="card-body">
     <div class="row row1">
         <div class="col">
         <label for="adresse" class="form-label"><b>Adresse</b></label>
-        <input type="text" class="form-control" placeholder="Adresse" aria-label="adresse" id="adresse" name="adresse" [(ngModel)]="bien.adresse">
+        <input type="text" class="form-control" placeholder="Adresse" aria-label="adresse" id="adresse" name="adresse" [(ngModel)]="bien.adresse"
+        required  ngModel #Adresse="ngModel">
+        <div *ngIf="Adresse.touched && Adresse.invalid " style="color: red;">
+          <div *ngIf="Adresse.errors?.required">Champ obligatoire !</div>
+        </div>
       </div>
       <div class="col">
         <label for="code_postal" class="form-label"><b>Code Postale</b></label>
-        <input type="text" class="form-control" placeholder="Code Postale" aria-label="code_postal" id="code_postal" name="code_postal" [(ngModel)]="bien.code_postal">
+        <input type="text" class="form-control" placeholder="Code Postale" aria-label="code_postal" id="code_postal" name="code_postal" [(ngModel)]="bien.code_postal"
+        required  maxlength="10"  pattern="[0-9]{3}[0-9]{2}" ngModel #Code="ngModel">
+        <div *ngIf="Code.touched && Code.invalid " style="color: red;">
+          <div *ngIf="Code.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="Code.errors?.pattern">Juste les nombres sont valides</div>
+        </div>
       </div>
       <div class="col">
         <label for="surface" class="form-label"><b>Surface</b></label>
-        <input type="text" class="form-control"  aria-label="surface" id="surface" placeholder="Surface" name="surface" [(ngModel)]="bien.surface">
+        <input type="text" class="form-control"  aria-label="surface" id="surface" placeholder="Surface" name="surface" [(ngModel)]="bien.surface"
+        required minlength="2" maxlength="10"  pattern="[0-9]{4}" ngModel #Surface="ngModel">
+        <div *ngIf="Surface.touched && Surface.invalid " style="color: red;">
+          <div *ngIf="Surface.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="Surface.errors?.minlength">Minimum 2 caractéres !</div>
+          <div *ngIf="Surface.errors?.pattern">Juste les nombres sont valides</div>
+        </div>
       </div>
 
     </div>
@@ -39,39 +54,68 @@
     <div class="row row1">
       <div class="col">
       <label for="loyer_mensuel" class="form-label"><b>Loyer mensuel</b></label>
-      <input type="text" class="form-control" aria-label="loyer_mensuel" id="loyer_mensuel" placeholder="Loyer mensuel" name="loyer_mensuel" [(ngModel)]="bien.loyer_mensuel">
+      <input type="text" class="form-control" aria-label="loyer_mensuel" id="loyer_mensuel" placeholder="Loyer mensuel" name="loyer_mensuel" [(ngModel)]="bien.loyer_mensuel"
+      required minlength="3" maxlength="10"  pattern="[0-9]{5}" ngModel #Loyer="ngModel">
+        <div *ngIf="Loyer.touched && Loyer.invalid " style="color: red;">
+          <div *ngIf="Loyer.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="Loyer.errors?.minlength">Minimum 3 caractéres !</div>
+          <div *ngIf="Loyer.errors?.pattern">Juste les nombres sont valides</div>
+        </div>
     </div>
     <div class="col">
       <label for="syndic" class="form-label"><b>Syndic </b></label>
-      <input type="text" class="form-control" aria-label="syndic" id="syndic" placeholder="Syndic" name="syndic" [(ngModel)]="bien.syndic">
+      <input type="text" class="form-control" aria-label="syndic" id="syndic" placeholder="Syndic" name="syndic" [(ngModel)]="bien.syndic"
+      required minlength="2" maxlength="10"  pattern="[0-9]{5}" ngModel #Syndic="ngModel">
+        <div *ngIf="Syndic.touched && Syndic.invalid " style="color: red;">
+          <div *ngIf="Syndic.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="Syndic.errors?.minlength">Minimum 2 caractéres !</div>
+          <div *ngIf="Syndic.errors?.pattern">Juste les nombres sont valides</div>
+        </div>
     </div>
     <div class="col">
       <label for="taxe_habitation" class="form-label"><b>Taxe d'habitation </b></label>
-      <input type="text" class="form-control" aria-label="taxe_habitation" id="taxe_habitation" placeholder="Taxe d'habitation" name="taxe_habitation" [(ngModel)]="bien.taxe_habitation">
+      <input type="text" class="form-control" aria-label="taxe_habitation" id="taxe_habitation" placeholder="Taxe d'habitation" name="taxe_habitation" [(ngModel)]="bien.taxe_habitation"
+      required minlength="2" maxlength="10"  pattern="[0-9]{5}" ngModel #Taxe="ngModel">
+        <div *ngIf="Taxe.touched && Taxe.invalid " style="color: red;">
+          <div *ngIf="Taxe.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="Taxe.errors?.minlength">Minimum 2 caractéres !</div>
+          <div *ngIf="Taxe.errors?.pattern">Juste les nombres sont valides</div>
+        </div>
     </div>
   </div>
   <br>
   <div class="row row1">
     <div class="col">
       <label for="identifiant" class="form-label"><b>Identifiant (Obligatoire et unique)</b></label>
-      <input type="text" class="form-control" placeholder="Identifiant (Obligatoire et unique)" aria-label="identifiant" id="identifiant" name="identifiant" [(ngModel)]="bien.identifiant">
+      <input type="text" class="form-control" placeholder="Identifiant (Obligatoire et unique)" aria-label="identifiant" id="identifiant" name="identifiant" [(ngModel)]="bien.identifiant"
+      required minlength="2" maxlength="10"   ngModel #Identifiant="ngModel">
+        <div *ngIf="Identifiant.touched && Identifiant.invalid " style="color: red;">
+          <div *ngIf="Identifiant.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="Identifiant.errors?.minlength">Minimum 2 caractéres !</div>
+        </div>
     </div>
     <div class="col">
       <label for="user_id" class="form-label"><b>Proprietaire</b></label>
-      <select class="form-control" id="user_id" name="user_id" [(ngModel)]="bien.user_id">
+      <select class="form-control" id="user_id" name="user_id" [(ngModel)]="bien.user_id" required ngModel #Proprietaire="ngModel">
         <option>Proprietaire</option>
         <option  *ngFor="let user of users" value="{{ user.id }}">{{ user.nom }}-{{ user.prenom }}</option>
       </select>
+      <div *ngIf="Proprietaire.touched && Proprietaire.invalid " style="color: red;">
+        <div *ngIf="Proprietaire.errors?.required">Champ obligatoire !</div>
+      </div>
     </div>
     <div class="col">
       <label for="type" class="form-label"><b>Type</b></label>
-      <select class="form-control" id="type" [(ngModel)]="optionValue"  name="type" [(ngModel)]="bien.type">
+      <select class="form-control" id="type" [(ngModel)]="optionValue"  name="type" [(ngModel)]="bien.type" required ngModel #Type="ngModel">
         <option value=" ">Type</option>
         <option value="Appartement">Appartement</option>
         <option value="Bureau">Bureau</option>
         <option value="Parking">Parking</option>
         <option value="Studio">Studio</option>
       </select>
+      <div *ngIf="Type.touched && Type.invalid " style="color: red;">
+        <div *ngIf="Type.errors?.required">Champ obligatoire !</div>
+      </div>
     </div>
   </div>
   <br>
@@ -79,34 +123,65 @@
     <ng-container *ngIf="optionValue == 'Appartement'">
       <div class="col">
         <label for="etage" class="form-label"><b>Etage</b></label>
-        <input type="text" class="form-control" placeholder="Etage" aria-label="etage" id="etage" name="etage" [(ngModel)]="bien.etage">
+        <input type="text" class="form-control" placeholder="Etage" aria-label="etage" id="etage" name="etage" [(ngModel)]="bien.etage"
+        required  maxlength="2" pattern="[0-9]{2}" ngModel #Etage="ngModel">
+        <div *ngIf="Etage.touched && Etage.invalid " style="color: red;">
+          <div *ngIf="Etage.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="Etage.errors?.pattern">Juste les nombres sont valides</div>
+        </div>
       </div>
       <div class="col">
         <label for="porte" class="form-label"><b>Porte</b></label>
-        <input type="text" class="form-control" placeholder="Porte" aria-label="porte" id="porte" name="porte" [(ngModel)]="bien.porte">
+        <input type="text" class="form-control" placeholder="Porte" aria-label="porte" id="porte" name="porte" [(ngModel)]="bien.porte"
+        required  maxlength="2" pattern="[0-9]{2}" ngModel #Porte="ngModel">
+        <div *ngIf="Porte.touched && Porte.invalid " style="color: red;">
+          <div *ngIf="Porte.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="Porte.errors?.pattern">Juste les nombres sont valides</div>
+        </div>
       </div>
       <div class="col">
         <label for="nbr_piece" class="form-label"><b>Nombre piece</b></label>
-        <input type="text" class="form-control" placeholder="Nombre relance" aria-label="nbr_piece" id="nbr_piece" name="nbr_piece" [(ngModel)]="bien.nbr_piece">
+        <input type="text" class="form-control" placeholder="Nombre relance" aria-label="nbr_piece" id="nbr_piece" name="nbr_piece" [(ngModel)]="bien.nbr_piece"
+        required  maxlength="2" pattern="[0-9]{2}" ngModel #piece="ngModel">
+        <div *ngIf="piece.touched && piece.invalid " style="color: red;">
+          <div *ngIf="piece.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="piece.errors?.pattern">Juste les nombres sont valides</div>
+        </div>
       </div>
      </ng-container>
 
      <ng-container *ngIf="optionValue == 'Bureau'">
       <div class="col">
         <label for="etage" class="form-label"><b>Etage</b></label>
-        <input type="text" class="form-control" placeholder="Etage" aria-label="etage" id="etage" name="etage" [(ngModel)]="bien.etage">
+        <input type="text" class="form-control" placeholder="Etage" aria-label="etage" id="etage" name="etage" [(ngModel)]="bien.etage"
+        required  maxlength="2" pattern="[0-9]{2}" ngModel #Etage="ngModel">
+        <div *ngIf="Etage.touched && Etage.invalid " style="color: red;">
+          <div *ngIf="Etage.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="Etage.errors?.pattern">Juste les nombres sont valides</div>
+        </div>
       </div>
       <div class="col">
         <label for="porte" class="form-label"><b>Porte</b></label>
-        <input type="text" class="form-control" placeholder="Porte" aria-label="porte" id="porte" name="porte" [(ngModel)]="bien.porte">
+        <input type="text" class="form-control" placeholder="Porte" aria-label="porte" id="porte" name="porte" [(ngModel)]="bien.porte"
+        required  maxlength="2" pattern="[0-9]{2}" ngModel #Porte="ngModel">
+        <div *ngIf="Porte.touched && Porte.invalid " style="color: red;">
+          <div *ngIf="Porte.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="Porte.errors?.pattern">Juste les nombres sont valides</div>
+        </div>
       </div>
       <div class="col">
         <label for="nbr_piece" class="form-label"><b>Nombre piece</b></label>
-        <input type="text" class="form-control" placeholder="Nombre piece" aria-label="nbr_piece" id="nbr_piece" name="nbr_piece" [(ngModel)]="bien.nbr_piece">
+        <input type="text" class="form-control" placeholder="Nombre piece" aria-label="nbr_piece" id="nbr_piece" name="nbr_piece" [(ngModel)]="bien.nbr_piece"
+        required  maxlength="2" pattern="[0-9]{2}" ngModel #piece="ngModel">
+        <div *ngIf="piece.touched && piece.invalid " style="color: red;">
+          <div *ngIf="piece.errors?.required">Champ obligatoire !</div>
+          <div *ngIf="piece.errors?.pattern">Juste les nombres sont valides</div>
+        </div>
       </div>
      </ng-container>
   </div>
   <br>
+  <!--
   <div class="row">
    <div class="col">
     <label for="images" class="form-label"><b>Images</b></label>
@@ -128,35 +203,34 @@
     </div>
   </div>
 <br>
+-->
+<div class="row row1">
+  <div class="col">
+    <label for="images" class="form-label"><b>Images</b></label>
+       <input type="file" class="form-control" id="images" multiple="multiple" name="images[]" (change)="fileEvent($event)" />
+   </div>
+   <div class="col">
+    <label for="nbr_piece" class="form-label"><b>Equipement</b></label>
+    <ng-multiselect-dropdown  name="equipement" [(ngModel)]="bien.equipement"
+        [placeholder]="'custom placeholder'"
+        [settings]="dropdownSettings"
+        [data]="dropdownList"
+        [(ngModel)]="selectedItems"
+        (onSelect)="onItemSelect($event)"
+        (onSelectAll)="onSelectAll($event)">
+    </ng-multiselect-dropdown>
+  </div>
+</div>
 
-
-
-
-
-    <!--div class="text-center"><h5 class="title"><b>Documents justificatifs</b></h5></div>
-    <span (click)="addForm()" class="btn btn-secondary">+</span>
-   <div class="row row1 " *ngFor="let obj of dataarray">
-    <div class="col">
-      <div class="mb-3">
-        <label for="nom_doc" class="form-label"><b>Nom du document</b></label>
-        <input class="form-control" type="text" id="nom_doc" name="nom" placeholder="Nom du document" [(ngModel)]="obj.nom">
-      </div>
-    </div>
-    <div class="col">
-      <div class="mb-3">
-        <label for="doc" class="form-label"><b>Fichier joint (format accepté : PNG, JPG, JPEG, Word, PDF)</b></label>
-        <input class="form-control" type="file" id="doc" name="doc" [(ngModel)]="obj.doc">
-      </div>
-    </div>
-   </div-->
    <br>
    <div class="pull-right">
     <div class="buttons">
     <button type="button"  class="btn btn-primary" style="background-color: #5e72e4 !important;">Annuler</button>
-    <button type="submit" (click)="alert()" class="btn btn-success" style="background-color: #5e72e4 !important;">Enregistrer</button>
+    <button type="submit" (click)="alert()" [disabled]="f.invalid" class="btn btn-success" style="background-color: #5e72e4 !important;">Enregistrer</button>
     </div>
   </div>
   </div>
+  <br>
 
   </form>
   </div>

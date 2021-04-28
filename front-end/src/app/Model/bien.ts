@@ -16,4 +16,5 @@ export class Bien
   equipement:any;
   etage:any;
   user_id:any;
+  images:any;
 }

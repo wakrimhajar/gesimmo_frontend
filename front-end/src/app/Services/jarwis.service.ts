@@ -55,6 +55,9 @@ addlocatairemor(data: any){
  getbienArchiv(){
   return  this.http.get(`${this.baseUrl}/getBienArchive`)
  }
+ getbienLibre(){
+  return  this.http.get(`${this.baseUrl}/getBienLibre`)
+ }
  getlocationActif(){
   return  this.http.get(`${this.baseUrl}/getLocationActif`)
  }

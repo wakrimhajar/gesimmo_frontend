@@ -32,7 +32,7 @@ export class CreateLocationComponent implements OnInit {
    }
 
    listActif(){
-    this.Jarwis.getbienActif().subscribe(
+    this.Jarwis.getbienLibre().subscribe(
       data => {console.log(data);  this.biens=Object.values(data);}, error => console.log(error)
       );
 

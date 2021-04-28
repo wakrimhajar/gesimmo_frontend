@@ -46,7 +46,8 @@ export class CreateBienComponent implements OnInit {
       {  key: 17, value: 'Haut parleur' },
       {  key: 18, value: 'DVD et livres' },
       {  key: 19, value: 'Produits de toilette' },
-      {  key: 20, value: 'Autres ' }
+      {  key: 20, value: 'Climatisation' },
+      {  key: 21, value: 'Autres ' }
     ];
     this.dropdownSettings= {
       singleSelection: false,
@@ -83,11 +84,10 @@ export class CreateBienComponent implements OnInit {
     var equipements=this.selectedItems.map((obj: { value: any; })=>obj.value).join(' , ');
     console.log(equipements);
     myFormData.append('equipement',equipements);
-    for(let i=0;i<this.filedata.length;i++){
-     
-    myFormData.append('images', this.filedata[i]);
+    for(let i=0;i<this.filedata.length;i++){ 
+   myFormData.append('images[]', this.filedata[i]);
     console.log(this.filedata[i]);}
-  
+  //  myFormData.append('images', this.filedata);
     this.Jarwis.addbien(myFormData).subscribe(
       data => console.log(myFormData), error => console.log(error));
     this.bien = new Bien();

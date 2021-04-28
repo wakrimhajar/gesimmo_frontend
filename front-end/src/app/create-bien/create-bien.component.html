@@ -110,7 +110,7 @@
   <div class="row">
    <div class="col">
     <label for="images" class="form-label"><b>Images</b></label>
-       <input type="file" class="form-control" multiple="multiple" name="images" (change)="fileEvent($event)" />
+       <input type="file" class="form-control" id="images" multiple="multiple" name="images[]" (change)="fileEvent($event)" />
    </div>
   </div>
   <br>

@@ -122,5 +122,8 @@ addlocatairemor(data: any){
   return  this.http.post(`${this.baseUrl}/sendMailChangePass`,data)
 
  }
+ listBienImages(){
+  return  this.http.get(`${this.baseUrl}/biens`)
+ }
 }
 

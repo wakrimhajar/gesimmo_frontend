@@ -131,13 +131,14 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4" *ngFor="let bien of biens ">
         <div class="property-wrap "><!--ftco-animate-->
-          <a href="properties-single.html" class="img" style="background-image: url(assets/images/work-1.jpg);">
+          <a href="properties-single.html" class="img" style="background-image: url({{bien.images[0].image}});">
+           
             <div class="rent-sale">
               <span class="sale">Sale</span>
             </div>
-            <p class="price"><span class="orig-price">$300,000</span></p>
+            <p class="price"><span class="orig-price">{{bien.loyer_mensuel}}</span></p>
           </a>
           <div class="text">
             <ul class="property_list">
@@ -160,8 +161,8 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="property-wrap "><!--ftco-animate-->
+      <!--div class="col-md-4">
+        <div class="property-wrap ">
           <a href="properties-single.html" class="img" style="background-image: url(assets/images/work-2.jpg);">
             <div class="rent-sale">
               <span class="rent">Rent</span>
@@ -190,7 +191,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <div class="property-wrap "><!--ftco-animate-->
+        <div class="property-wrap ">
           <a href="properties-single.html" class="img" style="background-image: url(assets/images/work-3.jpg);">
             <div class="rent-sale">
               <span class="rent">Rent</span>
@@ -220,7 +221,7 @@
       </div>
 
       <div class="col-md-4">
-        <div class="property-wrap "><!--ftco-animate-->
+        <div class="property-wrap ">
           <a href="properties-single.html" class="img" style="background-image: url(assets/images/work-4.jpg);">
             <div class="rent-sale">
               <span class="sale">Sale</span>
@@ -249,7 +250,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <div class="property-wrap "><!--ftco-animate-->
+        <div class="property-wrap ">
           <a href="properties-single.html" class="img" style="background-image: url(assets/images/work-5.jpg);">
             <div class="rent-sale">
               <span class="rent">Rent</span>
@@ -278,7 +279,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <div class="property-wrap "><!--ftco-animate-->
+        <div class="property-wrap ">
           <a href="properties-single.html" class="img" style="background-image: url(assets/images/work-6.jpg);">
             <div class="rent-sale">
               <span class="rent">Rent</span>
@@ -305,7 +306,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div-->
     </div>
     <div class="row mt-5">
       <div class="col text-center">

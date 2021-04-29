@@ -6,6 +6,7 @@ import { TokenService } from '../Services/token.service';
 
 import { User } from '../Model/user';
 import Swal from 'sweetalert2' ;
+import { Bien } from '../Model/bien';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,7 +18,8 @@ export class HomeComponent implements OnInit {
     password:null,
     type_user:null
   };
-
+  bien = new Bien();
+  biens=[] as any ;
   user = new User();
   message: boolean =false;
   
@@ -88,6 +90,9 @@ export class HomeComponent implements OnInit {
     })
   }
   ngOnInit(): void {
+    this.Jarwis.listBienImages().subscribe(
+      data => {console.log(data);  this.biens=Object.values(data);}, error => console.log(error)
+      );
   }
 
 }

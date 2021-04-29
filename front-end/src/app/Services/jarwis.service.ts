@@ -118,5 +118,9 @@ addlocatairemor(data: any){
  updatemorale(id: number,data:any){
   return  this.http.put(`${this.baseUrl}/updateMorale/`+id,data)
  }
+ sendMailToChangePass(data: any){
+  return  this.http.post(`${this.baseUrl}/sendMailChangePass`,data)
+
+ }
 }
 

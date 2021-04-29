@@ -19,7 +19,55 @@
     </div>
   </div>
 </nav>
+<!--modal mot de passe oublié-->
+<div class="modal fade" tabindex="-1" id="pass">
+  <div class="modal-dialog ">
+    <div class="modal-content">
 
+    <div class="modal-header ">
+<h3 class="modal-title"><b>Réintialisation du mot de passe </b></h3>
+      <button id="CloseButton" type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+    </div>
+    <form (ngSubmit)="onSubmitPass()">	
+      
+      <div class="alert alert-danger text-center"[hidden]="!error">
+        {{error}}
+      </div>
+    <div class="modal-body">
+      
+      <div class="container mt-3">
+                  
+                  <p>Pour réintialisez votre mot de passe , Saisissez votre addresse mail que vous utilisez pour vous connecter à votre compte Gesimmo </p>
+                    <div class="panel-body">
+
+                        <fieldset>
+
+                            <div class="form-group">
+                            
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Username" id="usr" name="username" style="margin-left: 0px;" [(ngModel)]="user.email" required>
+                          </div>
+                              </div>
+                            <button class="btn btn-lg btn-primary btn-block mt-4"   [disabled]="message==true" type="submit" style="margin-bottom: 20px;">
+                              <div *ngIf="message==true">Envoi en cours ....</div>
+                              <div *ngIf="message==false">Envoyer le mot de passe</div>
+                              </button>
+                            
+                        </fieldset>
+                    </div>   
+    </div>   
+
+    </div>
+   
+  
+  </form>
+  
+    </div>
+  </div>
+  </div>
 <!--modal login-->
 
 <div class="modal fade" tabindex="-1" id="login">
@@ -48,6 +96,7 @@
         <input type="password" name="password" class="form-control" placeholder=" Mot de passe"  [(ngModel)]="form.password" required>
           </div>
           <button type="submit" class="btn btn-success btn-login" style="font-size: 20px;" [disabled]="!loginForm.valid">Connexion</button>
+          <button type="button" class="btn btn-link float-right text-danger" style=" margin-bottom: 20px;"  data-dismiss="modal" data-toggle="modal" data-target="#pass"><u>Mot de passe oublié</u> </button>
     </div>
     <!--div class="modal-footer">
     </div-->

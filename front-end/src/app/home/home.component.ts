@@ -3,6 +3,9 @@ import {Router} from '@angular/router';
 import { AuthService } from '../Services/auth.service';
 import { JarwisService } from '../Services/jarwis.service';
 import { TokenService } from '../Services/token.service';
+
+import { User } from '../Model/user';
+import Swal from 'sweetalert2' ;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,6 +17,9 @@ export class HomeComponent implements OnInit {
     password:null,
     type_user:null
   };
+
+  user = new User();
+  message: boolean =false;
   
   public error=null;
   constructor(
@@ -44,6 +50,42 @@ export class HomeComponent implements OnInit {
   handleError(error:any){
     this.error = error.error.error;
   
+  }
+
+  //mot de passe oublié 
+  onSubmitPass(){
+    this.message = true;
+    this.Jarwis.sendMailToChangePass(this.user).subscribe(
+      data => {
+       
+        console.log(data);
+       
+        var element = document.getElementById("CloseButton") as any;
+        element.click();
+        this.alert();
+        this.message = false;
+        },
+        error => {
+          this.handleError(error);
+      
+          
+      }
+       
+
+    );
+    
+  }
+  alert(){
+    Swal.fire({
+      title: 'Un email de réientialisation est envoyé ',
+      width: 800,
+      text: 'Un nouveau mot de passe a été envoyé avec succes à votre adresse   '+this.user.email,
+      icon: 'success',
+      showCancelButton: false,
+      
+      confirmButtonText: 'Terminer',
+      cancelButtonText: 'No, keep it'
+    })
   }
   ngOnInit(): void {
   }

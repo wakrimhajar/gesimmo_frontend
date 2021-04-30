@@ -32,20 +32,18 @@
       <div class="col">
         <label for="code_postal" class="form-label"><b>Code Postale</b></label>
         <input type="text" class="form-control" placeholder="Code Postale" aria-label="code_postal" id="code_postal" name="code_postal" [(ngModel)]="bien.code_postal"
-        required  maxlength="10"  pattern="[0-9]{3}[0-9]{2}" ngModel #Code="ngModel">
+        required  maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57"  ngModel #Code="ngModel">
         <div *ngIf="Code.touched && Code.invalid " style="color: red;">
           <div *ngIf="Code.errors?.required">Champ obligatoire !</div>
-          <div *ngIf="Code.errors?.pattern">Juste les nombres sont valides</div>
         </div>
       </div>
       <div class="col">
         <label for="surface" class="form-label"><b>Surface</b></label>
         <input type="text" class="form-control"  aria-label="surface" id="surface" placeholder="Surface" name="surface" [(ngModel)]="bien.surface"
-        required minlength="2" maxlength="10"  pattern="[0-9]{4}" ngModel #Surface="ngModel">
+        required minlength="2" maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ngModel #Surface="ngModel">
         <div *ngIf="Surface.touched && Surface.invalid " style="color: red;">
           <div *ngIf="Surface.errors?.required">Champ obligatoire !</div>
           <div *ngIf="Surface.errors?.minlength">Minimum 2 caractéres !</div>
-          <div *ngIf="Surface.errors?.pattern">Juste les nombres sont valides</div>
         </div>
       </div>
 
@@ -55,31 +53,28 @@
       <div class="col">
       <label for="loyer_mensuel" class="form-label"><b>Loyer mensuel</b></label>
       <input type="text" class="form-control" aria-label="loyer_mensuel" id="loyer_mensuel" placeholder="Loyer mensuel" name="loyer_mensuel" [(ngModel)]="bien.loyer_mensuel"
-      required minlength="3" maxlength="10"  pattern="[0-9]{5}" ngModel #Loyer="ngModel">
+      required minlength="3" maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ngModel #Loyer="ngModel">
         <div *ngIf="Loyer.touched && Loyer.invalid " style="color: red;">
           <div *ngIf="Loyer.errors?.required">Champ obligatoire !</div>
           <div *ngIf="Loyer.errors?.minlength">Minimum 3 caractéres !</div>
-          <div *ngIf="Loyer.errors?.pattern">Juste les nombres sont valides</div>
         </div>
     </div>
     <div class="col">
       <label for="syndic" class="form-label"><b>Syndic </b></label>
       <input type="text" class="form-control" aria-label="syndic" id="syndic" placeholder="Syndic" name="syndic" [(ngModel)]="bien.syndic"
-      required minlength="2" maxlength="10"  pattern="[0-9]{5}" ngModel #Syndic="ngModel">
+      required minlength="2" maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57"  ngModel #Syndic="ngModel">
         <div *ngIf="Syndic.touched && Syndic.invalid " style="color: red;">
           <div *ngIf="Syndic.errors?.required">Champ obligatoire !</div>
           <div *ngIf="Syndic.errors?.minlength">Minimum 2 caractéres !</div>
-          <div *ngIf="Syndic.errors?.pattern">Juste les nombres sont valides</div>
         </div>
     </div>
     <div class="col">
       <label for="taxe_habitation" class="form-label"><b>Taxe d'habitation </b></label>
       <input type="text" class="form-control" aria-label="taxe_habitation" id="taxe_habitation" placeholder="Taxe d'habitation" name="taxe_habitation" [(ngModel)]="bien.taxe_habitation"
-      required minlength="2" maxlength="10"  pattern="[0-9]{5}" ngModel #Taxe="ngModel">
+      required minlength="2" maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ngModel #Taxe="ngModel">
         <div *ngIf="Taxe.touched && Taxe.invalid " style="color: red;">
           <div *ngIf="Taxe.errors?.required">Champ obligatoire !</div>
           <div *ngIf="Taxe.errors?.minlength">Minimum 2 caractéres !</div>
-          <div *ngIf="Taxe.errors?.pattern">Juste les nombres sont valides</div>
         </div>
     </div>
   </div>
@@ -124,28 +119,25 @@
       <div class="col">
         <label for="etage" class="form-label"><b>Etage</b></label>
         <input type="text" class="form-control" placeholder="Etage" aria-label="etage" id="etage" name="etage" [(ngModel)]="bien.etage"
-        required  maxlength="2" pattern="[0-9]{2}" ngModel #Etage="ngModel">
+        required  maxlength="2" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ngModel #Etage="ngModel">
         <div *ngIf="Etage.touched && Etage.invalid " style="color: red;">
           <div *ngIf="Etage.errors?.required">Champ obligatoire !</div>
-          <div *ngIf="Etage.errors?.pattern">Juste les nombres sont valides</div>
         </div>
       </div>
       <div class="col">
         <label for="porte" class="form-label"><b>Porte</b></label>
         <input type="text" class="form-control" placeholder="Porte" aria-label="porte" id="porte" name="porte" [(ngModel)]="bien.porte"
-        required  maxlength="2" pattern="[0-9]{2}" ngModel #Porte="ngModel">
+        required  maxlength="2" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ngModel #Porte="ngModel">
         <div *ngIf="Porte.touched && Porte.invalid " style="color: red;">
           <div *ngIf="Porte.errors?.required">Champ obligatoire !</div>
-          <div *ngIf="Porte.errors?.pattern">Juste les nombres sont valides</div>
         </div>
       </div>
       <div class="col">
         <label for="nbr_piece" class="form-label"><b>Nombre piece</b></label>
         <input type="text" class="form-control" placeholder="Nombre relance" aria-label="nbr_piece" id="nbr_piece" name="nbr_piece" [(ngModel)]="bien.nbr_piece"
-        required  maxlength="2" pattern="[0-9]{2}" ngModel #piece="ngModel">
+        required  maxlength="2" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ngModel #piece="ngModel">
         <div *ngIf="piece.touched && piece.invalid " style="color: red;">
           <div *ngIf="piece.errors?.required">Champ obligatoire !</div>
-          <div *ngIf="piece.errors?.pattern">Juste les nombres sont valides</div>
         </div>
       </div>
      </ng-container>
@@ -154,56 +146,32 @@
       <div class="col">
         <label for="etage" class="form-label"><b>Etage</b></label>
         <input type="text" class="form-control" placeholder="Etage" aria-label="etage" id="etage" name="etage" [(ngModel)]="bien.etage"
-        required  maxlength="2" pattern="[0-9]{2}" ngModel #Etage="ngModel">
+        required  maxlength="2" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ngModel #Etage="ngModel">
         <div *ngIf="Etage.touched && Etage.invalid " style="color: red;">
           <div *ngIf="Etage.errors?.required">Champ obligatoire !</div>
-          <div *ngIf="Etage.errors?.pattern">Juste les nombres sont valides</div>
         </div>
       </div>
       <div class="col">
         <label for="porte" class="form-label"><b>Porte</b></label>
         <input type="text" class="form-control" placeholder="Porte" aria-label="porte" id="porte" name="porte" [(ngModel)]="bien.porte"
-        required  maxlength="2" pattern="[0-9]{2}" ngModel #Porte="ngModel">
+        required  maxlength="2" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ngModel #Porte="ngModel">
         <div *ngIf="Porte.touched && Porte.invalid " style="color: red;">
           <div *ngIf="Porte.errors?.required">Champ obligatoire !</div>
-          <div *ngIf="Porte.errors?.pattern">Juste les nombres sont valides</div>
         </div>
       </div>
       <div class="col">
         <label for="nbr_piece" class="form-label"><b>Nombre piece</b></label>
-        <input type="text" class="form-control" placeholder="Nombre piece" aria-label="nbr_piece" id="nbr_piece" name="nbr_piece" [(ngModel)]="bien.nbr_piece"
-        required  maxlength="2" pattern="[0-9]{2}" ngModel #piece="ngModel">
+        <input type="text" class="form-control" placeholder="Nombre relance" aria-label="nbr_piece" id="nbr_piece" name="nbr_piece" [(ngModel)]="bien.nbr_piece"
+        required  maxlength="2" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ngModel #piece="ngModel">
         <div *ngIf="piece.touched && piece.invalid " style="color: red;">
           <div *ngIf="piece.errors?.required">Champ obligatoire !</div>
-          <div *ngIf="piece.errors?.pattern">Juste les nombres sont valides</div>
         </div>
       </div>
+
      </ng-container>
   </div>
   <br>
-  <!--
-  <div class="row">
-   <div class="col">
-    <label for="images" class="form-label"><b>Images</b></label>
-       <input type="file" class="form-control" id="images" multiple="multiple" name="images[]" (change)="fileEvent($event)" />
-   </div>
-  </div>
-  <br>
-  <div class="row row1">
-    <div class="col">
-      <label for="nbr_piece" class="form-label"><b>Equipement</b></label>
-      <ng-multiselect-dropdown  name="equipement" [(ngModel)]="bien.equipement"
-          [placeholder]="'custom placeholder'"
-          [settings]="dropdownSettings"
-          [data]="dropdownList"
-          [(ngModel)]="selectedItems"
-          (onSelect)="onItemSelect($event)"
-          (onSelectAll)="onSelectAll($event)">
-      </ng-multiselect-dropdown>
-    </div>
-  </div>
-<br>
--->
+
 <div class="row row1">
   <div class="col">
     <label for="images" class="form-label"><b>Images</b></label>
@@ -217,8 +185,12 @@
         [data]="dropdownList"
         [(ngModel)]="selectedItems"
         (onSelect)="onItemSelect($event)"
-        (onSelectAll)="onSelectAll($event)">
+        (onSelectAll)="onSelectAll($event)"
+        required ngModel #Equipement="ngModel">
     </ng-multiselect-dropdown>
+    <div *ngIf="Equipement.touched && Equipement.invalid " style="color: red;">
+      <div *ngIf="Equipement.errors?.required">Champ obligatoire !</div>
+    </div>
   </div>
 </div>
 

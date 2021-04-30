@@ -67,11 +67,10 @@
       <div class="col">
         <label for="montant" class="form-label"><b>Mantant</b></label>
         <input type="text" class="form-control" placeholder="Mantant" aria-label="montant" id="montant" name="montant" [(ngModel)]="location.montant"
-      required minlength="3" maxlength="10"  pattern="[0-9]{5}" ngModel #Mantant="ngModel">
+      required minlength="3" maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ngModel #Mantant="ngModel">
         <div *ngIf="Mantant.touched && Mantant.invalid " style="color: red;">
           <div *ngIf="Mantant.errors?.required">Champ obligatoire !</div>
           <div *ngIf="Mantant.errors?.minlength">Minimum 3 caractéres !</div>
-          <div *ngIf="Mantant.errors?.pattern">Juste les nombres sont valides</div>
         </div>
       </div>
       <div class="col">
@@ -100,30 +99,13 @@
     <div class="col">
       <label for="duree" class="form-label"><b>Duree (Nombre de mois)</b></label>
       <input type="text" class="form-control" placeholder="Duree (Nombre de mois)" aria-label="duree" id="duree" name="duree" [(ngModel)]="location.duree"
-      required  ngModel pattern="[0-9]{2}" #duree="ngModel">
+      required  ngModel onkeypress="return event.charCode >= 48 && event.charCode <= 57" #duree="ngModel">
       <div *ngIf="duree.touched && duree.invalid " style="color: red;">
        <div *ngIf="duree.errors?.required">Champ obligatoire !</div>
-       <div *ngIf="Mantant.errors?.pattern">Juste les nombres sont valides</div>
      </div>
     </div>
   </div>
 <br>
-  <!--div class="text-center"><h5 class="title"><b>Documents justificatifs</b></h5></div>
-    <span (click)="addForm()" class="btn btn-secondary">+</span>
-   <div class="row row1 " *ngFor="let obj of dataarray">
-    <div class="col">
-      <div class="mb-3">
-        <label for="nom_doc" class="form-label"><b>Nom du document</b></label>
-        <input class="form-control" type="text" id="nom_doc" name="nom" placeholder="Nom du document" [(ngModel)]="obj.nom">
-      </div>
-    </div>
-    <div class="col">
-      <div class="mb-3">
-        <label for="doc" class="form-label"><b>Fichier joint (format accepté : PNG, JPG, JPEG, Word, PDF)</b></label>
-        <input class="form-control" type="file" id="doc" name="doc" [(ngModel)]="obj.doc">
-      </div>
-    </div>
-   </div-->
    <div class="pull-right">
     <div class="buttons">
     <button type="button" class="btn btn-primary" style="background-color: #5e72e4 !important;">Annuler</button>

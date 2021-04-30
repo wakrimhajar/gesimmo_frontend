@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   biens=[] as any ;
   user = new User();
   message: boolean =false;
-  
+
   public error=null;
   constructor(
      private Jarwis:JarwisService,
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
         element.click();
       },
       error => this.handleError(error)
-      
+
     );
   }
   handleResponse(data:any){
@@ -51,17 +51,17 @@ export class HomeComponent implements OnInit {
   }
   handleError(error:any){
     this.error = error.error.error;
-  
+
   }
 
-  //mot de passe oublié 
+  //mot de passe oublié
   onSubmitPass(){
     this.message = true;
     this.Jarwis.sendMailToChangePass(this.user).subscribe(
       data => {
-       
+
         console.log(data);
-       
+
         var element = document.getElementById("CloseButton") as any;
         element.click();
         this.alert();
@@ -69,13 +69,13 @@ export class HomeComponent implements OnInit {
         },
         error => {
           this.handleError(error);
-      
-          
+
+
       }
-       
+
 
     );
-    
+
   }
   alert(){
     Swal.fire({
@@ -84,7 +84,7 @@ export class HomeComponent implements OnInit {
       text: 'Un nouveau mot de passe a été envoyé avec succes à votre adresse   '+this.user.email,
       icon: 'success',
       showCancelButton: false,
-      
+
       confirmButtonText: 'Terminer',
       cancelButtonText: 'No, keep it'
     })

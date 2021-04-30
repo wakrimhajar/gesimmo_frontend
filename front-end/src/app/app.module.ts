@@ -43,6 +43,7 @@ import { EditLocmorComponent } from './edit-locmor/edit-locmor.component';
 import { DetailsSocieteComponent } from './details-societe/details-societe.component';
 import { DetailsLocmorComponent } from './details-locmor/details-locmor.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { BienUserComponent } from './bien-user/bien-user.component';
 
 
 @NgModule({
@@ -83,6 +84,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     EditLocmorComponent,
     DetailsSocieteComponent,
     DetailsLocmorComponent,
+    BienUserComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { identifierModuleUrl } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 @Injectable({
@@ -124,6 +125,9 @@ addlocatairemor(data: any){
  }
  listBienImages(){
   return  this.http.get(`${this.baseUrl}/biens`)
+ }
+ bienprop(id: number){
+  return  this.http.get(`${this.baseUrl}/bie_prop/`+id);
  }
 }
 

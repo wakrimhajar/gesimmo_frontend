@@ -34,10 +34,15 @@ import { EditLocmorComponent } from './edit-locmor/edit-locmor.component';
 import { DetailsLocmorComponent } from './details-locmor/details-locmor.component';
 import { DetailsSocieteComponent } from './details-societe/details-societe.component';
 import { BienUserComponent } from './bien-user/bien-user.component';
+import { DetailsImmobilierComponent } from './details-immobilier/details-immobilier.component';
 
 const routes: Routes = [
   { path:'' ,
   component: HomeComponent },
+  {
+    path:'details/:id',
+    component:DetailsImmobilierComponent
+  },
  // children:[
   {
       path: '', canActivate: [AuthGuard], children: [
@@ -169,6 +174,7 @@ const routes: Routes = [
           path:'bien_user/:id',
           component:BienUserComponent
         },
+       
     ]
   }
  /*]

@@ -129,5 +129,8 @@ addlocatairemor(data: any){
  bienprop(id: number){
   return  this.http.get(`${this.baseUrl}/bie_prop/`+id);
  }
+getImmoById(id:number): Observable<any>{
+  return this.http.get(`${this.baseUrl}/getImmoById/`+id)
+}
 }
 

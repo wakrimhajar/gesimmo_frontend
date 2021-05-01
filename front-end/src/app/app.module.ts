@@ -44,6 +44,7 @@ import { DetailsSocieteComponent } from './details-societe/details-societe.compo
 import { DetailsLocmorComponent } from './details-locmor/details-locmor.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { BienUserComponent } from './bien-user/bien-user.component';
+import { DetailsImmobilierComponent } from './details-immobilier/details-immobilier.component';
 
 
 @NgModule({
@@ -85,6 +86,7 @@ import { BienUserComponent } from './bien-user/bien-user.component';
     DetailsSocieteComponent,
     DetailsLocmorComponent,
     BienUserComponent,
+    DetailsImmobilierComponent,
   ],
   imports: [
     BrowserModule,

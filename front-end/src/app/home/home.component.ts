@@ -94,5 +94,9 @@ export class HomeComponent implements OnInit {
       data => {console.log(data);  this.biens=Object.values(data);}, error => console.log(error)
       );
   }
+  getDetails(id:number){
+    this.router.navigate(['/details', id]);
+    console.log(id);   
+  }
 
 }

@@ -27,6 +27,7 @@ export class BienUserComponent implements OnInit {
     this.user=data;
     console.log(this.user)
     }, error => console.log(error));
+    this.listActif();
   }
 
   listActif(){
@@ -35,5 +36,12 @@ export class BienUserComponent implements OnInit {
       );
       this.table=true;
   }
+
+  detailbien(id : number){
+
+    this.router.navigate(['/details-bien', id]);
+    console.log(id);
+
+}
 
 }

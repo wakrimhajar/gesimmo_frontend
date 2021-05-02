@@ -13,6 +13,7 @@ export class LocataireComponent implements OnInit {
   table:boolean=false;
   user = new User();
   users=[] as any ;
+  value:any;
   constructor(private Jarwis:JarwisService,private router:Router) { }
 
   ngOnInit(): void {
@@ -56,4 +57,15 @@ export class LocataireComponent implements OnInit {
       //this.router.navigate(['/details-locataire', id]);
       //console.log(id);
   }
+
+  fonction(event :any){
+    this.value=event.target.value;
+    console.log(this.value);
+    this.Jarwis.chercher(this.value)
+      .subscribe(data => {
+        this.users=Object.values(data);
+        console.log(this.users);
+        this.table=true;
+      },error=>console.log(error));
+   }
 }

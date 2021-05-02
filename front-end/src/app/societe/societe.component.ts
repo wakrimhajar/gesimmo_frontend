@@ -14,6 +14,7 @@ export class SocieteComponent implements OnInit {
   user = new User();
   users=[] as any ;
   id:any;
+  value:any;
   imagepath:any='http://127.0.0.1:8000/storage/img/';
 
   constructor(private Jarwis:JarwisService,private router:Router) { }
@@ -56,5 +57,16 @@ export class SocieteComponent implements OnInit {
     //this.router.navigate(['/details-proprietaire', id]);
     console.log(id);
   }
+ fonction(event :any){
+  this.value=event.target.value;
+  console.log(this.value);
+  this.Jarwis.chercher(this.value)
+    .subscribe(data => {
+      this.users=Object.values(data);
+      console.log(this.users);
+      this.table=true;
+    },error=>console.log(error));
+ }
+
 
 }

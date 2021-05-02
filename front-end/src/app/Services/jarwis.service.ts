@@ -132,5 +132,8 @@ addlocatairemor(data: any){
 getImmoById(id:number): Observable<any>{
   return this.http.get(`${this.baseUrl}/getImmoById/`+id)
 }
+chercher(search:string): Observable<any>{
+  return this.http.get(`${this.baseUrl}/search/`+search)
+}
 }
 

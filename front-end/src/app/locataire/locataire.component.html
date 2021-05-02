@@ -15,7 +15,7 @@
             <h3 class="mb-0">Gestion Locataire</h3>
           </div>
               <!-- Card body -->
-              <div class="card" style="width: 100%">
+
                       <div class="card-body">
                         <div class="row">
                           <div class="col-lg-2 text-left"><span class="card-title" style="color: #5e72e4"><b>Filtrer</b></span><!--span style="color: grey"> Utilisez les options pour filtrer</span--></div>
@@ -24,19 +24,19 @@
                             <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;color: white" (click)="listArchiv()">Archive </button>
                             <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-secondary" style="background-color: #5e72e4; color: white">Nouveau </button>
                           </div>
-                        </div>
-                        <select class="form-control" aria-label="Default select example" style="width: 19%" >
+                      </div>
+                    <!--      <select class="form-control" aria-label="Default select example" style="width: 19%" >
                           <option selected>Tout les biens</option>
                           <option value="1">Appartement</option>
                           <option value="2">Bureaux</option>
                           <option value="3">Parking</option>
-                        </select>
+                        </select>-->
                       </div>
                       <div class="input-group mb-3" style="width: 90%;">
                         <input type="text" class="form-control" placeholder="Chercher" (change)="fonction($event)">
                          <div class="input-group-append" style="width: 50px;"><button class="btn btn-primary" style="background-color: #5e72e4 !important;"><i class="fas fa-search"></i></button></div>
                       </div>
-                    </div>
+
                     <div class="modal" id="myModal">
                       <div class="modal-dialog">
                       <div class="modal-content">

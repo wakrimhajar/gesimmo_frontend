@@ -14,6 +14,7 @@ export class BienComponent implements OnInit {
   table:boolean=false;
   bien = new Bien();
   biens=[] as any ;
+  value:any;
   constructor(private Jarwis:JarwisService,private router:Router) { }
 
 
@@ -44,5 +45,14 @@ export class BienComponent implements OnInit {
     console.log(id);
 
 }
-
+fonction(event :any){
+  this.value=event.target.value;
+  console.log(this.value);
+  this.Jarwis.chercherbien(this.value)
+    .subscribe(data => {
+      this.biens=Object.values(data);
+      console.log(this.biens);
+      this.table=true;
+    },error=>console.log(error));
+ }
 }

@@ -135,5 +135,11 @@ getImmoById(id:number): Observable<any>{
 chercher(search:string): Observable<any>{
   return this.http.get(`${this.baseUrl}/search/`+search)
 }
+chercherbien(search:string): Observable<any>{
+  return this.http.get(`${this.baseUrl}/searchbien/`+search)
+}
+chercherccharge(search:string): Observable<any>{
+  return this.http.get(`${this.baseUrl}/searchcharge/`+search)
+}
 }
 

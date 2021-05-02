@@ -13,6 +13,7 @@ export class ChargesComponent implements OnInit {
   table:boolean=false;
   charge = new Charge();
   charges=[] as any ;
+  value:any;
   constructor(private Jarwis:JarwisService,private router:Router) { }
 
   ngOnInit(): void {
@@ -29,4 +30,14 @@ export class ChargesComponent implements OnInit {
     this.router.navigate(['/details-facture',id]);
     console.log(id);
   }
+  fonction(event :any){
+    this.value=event.target.value;
+    console.log(this.value);
+    this.Jarwis.chercherccharge(this.value)
+      .subscribe(data => {
+        this.charges=Object.values(data);
+        console.log(this.charges);
+        this.table=true;
+      },error=>console.log(error));
+   }
 }

@@ -169,6 +169,20 @@ opensweetalert(){
   var element = document.getElementById("CloseButton") as any;
   element.click();
 }
+detailsociete(id : number){
 
+  this.Jarwis.getuserbyid(id)
+   .subscribe(data => {
+     //console.log(this.user)
+   data[0]=id;
+   //console.log(data[0]);
+   this.user= data[0];
+   //console.log(data)
+   this.user=data;
+   console.log(this.user)
+   this.router.navigate(['/bien_user', id]);
+   }, error => console.log(error));
+   console.log(id);
+ }
 
 }

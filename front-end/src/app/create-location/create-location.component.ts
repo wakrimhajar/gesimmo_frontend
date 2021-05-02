@@ -29,6 +29,7 @@ export class CreateLocationComponent implements OnInit {
       data => console.log(data), error => console.log(error)
       );
     this.location = new Location();
+    this.router.navigate(['/location']);
    }
 
    listActif(){

@@ -60,11 +60,10 @@
                   <div class="col">
                     <label for="Telephone" class="form-label"><b>Telephone</b></label>
                     <input type="text" class="form-control" placeholder="Telephone" aria-label="Telephone" id="Telephone" name="telephone" [(ngModel)]="user.telephone"
-                    required onkeypress="return event.charCode >= 48 && event.charCode <= 57" minlength="10" maxlength="10"  pattern="[0-7]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}" ngModel #telephone="ngModel">
+                    required onkeypress="return event.charCode >= 48 && event.charCode <= 57" minlength="10" maxlength="10" ngModel #telephone="ngModel">
         <div *ngIf="telephone.touched && telephone.invalid " style="color: red;">
           <div *ngIf="telephone.errors?.required">Champ obligatoire !</div>
           <div *ngIf="telephone.errors?.minlength">Minimum 10 caractéres !</div>
-          <div *ngIf="telephone.errors?.pattern">Juste les nombres sont valides</div>
         </div>
                   </div>
                   <div class="col">

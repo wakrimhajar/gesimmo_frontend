@@ -21,6 +21,7 @@ charge=new Charge;
       data => console.log(data), error => console.log(error)
       );
     this.charge = new Charge();
+    this.router.navigate(['/charges']);
    }
 
    opensweetalert(){

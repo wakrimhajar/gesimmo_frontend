@@ -50,6 +50,7 @@ export class CreateLocMorComponent implements OnInit {
       data => console.log(data), error => console.log(error)
       );
     this.user = new User();
+    this.router.navigate(['/locataire']);
    }
 
    opensweetalert(){

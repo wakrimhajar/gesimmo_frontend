@@ -92,6 +92,7 @@ export class CreateBienComponent implements OnInit {
     this.Jarwis.addbien(myFormData).subscribe(
       data => console.log(myFormData), error => console.log(error));
     this.bien = new Bien();
+    this.router.navigate(['/bien']);
    }
    opensweetalert(){
     Swal.fire({

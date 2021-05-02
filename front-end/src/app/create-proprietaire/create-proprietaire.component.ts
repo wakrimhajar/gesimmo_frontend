@@ -61,6 +61,7 @@ export class CreateProprietaireComponent implements OnInit {
         data => console.log(myFormData), error => console.log(error)
         );
       this.user = new User();
+      this.router.navigate(['/societe']);
 
   }
 

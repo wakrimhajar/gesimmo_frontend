@@ -121,7 +121,6 @@ addlocatairemor(data: any){
  }
  sendMailToChangePass(data: any){
   return  this.http.post(`${this.baseUrl}/sendMailChangePass`,data)
-
  }
  listBienImages(){
   return  this.http.get(`${this.baseUrl}/biens`)
@@ -140,6 +139,12 @@ chercherbien(search:string): Observable<any>{
 }
 chercherccharge(search:string): Observable<any>{
   return this.http.get(`${this.baseUrl}/searchcharge/`+search)
+}
+getnotification(id: number): Observable<any>{
+  return this.http.get(`${this.baseUrl}/Affnotification/`+id)
+}
+changerpassword(data: any): Observable<any>{
+  return this.http.post(`${this.baseUrl}/change_password/`,data)
 }
 }
 

@@ -13,6 +13,8 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class DetailsSocieteComponent implements OnInit {
   id :any;
   public user: User = new User;
+  notification :any;
+  x:any;
   constructor(private route: ActivatedRoute,private router: Router,private Jarwis:JarwisService) { }
 
   ngOnInit(): void {
@@ -23,9 +25,18 @@ export class DetailsSocieteComponent implements OnInit {
    data[0]=this.id;
     console.log(data[0]);
     this.user= data[0];
-    console.log(data)
+    //console.log(data)
     this.user=data;
-    console.log(this.user)
+    //console.log(this.user)
+    }, error => console.log(error));
+
+    this.Jarwis.getnotification(this.id)
+    .subscribe(data => {
+        console.log(data['data']);
+    //this.notification=data['data'];
+    //JSON.stringify(data['data']);
+    //this.x=JSON.stringify(this.notification);
+    //console.log(this.notification);
     }, error => console.log(error));
     }
 
@@ -44,8 +55,6 @@ export class DetailsSocieteComponent implements OnInit {
         var element = document.getElementById("CloseButton") as any;
         element.click();
         this.router.navigate(['societe']);
-
-
     }
     editer(id:number){
       console.log('cliecked', id);

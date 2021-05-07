@@ -45,6 +45,8 @@ import { DetailsLocmorComponent } from './details-locmor/details-locmor.componen
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { BienUserComponent } from './bien-user/bien-user.component';
 import { DetailsImmobilierComponent } from './details-immobilier/details-immobilier.component';
+import { SessionProprietaireComponent } from './session-proprietaire/session-proprietaire.component';
+import { SessionLocataireComponent } from './session-locataire/session-locataire.component';
 
 
 @NgModule({
@@ -87,6 +89,8 @@ import { DetailsImmobilierComponent } from './details-immobilier/details-immobil
     DetailsLocmorComponent,
     BienUserComponent,
     DetailsImmobilierComponent,
+    SessionProprietaireComponent,
+    SessionLocataireComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,7 @@ export class TokenService {
 
   handle(token:any){
    this.set(token);
-   
+
   }
   set(token:any){
     localStorage.setItem('token',token);

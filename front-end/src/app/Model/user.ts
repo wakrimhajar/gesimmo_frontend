@@ -16,4 +16,7 @@ export class User
     statut_societe:any;
     RC:any;
     type:any;
+    old_password:any;
+    new_password:any;
+    confirm_password:any;
 }

@@ -35,6 +35,8 @@ import { DetailsLocmorComponent } from './details-locmor/details-locmor.componen
 import { DetailsSocieteComponent } from './details-societe/details-societe.component';
 import { BienUserComponent } from './bien-user/bien-user.component';
 import { DetailsImmobilierComponent } from './details-immobilier/details-immobilier.component';
+import { SessionProprietaireComponent } from './session-proprietaire/session-proprietaire.component';
+import { SessionLocataireComponent } from './session-locataire/session-locataire.component';
 
 const routes: Routes = [
   { path:'' ,
@@ -43,6 +45,18 @@ const routes: Routes = [
     path:'details/:id',
     component:DetailsImmobilierComponent
   },
+ { path: '', canActivate: [AuthGuard], children: [
+  {
+    path:'session-proprietaire',
+    component:SessionProprietaireComponent
+  },
+]},
+{ path: '', canActivate: [AuthGuard], children: [
+  {
+    path:'session-locataire',
+    component:SessionLocataireComponent
+  },
+]},
  // children:[
   {
       path: '', canActivate: [AuthGuard], children: [
@@ -174,7 +188,7 @@ const routes: Routes = [
           path:'bien_user/:id',
           component:BienUserComponent
         },
-       
+
     ]
   }
  /*]

@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   biens=[] as any ;
   user = new User();
   message: boolean =false;
+  id_user:any;
 
   public error=null;
   constructor(
@@ -43,12 +44,25 @@ export class HomeComponent implements OnInit {
   }
   handleResponse(data:any){
     this.Token.handle(data.access_token);
-    if(data.user.role==='gestionnaire'){
+  if(data.user.role==='gestionnaire'){
    this.router.navigateByUrl('/dashboard');
   }
    else{console.log('vs n etes pas gestionnaire');}
 
+   if(data.user.role==='proprietaire'){
+    this.router.navigateByUrl('/session-proprietaire');
+   }
+    else{console.log('vs n etes pas proprietaire');}
+
+    if(data.user.role==='locataire'){
+      this.router.navigateByUrl('/session-locataire');
+     }
+      else{console.log('vs n etes pas locataire');}
+      this.id_user=data.user.id;
+      console.log(this.id_user);
   }
+
+
   handleError(error:any){
     this.error = error.error.error;
 
@@ -96,7 +110,7 @@ export class HomeComponent implements OnInit {
   }
   getDetails(id:number){
     this.router.navigate(['/details', id]);
-    console.log(id);   
+    console.log(id);
   }
 
 }

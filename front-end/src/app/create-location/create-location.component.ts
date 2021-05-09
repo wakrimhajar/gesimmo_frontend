@@ -106,7 +106,10 @@ export class CreateLocationComponent implements OnInit {
           doc.text(this.date_sortie,50,159);
           doc.text('un',13,167);
           doc.text(this.typeBien,19,167);
-          
+          doc.text('Le bailleur',26,190);
+          doc.text('Signature :',13,200);
+          doc.text('Le locataire',160,190);
+          doc.text('Signature :',150,200);
           doc.setTextColor(100);
            // below line for Open PDF document in new tab
            doc.output('dataurlnewwindow')

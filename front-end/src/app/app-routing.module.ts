@@ -46,12 +46,6 @@ const routes: Routes = [
     path:'details/:id',
     component:DetailsImmobilierComponent
   },
-  {
-    path:'header/:id',
-    component:HeaderComponent
-  },
-  { path:'dashboar/:id',
-        component: DashboardComponent },
  { path: '', canActivate: [AuthGuard], children: [
   {
     path:'header/:id',
@@ -64,6 +58,10 @@ const routes: Routes = [
 ]},
 { path: '', canActivate: [AuthGuard], children: [
   {
+    path:'header/:id',
+    component:HeaderComponent
+  },
+  {
     path:'session-locataire/:id',
     component:SessionLocataireComponent
   },
@@ -75,6 +73,8 @@ const routes: Routes = [
           path:'header/:id',
           component:HeaderComponent
         },
+        { path:'dashboar/:id',
+        component: DashboardComponent },
         { path:'dashboard',
         component: DashboardComponent },
         { path:'societe',

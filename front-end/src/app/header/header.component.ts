@@ -45,5 +45,7 @@ onSubmit()
     error => console.log(error)
     );
     this.user = new User();
+    var element = document.getElementById("CloseButton") as any;
+    element.click();
   }
 }

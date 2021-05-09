@@ -49,7 +49,7 @@ export class CreateLocationComponent implements OnInit {
                 this.prenomLoc=LocBien[0].prenom;
                 this.cinLoc=LocBien[0].CIN;
                 this.adrLoc=LocBien[0].adresse;
-                this.cinLoc=LocBien[0].civilite;
+                this.civLoc=LocBien[0].civilite;
                 this.duree=LocBien[0].duree;
                 this.date_entree=LocBien[0].date_entree;
                 this.date_sortie=LocBien[0].date_sortie;
@@ -58,7 +58,7 @@ export class CreateLocationComponent implements OnInit {
                 this.prenomPro=Prop[0].prenom;
                 this.cinPro=Prop[0].CIN;
                 this.adrPro=Prop[0].adresse;
-                this.cinPro=Prop[0].civilite;
+                this.civPro=Prop[0].civilite;
                 var doc = new jsPDF();
                 doc.setFontSize(18);
                 doc.text('CONTRAT DE LOCATION', 80, 20);
@@ -66,40 +66,47 @@ export class CreateLocationComponent implements OnInit {
           doc.setFontSize(11);
           doc.text('ENTRE ', 13, 40);
           doc.text('Nom :',13,48);
-          doc.text(this.nomPro,28,48);
-          doc.text('Prenom :',45,48);
-          doc.text(this.prenomPro,60,48);
+          doc.text(this.nomPro,27,48);
+          doc.text('Prenom :',58,48);
+          doc.text(this.prenomPro,75,48);
+          doc.text('N° CIN :',100,48);
+          const nCINp = this.cinPro;
+          doc.text(nCINp.toString(),115,48);
           doc.text('demeuré à :',13,56);
           doc.text(this.adrPro,35,56);
-          doc.text('ci-après "le Bailleur"',85,66);
+          doc.text('ci-après "le Bailleur"',150,66);
 
           doc.text('ET ', 13, 74);
           doc.text('Nom :',13,82);
-          doc.text(this.nomLoc,28,82);
-          doc.text('Prenom :',55,82);
-          doc.text(this.prenomLoc,90,82);
-          doc.text('demeuré à :',13,98);
-          doc.text(this.adrLoc,35,98);
+          doc.text(this.nomLoc,27,82);
+          doc.text('Prenom :',58,82);
+          doc.text(this.prenomLoc,75,82);
+          doc.text('N° CIN :',100,82);
+          const nCINl = this.cinLoc;
+          doc.text(nCINl.toString(),115,82);
+          doc.text('demeuré à :',13,90);
+          doc.text(this.adrLoc,35,90);
           doc.text('ci-après "le Locataire"',150,106);
 
           doc.text('Il a été convenu et arrêté ce qui suit.',13,120);
           doc.text(this.civPro,13,135);
-          doc.text(this.nomPro,20,135);
-          doc.text(this.prenomPro,40,135);
+          doc.text(this.nomPro,23,135);
+          doc.text(this.prenomPro,50,135);
           doc.text('donne loyer à :',150,135);
 
           doc.text(this.civLoc,13,143);
-          doc.text(this.nomLoc,20,143);
-          doc.text(this.prenomLoc,40,143);
+          doc.text(this.nomLoc,23,143);
+          doc.text(this.prenomLoc,50,143);
           doc.text('qui accepte, pour une durée de :',13,151);
           const duree = this.duree.toString();
           doc.text(duree,70,151);
           doc.text('ferme qui commencera à courir le :',80,151);
-          doc.text(this.date_entree,13,159);
-          doc.text('pour prendre fin le',43,159);
-          doc.text(this.date_sortie,95,159);
+          doc.text(this.date_entree,143,151);
+          doc.text('pour prendre fin le :',13,159);
+          doc.text(this.date_sortie,50,159);
           doc.text('un',13,167);
-          doc.text(this.typeBien,16,167);
+          doc.text(this.typeBien,19,167);
+          
           doc.setTextColor(100);
            // below line for Open PDF document in new tab
            doc.output('dataurlnewwindow')

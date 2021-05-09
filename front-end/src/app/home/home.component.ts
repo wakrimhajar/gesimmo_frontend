@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
   user = new User();
   message: boolean =false;
   id_user:any;
-
   public error=null;
   constructor(
      private Jarwis:JarwisService,
@@ -37,35 +36,35 @@ export class HomeComponent implements OnInit {
         this.handleResponse(data)
         var element = document.getElementById("CloseButton") as any;
         element.click();
+        console.log(this.id_user);
       },
       error => this.handleError(error)
-
     );
   }
   handleResponse(data:any){
     this.Token.handle(data.access_token);
+    this.id_user=data.user.id;
+    console.log(this.id_user);
+    this.router.navigate(['/header', this.id_user]);
   if(data.user.role==='gestionnaire'){
-   this.router.navigateByUrl('/dashboard');
+   //this.router.navigateByUrl('/dashboard');
+   this.router.navigate(['/dashboar', this.id_user]);
   }
    else{console.log('vs n etes pas gestionnaire');}
 
    if(data.user.role==='proprietaire'){
-    this.router.navigateByUrl('/session-proprietaire');
+    this.router.navigate(['/session-proprietaire', this.id_user]);
+    //this.router.navigate(['/header', this.id_user]);
    }
     else{console.log('vs n etes pas proprietaire');}
-
     if(data.user.role==='locataire'){
-      this.router.navigateByUrl('/session-locataire');
+      this.router.navigate(['/session-locataire', this.id_user]);
      }
       else{console.log('vs n etes pas locataire');}
-      this.id_user=data.user.id;
-      console.log(this.id_user);
   }
-
 
   handleError(error:any){
     this.error = error.error.error;
-
   }
 
   //mot de passe oublié
@@ -83,13 +82,8 @@ export class HomeComponent implements OnInit {
         },
         error => {
           this.handleError(error);
-
-
       }
-
-
     );
-
   }
   alert(){
     Swal.fire({
@@ -98,7 +92,6 @@ export class HomeComponent implements OnInit {
       text: 'Un nouveau mot de passe a été envoyé avec succes à votre adresse   '+this.user.email,
       icon: 'success',
       showCancelButton: false,
-
       confirmButtonText: 'Terminer',
       cancelButtonText: 'No, keep it'
     })
@@ -112,5 +105,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/details', id]);
     console.log(id);
   }
+
+
 
 }

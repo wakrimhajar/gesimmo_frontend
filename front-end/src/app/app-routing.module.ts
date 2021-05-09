@@ -37,6 +37,7 @@ import { BienUserComponent } from './bien-user/bien-user.component';
 import { DetailsImmobilierComponent } from './details-immobilier/details-immobilier.component';
 import { SessionProprietaireComponent } from './session-proprietaire/session-proprietaire.component';
 import { SessionLocataireComponent } from './session-locataire/session-locataire.component';
+import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [
   { path:'' ,
@@ -45,21 +46,35 @@ const routes: Routes = [
     path:'details/:id',
     component:DetailsImmobilierComponent
   },
+  {
+    path:'header/:id',
+    component:HeaderComponent
+  },
+  { path:'dashboar/:id',
+        component: DashboardComponent },
  { path: '', canActivate: [AuthGuard], children: [
   {
-    path:'session-proprietaire',
+    path:'header/:id',
+    component:HeaderComponent
+  },
+  {
+    path:'session-proprietaire/:id',
     component:SessionProprietaireComponent
   },
 ]},
 { path: '', canActivate: [AuthGuard], children: [
   {
-    path:'session-locataire',
+    path:'session-locataire/:id',
     component:SessionLocataireComponent
   },
 ]},
  // children:[
   {
       path: '', canActivate: [AuthGuard], children: [
+        {
+          path:'header/:id',
+          component:HeaderComponent
+        },
         { path:'dashboard',
         component: DashboardComponent },
         { path:'societe',

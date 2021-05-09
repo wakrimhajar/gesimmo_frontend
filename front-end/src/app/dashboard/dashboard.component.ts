@@ -29,10 +29,10 @@ export class DashboardComponent implements OnInit {
   listproprietaire(){
     return this.Jarwis.getproprietaire().subscribe(
     data => {
-      console.log(data);
+     // console.log(data);
       this.y=data;
-      console.log(data);
-      console.log(this.y);
+      //console.log(data);
+     // console.log(this.y);
       this.user=Object.values(data);}, error => console.log(error)
     );
 }
@@ -42,8 +42,8 @@ export class DashboardComponent implements OnInit {
      return this.Jarwis.getlocataire().subscribe(
       data => {
         this.x=data;
-        console.log(data);
-        console.log(this.x);
+        //console.log(data);
+       // console.log(this.x);
         this.user=Object.values(data);}, error => console.log(error),
       );
   }
@@ -52,10 +52,10 @@ export class DashboardComponent implements OnInit {
 listlocation(){
   return this.Jarwis.getlocation().subscribe(
   data => {
-    console.log(data);
+    //console.log(data);
     this.a=data;
-    console.log(data);
-    console.log(this.a);
+    //console.log(data);
+    //console.log(this.a);
     this.location=Object.values(data);}, error => console.log(error)
   );
 }
@@ -63,10 +63,10 @@ listlocation(){
 listbien(){
   return this.Jarwis.getbien().subscribe(
   data => {
-    console.log(data);
+    //console.log(data);
     this.z=data;
-    console.log(data);
-    console.log(this.z);
+   // console.log(data);
+   // console.log(this.z);
     this.bien=Object.values(data);}, error => console.log(error)
   );
 }

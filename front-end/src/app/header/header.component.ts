@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { TokenService} from '../Services/token.service';
 import { User } from '../Model/user';
 import { JarwisService } from '../Services/jarwis.service';
@@ -10,19 +10,22 @@ import { JarwisService } from '../Services/jarwis.service';
 })
 export class HeaderComponent implements OnInit {
   public user : User=new User;
-  toke:any;
-  split:any;
-  decode:any;
+  id:any;
   id_user:any;
-  constructor(private token: TokenService, private route :Router,private Jarwis: JarwisService) { }
+  constructor(private router: ActivatedRoute,private token: TokenService, private route :Router,private Jarwis: JarwisService) { }
 
   ngOnInit(): void {
-    /*this.toke=this.token.get();
-    console.log(this.toke);
-    this.split=this.token.payload(this.toke);
-    console.log(this.split);
-    this.decode=this.token.decode(this.split);
-    console.log(this.decode);*/
+    this.id = this.router.snapshot.params['id'];
+    this.Jarwis.getuser(this.id)
+    .subscribe(data => {
+    console.log(this.user)
+    data[0]=this.id;
+    console.log(data[0]);
+    this.user= data[0];
+    console.log(data)
+    this.user=data;
+    console.log(this.user)
+    }, error => console.log(error));
   }
   handleResponse(data:any){
     this.token.handle(data.access_token);
@@ -34,11 +37,13 @@ logout(){
   this.token.remove();
   this.route.navigateByUrl('/');
 }
-onSubmit(){
-  this.Jarwis.changerpassword(this.user).subscribe(
+onSubmit()
+{
+  console.log(this.id)
+    this.Jarwis.changerpassword(this.id,this.user).subscribe(
     data => console.log(data),
     error => console.log(error)
     );
-  this.user = new User();
-}
+    this.user = new User();
+  }
 }

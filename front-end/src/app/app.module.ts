@@ -49,6 +49,7 @@ import { SessionProprietaireComponent } from './session-proprietaire/session-pro
 import { SessionLocataireComponent } from './session-locataire/session-locataire.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,6 +92,7 @@ import { SessionLocataireComponent } from './session-locataire/session-locataire
     DetailsImmobilierComponent,
     SessionProprietaireComponent,
     SessionLocataireComponent,
+
   ],
   imports: [
     BrowserModule,

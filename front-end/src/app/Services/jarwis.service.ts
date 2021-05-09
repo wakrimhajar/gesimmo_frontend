@@ -86,6 +86,9 @@ addlocatairemor(data: any){
  getuserbyid(id: number): Observable<any> {
   return  this.http.get(`${this.baseUrl}/getUserById/`+id)
  }
+ getuser(id: number): Observable<any> {
+  return  this.http.get(`${this.baseUrl}/getUser/`+id)
+ }
  getchargebyid(id: number): Observable<any> {
   return  this.http.get(`${this.baseUrl}/getchargeById/`+id)
  }
@@ -143,8 +146,8 @@ chercherccharge(search:string): Observable<any>{
 getnotification(id: number): Observable<any>{
   return this.http.get(`${this.baseUrl}/Affnotification/`+id)
 }
-changerpassword(data: any): Observable<any>{
-  return this.http.post(`${this.baseUrl}/change_password/`,data)
+changerpassword(id: number,data:any): Observable<any>{
+  return this.http.put(`${this.baseUrl}/change_password/`+id,data)
 }
 }
 

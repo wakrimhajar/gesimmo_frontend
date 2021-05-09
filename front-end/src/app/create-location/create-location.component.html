@@ -65,7 +65,7 @@
   <br>
     <div class="row row1">
       <div class="col">
-        <label for="montant" class="form-label"><b>Mantant</b></label>
+        <label for="montant" class="form-label"><b>Montant</b></label>
         <input type="text" class="form-control" placeholder="Mantant" aria-label="montant" id="montant" name="montant" [(ngModel)]="location.montant"
       required minlength="3" maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ngModel #Mantant="ngModel">
         <div *ngIf="Mantant.touched && Mantant.invalid " style="color: red;">
@@ -125,4 +125,5 @@
   </div>
   </div>
   </div>
+  
 

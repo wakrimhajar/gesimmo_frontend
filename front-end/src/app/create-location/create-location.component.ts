@@ -39,6 +39,7 @@ export class CreateLocationComponent implements OnInit {
     etage:string='';
     porte:string='';
     equipements:string='';
+    typeLoaction:string='';
     ngOnInit(): void {
         this.listLocataire();
         this.listActif();
@@ -54,6 +55,7 @@ export class CreateLocationComponent implements OnInit {
                 this.cinLoc=Loc[0].CIN;
                 this.adrLoc=Loc[0].adresse;
                 this.civLoc=Loc[0].civilite;
+                this.typeLoaction=Loc[0].type;
                 this.adresseBien=Bien[0].adresse;
                 this.duree=Bien[0].duree;
                 this.date_entree=Bien[0].date_entree;
@@ -70,7 +72,7 @@ export class CreateLocationComponent implements OnInit {
                 if(this.typeBien==="Appartement" || this.typeBien==="Bureau" || this.typeBien==="Studio"){
                 var doc = new jsPDF();
                 doc.setFontSize(18);
-                doc.text('CONTRAT DE LOCATION', 70, 20);
+                doc.text('CONTRAT DE LOCATION '+this.typeLoaction, 38, 20);
     
           doc.setFontSize(11);
           doc.text('ENTRE ', 13, 40);

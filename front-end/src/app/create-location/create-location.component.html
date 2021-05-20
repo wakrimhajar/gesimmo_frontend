@@ -77,8 +77,8 @@
         <label for="type" class="form-label"><b>Type</b></label>
         <select class="form-control" aria-label="Default select example" id="type" name="type" [(ngModel)]="location.type" required ngModel #type="ngModel">
           <option selected>Type</option>
-          <option value="Personnelle">Personnelle</option>
-          <option value="Professionnelle">Professionnelle</option>
+          <option value="Personnelle">PERSONNELLE</option>
+          <option value="Professionnelle">PROFESSIONNELLE</option>
         </select>
         <div *ngIf="type.touched && type.invalid " style="color: red;">
           <div *ngIf="type.errors?.required">Champ obligatoire !</div>
@@ -100,6 +100,7 @@
       <label for="duree" class="form-label"><b>Duree (Nombre de mois)</b></label>
       <input type="text" class="form-control" placeholder="Duree (Nombre de mois)" aria-label="duree" id="duree" name="duree" [(ngModel)]="location.duree"
       required  ngModel onkeypress="return event.charCode >= 48 && event.charCode <= 57" #duree="ngModel">
+      <small>La durée en mois.</small>
       <div *ngIf="duree.touched && duree.invalid " style="color: red;">
        <div *ngIf="duree.errors?.required">Champ obligatoire !</div>
      </div>

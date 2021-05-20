@@ -67,6 +67,7 @@ export class CreateLocationComponent implements OnInit {
                 this.cinPro=Prop[0].CIN;
                 this.adrPro=Prop[0].adresse;
                 this.civPro=Prop[0].civilite;
+                if(this.typeBien==="Appartement" || this.typeBien==="Bureau" || this.typeBien==="Studio"){
                 var doc = new jsPDF();
                 doc.setFontSize(18);
                 doc.text('CONTRAT DE LOCATION', 70, 20);
@@ -139,7 +140,75 @@ export class CreateLocationComponent implements OnInit {
            // below line for Open PDF document in new tab
            doc.output('dataurlnewwindow')
            // below line for Download PDF document
-           doc.save('contrat.pdf');
+           doc.save('contrat.pdf');}
+           if(this.typeBien==="Parking"){
+            var doc = new jsPDF();
+            doc.setFontSize(18);
+            doc.text('CONTRAT DE LOCATION', 70, 20);
+
+      doc.setFontSize(11);
+      doc.text('ENTRE ', 13, 40);
+      doc.text('Nom :',13,48);
+      doc.text('....................................',27,48);
+      doc.text(this.nomPro,27,48);
+      doc.text('Prenom :',68,48);
+      doc.text('....................................',85,48);
+      doc.text(this.prenomPro,85,48);
+      doc.text('N° CIN :',130,48);
+      const nCINp = this.cinPro;
+      doc.text(nCINp.toString(),145,48);
+      doc.text('demeuré à :',13,56);
+      doc.text(this.adrPro,35,56);
+      doc.text('ci-après "le Bailleur"',150,66);
+
+      doc.text('ET ', 13, 74);
+      doc.text('Nom :',13,82);
+      doc.text('....................................',27,82);
+      doc.text(this.nomLoc,27,82);
+      doc.text('Prenom :',68,82);
+      doc.text('....................................',85,82);
+      doc.text(this.prenomLoc,85,82);
+      doc.text('N° CIN :',130,82);
+      const nCINl= this.cinLoc;
+      doc.text(nCINl.toString(),145,82);
+      doc.text('demeuré à :',13,90);
+      doc.text(this.adrLoc,35,90);
+      doc.text('ci-après "le Locataire"',150,100);
+
+      doc.text('Il a été convenu et arrêté ce qui suit.',13,115);
+      doc.text(this.civPro,13,125);
+      doc.text('.........................................................',25,125);
+      doc.text(this.nomPro,25,125);
+      doc.text(this.prenomPro,55,125);
+      doc.text('donne loyer à :',90,125);
+
+      doc.text(this.civLoc,118,125);
+      doc.text('.........................................................',127,125);
+      doc.text(this.nomLoc,127,125);
+      doc.text(this.prenomLoc,156,125);
+      doc.text('qui accepte, pour une durée de :',13,135);
+      const duree = this.duree.toString();
+      doc.text(duree,70,135);
+      doc.text('ferme qui commencera à courir le :',80,135);
+      doc.text(this.date_entree,143,135);
+      doc.text('pour prendre fin le :',13,145);
+      doc.text(this.date_sortie,50,145);
+      doc.text('un',75,145);
+      doc.text('..................................',84,145);
+      doc.text(this.typeBien,81,145);
+      doc.text('sis à :',135,145);
+      doc.text(this.adresseBien,13,155);
+  
+      doc.text('Le bailleur',26,190);
+      doc.text('Signature :',13,200);
+      doc.text('Le locataire',160,190);
+      doc.text('Signature :',150,200);
+      doc.setTextColor(100);
+       // below line for Open PDF document in new tab
+       doc.output('dataurlnewwindow')
+       // below line for Download PDF document
+       doc.save('contrat.pdf');
+           }
             
             },
             error => console.log(error)

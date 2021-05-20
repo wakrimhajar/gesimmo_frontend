@@ -72,11 +72,10 @@ export class HomeComponent implements OnInit {
     this.message = true;
     this.Jarwis.sendMailToChangePass(this.user).subscribe(
       data => {
-
-        console.log(data);
-
-        var element = document.getElementById("CloseButton") as any;
+        var element = document.getElementById("CloseBtn") as any;
         element.click();
+        console.log(data);
+ 
         this.alert();
         this.message = false;
         },

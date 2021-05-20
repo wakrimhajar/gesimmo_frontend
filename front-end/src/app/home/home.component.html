@@ -14,7 +14,7 @@
         <li class="nav-item"><a href="properties.html" class="nav-link">Properties</a></li>
         <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li-->
         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-    <li class="nav-item"><a data-toggle="modal" data-target="#login" class="nav-link">Gestion</a></li>
+    <li class="nav-item"><a href="" data-toggle="modal" data-target="#login" class="nav-link">Gestion</a></li>
       </ul>
     </div>
   </div>
@@ -26,7 +26,7 @@
 
     <div class="modal-header ">
 <h3 class="modal-title"><b>Réinitialisation du mot de passe </b></h3>
-      <button id="CloseButton" type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+      <button id="CloseBtn" type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
     </div>
     <form (ngSubmit)="onSubmitPass()">
 
@@ -48,7 +48,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Username" id="usr" name="username" style="margin-left: 0px;" [(ngModel)]="user.email" required>
+                            <input type="text" class="form-control" placeholder="Email" id="usr" name="username" style="margin-left: 0px;" [(ngModel)]="user.email" required>
                           </div>
                               </div>
                             <button class="btn btn-lg btn-primary btn-block mt-4"   [disabled]="message==true" type="submit" style="margin-bottom: 20px;">
@@ -70,10 +70,9 @@
   </div>
 <!--modal login-->
 
-<div class="modal fade" tabindex="-1" id="login">
-  <div class="modal-dialog ">
+<div class="modal fade" tabindex="-1" id="login" >
+  <div class="modal-dialog "  >
     <div class="modal-content">
-
     <div class="modal-header ">
       <h3 class="modal-title">Se connecter à GESIMMO</h3>
       <button id="CloseButton" type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
@@ -98,10 +97,7 @@
           <button type="submit" class="btn btn-success btn-login" style="font-size: 20px;" [disabled]="!loginForm.valid">Connexion</button>
           <button type="button" class="btn btn-link float-right text-danger" style=" margin-bottom: 20px;"  data-dismiss="modal" data-toggle="modal" data-target="#pass"><u>Mot de passe oublié</u> </button>
     </div>
-    <!--div class="modal-footer">
-    </div-->
   </form>
-
     </div>
   </div>
   </div>
@@ -112,8 +108,8 @@
     <div class="row no-gutters slider-text align-items-center">
       <div class="col-lg-7 col-md-6  d-flex align-items-end"><!--ftco-animate-->
         <div class="text">
-          <h1 class="mb-4">Find Perfect <br>House From Your Area.</h1>
-          <p style="font-size: 18px;">From as low as $20 A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+          <h1 class="mb-4">Trouvez le bien <br> parfait qui vous convient.</h1>
+          <!--p style="font-size: 18px;">From as low as $20 A small river named Duden flows by their place and supplies it with the necessary regelialia.</p-->
           <p><a href="#" class="btn btn-primary py-3 px-4">View all properties</a></p>
         </div>
       </div>

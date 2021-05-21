@@ -20,9 +20,10 @@ export class SocieteComponent implements OnInit {
   constructor(private Jarwis:JarwisService,private router:Router) { }
 
   ngOnInit(): void {
+
   }
   onClick(){
-    var element = document.getElementById("CloseButton") as any;
+    var element = document.getElementById("CloseButt") as any;
     element.click();
   }
   listActif(){

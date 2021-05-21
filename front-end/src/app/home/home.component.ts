@@ -34,21 +34,24 @@ export class HomeComponent implements OnInit {
    this.Jarwis.login(this.form).subscribe(
       data => {
         this.handleResponse(data)
-        var element = document.getElementById("CloseButton") as any;
-        element.click();
+
         console.log(this.id_user);
       },
       error => this.handleError(error)
     );
   }
   handleResponse(data:any){
+    var element = document.getElementById("CloseButton") as any;
+    element.click();
     this.Token.handle(data.access_token);
     this.id_user=data.user.id;
+    this.user= data.user;
     console.log(this.id_user);
-    this.router.navigate(['/header', this.id_user]);
+    console.log('infos user: '+this.user.nom);
+   // this.router.navigate(['/header', this.id_user]);
   if(data.user.role==='gestionnaire'){
-   //this.router.navigateByUrl('/dashboard');
-   this.router.navigate(['/dashboar', this.id_user]);
+   this.router.navigateByUrl('/dashboard');
+  // this.router.navigate(['/dashboard', this.id_user]);
   }
    else{console.log('vs n etes pas gestionnaire');}
 

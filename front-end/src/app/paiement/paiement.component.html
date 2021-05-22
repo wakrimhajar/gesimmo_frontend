@@ -21,7 +21,7 @@
                         <div class="row">
                           <div class="col-lg-2 text-left"><span class="card-title" style="color: #5e72e4;"><b>Filtrer</b></span><!--span style="color: grey"> Utilisez les options pour filtrer</span--></div>
                           <div class=" col-10 text-right">
-                            <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;color: white">Actifs </button>
+                            <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;color: white" (click)="listActif()">Actifs </button>
                             <button type="button"  class="btn btn-secondary" style="background-color: #5e72e4; color: white">Bilan </button>
                           </div>
                         </div>
@@ -56,51 +56,60 @@
                          <div class="input-group-append" style="width: 50px;"><button class="btn btn-primary" style="background-color: #5e72e4 !important;"><i class="fas fa-search"></i></button></div>
                       </div>
                     </div>
-                  <div class="table-responsive">
-        <table class="table">
-<thead class="thead-light">
-  <tr>
-    <th scope="col">#</th>
-    <th scope="col">First</th>
-    <th scope="col">Last</th>
-    <th scope="col">First</th>
-    <th scope="col">statut</th>
-    <th scope="col">Action</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <th scope="row">1</th>
-    <td>Mark</td>
-    <td>Otto</td>
-    <th>l</th>
-    <th class="text-primary" style="font-weight: bolder;">en attente </th>
-    <td><a style="background-color: #5e72e4 !important;" class="btn btn-primary">details</a>
-</td>
-  </tr>
-  <tr>
-    <th scope="row">2</th>
-    <td>Jacob</td>
-    <td>Thornton</td>
-     <th>l</th>
-    <th class="text-success" style="font-weight: bolder;">payé</th>
-    <td><a style="background-color: #5e72e4 !important;"  class="btn btn-primary">details</a></td>
-  </tr>
-  <tr>
-    <th scope="row">3</th>
-    <td>Larry</td>
-    <td>the Bird</td>
-     <th>l</th>
-    <th class="text-danger" style="font-weight: bolder;">impayé</th>
-    <td><a style="background-color: #5e72e4 !important;"  class="btn btn-primary">details</a></td>
-  </tr>
-</tbody>
-</table>
-      </div>
-  </div>
+                    <div class="table-responsive" *ngIf="table">
+                      <table class="table " >
+                      <thead class="thead-secondary text-dark text-center">
+                        <tr >
+                          <th scope="col">Mois</th>
+                          <th scope="col">Bien</th>
+                          <th scope="col">Locataire</th>
+                          <th scope="col">Location</th>
+
+                          <th scope="col">Montant total</th>
+                          <th scope="col">Etat Paiement </th>
+                          <th scope="col">Montant payé</th>
+                          <th scope="col"> Date de paiement  </th>
+
+                          <th scope="col">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody >
+                        <tr class="shadow p-3 mb-5 bg-white rounded" *ngFor="let facture of factures">
+                        <!--<td>{{facture.date_paiement}}</td>
+                          <td>{{facture.statut}}</td>-->  
+                          <td class="text-center ">{{facture.mois_paiement}}</td>
+                          <td class="text-center">{{facture["location"]["bien"].adresse}}</td>
+                          <td class="text-center">{{facture["location"]["user"].nom}}</td>
+                          <td class="text-center">{{facture["location"].identifiant}}</td>
+
+                          <td class="text-center">{{facture.montant_total}}  <p *ngIf="facture.mois_impaye >= 1" class="text-danger" style="font-size: smaller;"><b> *{{facture.mois_impaye}} </b> </p></td>
+                        
+                          <td *ngIf="facture.etat_paiement == 'Payé'"><span class="badge badge-success p-2 text-white" style="width: 100%;">Payé</span></td>
+                          <td *ngIf="facture.etat_paiement == 'En attente'"><span class="badge badge-secondary p-2 text-white" style="width: 100%;">En attente</span></td>
+                          <td *ngIf="facture.etat_paiement == 'Impayé'"><span class="badge badge-danger p-2 text-white" style="width: 100%;">Impayé</span></td>
+                          <td class="text-center text-danger" style="font-weight: bolder;">{{facture.montant_recu}}</td>
+                          <td class="text-center">{{facture.date_paiement}}</td>
+                         
+                          <!-- message erreur /  message de confirmation / editer apres payer / affichage locataires par mois / notification et mail dans le cas de paiement et des impayés -->
+                          <td class="text-center">
+                            <button class="btn btn-sm btn-light" (click)="paie(facture.id)"  [disabled]="facture.etat_paiement == 'Payé'" >
+                              <i *ngIf="facture.etat_paiement != 'Payé'" class="fa fa-edit"></i>
+                              <i *ngIf="facture.etat_paiement == 'Payé'" class="fas fa-check"></i>
+                          </button>
+                          <button class="btn btn-sm btn-light" (click)="quittance(facture.id)"  [disabled]="facture.etat_paiement != 'Payé'" >
+                            <i class="fa fa-info-circle"></i>
+                        </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                      </table>
+                     </div>
               </div>
             </div>
           </div>
+
+          <!--Modal Paiement-->
+    
 <app-footer></app-footer>
 </div>
 </div>

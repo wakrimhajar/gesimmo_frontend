@@ -47,6 +47,8 @@ import { BienUserComponent } from './bien-user/bien-user.component';
 import { DetailsImmobilierComponent } from './details-immobilier/details-immobilier.component';
 import { SessionProprietaireComponent } from './session-proprietaire/session-proprietaire.component';
 import { SessionLocataireComponent } from './session-locataire/session-locataire.component';
+import { EditPaiementComponent } from './edit-paiement/edit-paiement.component';
+import { QuittancePaiementComponent } from './quittance-paiement/quittance-paiement.component';
 
 
 
@@ -92,6 +94,8 @@ import { SessionLocataireComponent } from './session-locataire/session-locataire
     DetailsImmobilierComponent,
     SessionProprietaireComponent,
     SessionLocataireComponent,
+    EditPaiementComponent,
+    QuittancePaiementComponent,
 
   ],
   imports: [

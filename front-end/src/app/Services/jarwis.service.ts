@@ -150,5 +150,18 @@ getnotification(id: number): Observable<any>{
 changerpassword(id: number,data:any): Observable<any>{
   return this.http.put(`${this.baseUrl}/change_password/`+id,data)
 }
+//paiement 
+getPaimentByMois(){
+  return  this.http.get(`${this.baseUrl}/getFbyMonth`)
+
+ }
+
+ updatePaie(id: number,data:any){
+  return  this.http.put(`${this.baseUrl}/updateF/`+id,data)
+ }
+
+ getInfos(id: number){
+  return  this.http.get(`${this.baseUrl}/getInfos/`+id)
+ }
 }
 

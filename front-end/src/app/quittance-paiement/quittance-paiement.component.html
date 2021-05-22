@@ -1,0 +1,134 @@
+<div class="row">
+    <div class="col-sm-2">
+      <app-menu></app-menu>
+    </div>
+    <div class="col-sm-10" >
+      <app-header></app-header>
+      <div class="header bg-primary pb-6" style="background-color: #fff !important;" ></div>
+    <div class="container ">
+      <div class="p-3 ">
+        <div class="container-fluid mt--6">
+          <div class="row ">
+          <div class=" col ">
+
+      <div class="card " >
+          <div class="card-header text-center">Quittance de loyer 
+           
+             </div>
+      <div id="myP">  
+    <div class="card-body" style="margin-top : 5%;">
+      <h1 class="mb-3 text-center ">GESIMMO :</h1>
+      <h4 class="mb-3 text-center ">Quittance de loyer  :</h4>
+   
+<div class="float-right"  style="margin-right: 2%;">Quittance émise le <strong>{{facture.date_paiement}}</strong></div><br>
+
+
+      <div class="row mb-4">
+          <div class="col" style="margin-left : 2%;">
+              <h6 class="mb-3"><strong>Bailleur : </strong></h6>
+              <div>
+                  <strong>{{proprietaire.civilite}}{{proprietaire.nom}}{{proprietaire.prenom}}</strong>
+              </div>
+              <div>{{proprietaire.adresse}}</div>
+              <div>{{proprietaire.telephone}}</div>
+              
+          </div>
+        </div>
+        <div class="float-right"  style="margin-right: 2%;"><strong>Locataire : </strong></div><br>
+        <div class="float-right"  style="margin-right: 2%;"><strong>{{locataire.civilite}} {{locataire.nom}} {{locataire.prenom}}</strong></div><br>
+
+      <div class="row">
+        <div class="col">
+
+        </div>
+
+      </div>
+    
+    <!-- this.locataire = data["location"]["user"];-->
+      
+      <div class="row">
+    
+          
+          <div class="col ml-auto">
+                <table class="table table-clear" >
+                  <thead class=" text-center">
+                    <tr>
+                      
+                      <th classe="col text-center" colspan="2"><h2>Quittance de loyer </h2>  </th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                        <tr>
+                            <td class=" table-secondary" >
+                                <strong>Adresse du bien en location </strong>
+                            </td>
+                            <td class="">{{bien.adresse}}</td>
+                        </tr>
+                        <tr>
+                            <td class=" table-secondary">
+                                <strong>Loyer mensuel</strong>
+                            </td>
+                            <td class="">{{bien.loyer_mensuel}}</td>
+                        </tr>
+                       
+                        <tr>
+                            <td class=" table-secondary">
+                                <strong>Syndic </strong>
+                            </td>
+                            <td class=" table-secondary">
+                                <strong>{{bien.syndic}}</strong>
+                            </td>
+                        </tr>
+
+                        <tr>
+                          <td class=" table-secondary">
+                              <strong>Pour le mois   </strong>
+                          </td>
+                          <td >
+                              <strong>{{facture.mois_paiement}}</strong>
+                          </td>
+                      </tr>
+
+                      <tr>
+                        <td class=" table-secondary">
+                            <strong>Somme payée au bailleur  </strong>
+                        </td>
+                        <td >
+                            <strong>{{facture.montant_recu}} DH</strong>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+          </div>
+          <div>
+          </div>
+      </div>
+      <div>
+        Cette quittance annule tous les reçus qui auraient été pu être transmis en cas de paiement partiel de la présente échéance.
+      </div>
+  </div>
+
+   
+        
+  
+  <a class="btn btn-sm btn-secondary float-right mr-1 d-print-none" href="#" onclick="javascript:window.print();" data-abc="true">
+    <i class="fa fa-print"></i> Print</a>
+<a class="btn btn-sm btn-info float-right mr-1 d-print-none" href="#" data-abc="true">
+    <i class="fa fa-save" (click)="downloadAsPDF()"></i> Save</a>
+  
+  
+
+  
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <app-footer></app-footer>
+
+
+
+ 

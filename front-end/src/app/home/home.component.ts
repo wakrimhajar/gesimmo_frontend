@@ -31,11 +31,14 @@ export class HomeComponent implements OnInit {
      private Auth: AuthService,
      ) { }
   onSubmit(){
-   this.Jarwis.login(this.form).subscribe(
+   
+   
+   this.Jarwis.login(this.user.email,this.user.password).subscribe(
       data => {
         this.handleResponse(data)
 
         console.log(this.id_user);
+       
       },
       error => this.handleError(error)
     );

@@ -34,7 +34,7 @@ message : boolean = false;
       
      this.factures=Object.values(data);
      console.log(this.factures);
-
+    
      
      //this.handleResponse(data, this.factures.id)
     }, 

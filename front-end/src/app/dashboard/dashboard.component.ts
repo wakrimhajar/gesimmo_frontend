@@ -4,6 +4,8 @@ import { User } from '../Model/user';
 import { Location } from '../Model/location';
 import { Bien } from '../Model/bien';
 import { JarwisService } from '../Services/jarwis.service';
+import { select, Store } from '@ngrx/store';
+import { getInfoUser } from '../Ngrx/auth.selector';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -11,7 +13,8 @@ import { JarwisService } from '../Services/jarwis.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private Jarwis:JarwisService) { }
+  constructor(private Jarwis:JarwisService,
+    private store: Store<any>) { }
   user = new User() as any;
   bien = new Bien() as any;
   location = new Location() as any;
@@ -19,7 +22,10 @@ export class DashboardComponent implements OnInit {
   y:any;
   z:any;
   a:any;
+  id:any;
   ngOnInit(): void {
+    this.id = this.store.pipe(select(getInfoUser));
+        console.log("iddd: "+this.id);
     this.listproprietaire();
     this.listlocataire();
     this.listlocation();

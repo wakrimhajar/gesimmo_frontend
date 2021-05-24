@@ -3,6 +3,10 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { TokenService} from '../Services/token.service';
 import { User } from '../Model/user';
 import { JarwisService } from '../Services/jarwis.service';
+import { Store } from '@ngrx/store';
+import { AppState } from '../Ngrx/store/state';
+import { isAuthenticated } from '../Ngrx/auth.selector';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -13,9 +17,11 @@ export class HeaderComponent implements OnInit {
   id:any;
   id_user:any;
   notifications=[] as any ;
-  constructor(private router: ActivatedRoute,private token: TokenService, private route :Router,private Jarwis: JarwisService) { }
+  isAuthenticated:  Observable<boolean> | undefined;
+  constructor(private router: ActivatedRoute,private token: TokenService, private route :Router,private Jarwis: JarwisService,private store:Store<AppState>) { }
 
   ngOnInit(): void {
+    this.isAuthenticated = this.store.select(isAuthenticated);
     this.id = this.router.snapshot.params['id'];
     this.Jarwis.getuser(this.id)
     .subscribe(data => {

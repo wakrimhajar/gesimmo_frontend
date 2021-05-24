@@ -1,17 +1,49 @@
 import { HttpClient } from '@angular/common/http';
 import { identifierModuleUrl } from '@angular/compiler';
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User } from '../Model/user';
+import { AppState } from '../Ngrx/store/state';
 @Injectable({
   providedIn: 'root'
 })
 export class JarwisService {
  private baseUrl = 'http://localhost:8000/api/auth';
-  constructor(private http:HttpClient) { }
- login(data: any): Observable <User>{
-   return  this.http.post<User>(`${this.baseUrl}/login`,data)
+  constructor(private http:HttpClient,private store: Store<AppState>) { }
+ login(email:string,password:string): Observable<User> {
+   return  this.http.post<User>(`${this.baseUrl}/login`,{email,password})
  }
+
+ /*formatUser(data: AuthResponseData) {
+ 
+  const user = new User(
+    data.id,
+    data.nom,
+    data.prenom,
+    data.civilite,
+    data.password,
+    data.role,
+    data.email,
+    data.CIN,
+    data.adresse,
+    data.telephone,
+    data.image,
+    data.nom_societe,
+    data.patente,
+    data.statut_societe,
+    data.RC,
+    data.type,
+    data.old_password,
+    data.new_password,
+    data.confirm_password
+  
+  );
+  return user;
+}*/
+
+
+
  logout(data: any){
   return  this.http.post(`${this.baseUrl}/logout`,data)
 }

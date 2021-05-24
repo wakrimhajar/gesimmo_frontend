@@ -49,9 +49,14 @@ import { SessionProprietaireComponent } from './session-proprietaire/session-pro
 import { SessionLocataireComponent } from './session-locataire/session-locataire.component';
 import { EditPaiementComponent } from './edit-paiement/edit-paiement.component';
 import { QuittancePaiementComponent } from './quittance-paiement/quittance-paiement.component';
-
-
-
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AuthEffects } from './Ngrx/auth.effects';
+//import { reducer } from './Ngrx/auth.reducer';
+//import { reducers } from './Ngrx/app.states';
+import { AuthReducer } from './Ngrx/auth.reducer';
+import { appReducer } from './Ngrx/store/state';
 @NgModule({
   declarations: [
     AppComponent,
@@ -104,6 +109,9 @@ import { QuittancePaiementComponent } from './quittance-paiement/quittance-paiem
     FormsModule,
     HttpClientModule,
     NgMultiSelectDropDownModule.forRoot(),
+    StoreModule.forRoot(appReducer),
+    EffectsModule.forRoot([AuthEffects]),
+    StoreDevtoolsModule.instrument()
   ],
   providers: [JarwisService,
               AuthService

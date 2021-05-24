@@ -84,8 +84,31 @@ export class QuittancePaiementComponent implements OnInit {
   }
 
   public downloadAsPDF() {
-    console.log("yes ");
-    const doc = new jsPDF();
+    /*console.log("yes ");
+    const doc = new jsPDF();*/
+
+
+    var doc = new jsPDF();
+    doc.setFontSize(18);
+    doc.setFillColor(30,144,255);
+    doc.text('HNFS',95, 15);
+    doc.setFontSize(16);
+    doc.text('Loyer de quittance', 80, 25);
+    doc.setFontSize(11);
+    doc.text('Bailleur :',13,35);
+    doc.text(this.proprietaire.civilite,13,45);
+    doc.text(this.proprietaire.nom,23,45);
+    
+   
+    doc.setFontSize(11);
+    doc.setTextColor(100);
+
+     // below line for Open PDF document in new tab
+     doc.output('dataurlnewwindow')
+
+     // below line for Download PDF document
+    // doc.save('quittance.pdf');
+
    
    // const pdfTable = this.pdfTable.nativeElement;
    

@@ -20,7 +20,9 @@ export class LocationComponent implements OnInit {
 
   listActif(){
     this.Jarwis.getlocationActif().subscribe(
-      data => {console.log(data);  this.locations=Object.values(data);}, error => console.log(error)
+      data => {console.log(data);  
+        this.locations=Object.values(data);},
+         error => console.log(error)
       );
       this.table=true;
   }

@@ -17,3 +17,7 @@ export const loginSuccess = createAction(
   LOGIN_SUCCESS,
   props<{ user: User; redirect: boolean }>()
 );
+export const browserReload = createAction(
+  '[Core Component] Browser Reload',
+  props<{ user: User }>()
+);

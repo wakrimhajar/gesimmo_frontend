@@ -32,10 +32,14 @@ export class AuthEffects {
                             .login(action.email, action.password)
                             .pipe(
                               map((user) => {
+                                
                                //const user = this.authService.formatUser(data);
                                 console.log(user);
                                 return loginSuccess({user, redirect: true });
-                              }
+                                
+                              },
+                             
+                              
                               ),
                             
                             )

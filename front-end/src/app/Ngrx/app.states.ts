@@ -11,11 +11,11 @@ export interface AuthState {
 export const initialState: AuthState = {
   user: null,
 };
-/*
-export interface AppState {
+
+/*export interface AppState {
     authState: auth.State;
   }
-  
+  /*
   export const reducers =  { //:ActionReducerMap<State>
     auth: auth.reducer
   };

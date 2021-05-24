@@ -11,5 +11,5 @@ export interface AppState {
 export const appReducer = {
 
   [AUTH_STATE_NAME]: AuthReducer,
-
+//user:AuthReducer
 };

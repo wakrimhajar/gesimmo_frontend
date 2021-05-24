@@ -9,7 +9,7 @@ import Swal from 'sweetalert2' ;
 import { Bien } from '../Model/bien';
 import { Store } from '@ngrx/store';
 //import { AppState } from '../Ngrx/app.states';
-import { loginStart } from '../Ngrx/auth.actions';
+import { loginStart, loginSuccess } from '../Ngrx/auth.actions';
 import { getInfoUser } from '../Ngrx/auth.selector';
 import { Observable } from 'rxjs';
 @Component({
@@ -52,7 +52,13 @@ export class HomeComponent implements OnInit {
       email: this.user.email,
       password: this.user.password
      };
+     const payload2 = {
+      user: this.user,
+      redirect: true
+     };
+
       this.store.dispatch( loginStart(payload))
+      this.store.dispatch(loginSuccess(payload2))
            this.id = this.store.select(getInfoUser);
        console.log("id: "+this.id);
      
@@ -83,7 +89,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/header', this.id_user]);
   if(data.user.role==='gestionnaire'){
    this.router.navigateByUrl('/dashboard');
-   this.router.navigate(['/dashboar', this.id_user]);
+  // this.router.navigate(['/dashboar', this.id_user]);
   }
    else{console.log('vs n etes pas gestionnaire');}
 

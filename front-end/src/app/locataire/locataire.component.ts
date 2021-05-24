@@ -4,6 +4,8 @@ import { map } from 'rxjs/operators';
 import { User } from '../Model/user';
 import { Router } from '@angular/router';
 import { JarwisService } from '../Services/jarwis.service';
+import { AppState } from '../Ngrx/store/state';
+import { State, Store } from '@ngrx/store';
 @Component({
   selector: 'app-locataire',
   templateUrl: './locataire.component.html',
@@ -14,9 +16,11 @@ export class LocataireComponent implements OnInit {
   user = new User();
   users=[] as any ;
   value:any;
-  constructor(private Jarwis:JarwisService,private router:Router) { }
-
+  constructor(private Jarwis:JarwisService,private router:Router,private store: Store<AppState>) { }
+ 
   ngOnInit(): void {
+
+
   }
   onClick(){
     var element = document.getElementById("CloseButton1") as any;

@@ -6,6 +6,9 @@ import { Bien } from '../Model/bien';
 import { JarwisService } from '../Services/jarwis.service';
 import { select, Store } from '@ngrx/store';
 import { getInfoUser } from '../Ngrx/auth.selector';
+import { AppState } from '../Ngrx/store/state';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -23,9 +26,16 @@ export class DashboardComponent implements OnInit {
   z:any;
   a:any;
   id:any;
+  InfoUser:any;
   ngOnInit(): void {
-    this.id = this.store.pipe(select(getInfoUser));
-        console.log("iddd: "+this.id);
+   this.store.pipe(select(getInfoUser)).subscribe(
+     (store:any)=> {
+        console.log("hello "+store.user.prenom," id "+store.user.id);
+       // JSON.stringify()
+       this.InfoUser=store.user;
+      });
+      console.log("infouser "+this.InfoUser.prenom);
+ 
     this.listproprietaire();
     this.listlocataire();
     this.listlocation();

@@ -40,6 +40,8 @@ import { SessionLocataireComponent } from './session-locataire/session-locataire
 import { HeaderComponent } from './header/header.component';
 import { EditPaiementComponent } from './edit-paiement/edit-paiement.component';
 import { QuittancePaiementComponent } from './quittance-paiement/quittance-paiement.component';
+import { ServiceHomeComponent } from './service-home/service-home.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 const routes: Routes = [
   { path:'' ,
@@ -47,6 +49,14 @@ const routes: Routes = [
   {
     path:'details/:id',
     component:DetailsImmobilierComponent
+  },
+  {
+    path:'service-home',
+    component:ServiceHomeComponent
+  },
+  {
+    path:'contacts',
+    component:ContactsComponent
   },
  { path: '', canActivate: [AuthGuard], children: [
   {

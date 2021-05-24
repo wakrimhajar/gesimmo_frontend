@@ -49,6 +49,8 @@ import { SessionProprietaireComponent } from './session-proprietaire/session-pro
 import { SessionLocataireComponent } from './session-locataire/session-locataire.component';
 import { EditPaiementComponent } from './edit-paiement/edit-paiement.component';
 import { QuittancePaiementComponent } from './quittance-paiement/quittance-paiement.component';
+import { ServiceHomeComponent } from './service-home/service-home.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 
 
@@ -96,6 +98,8 @@ import { QuittancePaiementComponent } from './quittance-paiement/quittance-paiem
     SessionLocataireComponent,
     EditPaiementComponent,
     QuittancePaiementComponent,
+    ServiceHomeComponent,
+    ContactsComponent,
 
   ],
   imports: [

@@ -14,12 +14,9 @@
         <div class=" col ">
       <div class="card" >
         <div class="card-header bg-transparent">
-          <h5 class="mb-0">Ajouter une nouvelle location</h5>
+          <h5 class="mb-0">Modifier une location</h5>
         </div>
-
-          <!--button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button-->
   <form method="POST" #f="ngForm" (ngSubmit)="onSubmitform(f)" enctype="multipart/form-data">
-
     <div class="card-body">
     <div class="row row1">
         <div class="col">
@@ -52,7 +49,11 @@
     <div class="row row1">
       <div class="col">
         <label for="montant" class="form-label"><b>Mantant</b></label>
-        <input type="text" class="form-control" placeholder="Mantant" aria-label="montant" id="montant" name="montant" [(ngModel)]="location.montant">
+        <input type="text" class="form-control" placeholder="Mantant" aria-label="montant" id="montant" name="montant" [(ngModel)]="location.montant"
+        minlength="3" maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ngModel #Mantant="ngModel">
+        <div *ngIf="Mantant.touched && Mantant.invalid " style="color: red;">
+          <div *ngIf="Mantant.errors?.minlength">Minimum 3 caractéres !</div>
+        </div>
       </div>
       <div class="col">
         <label for="type" class="form-label"><b>Type</b></label>
@@ -67,11 +68,17 @@
   <div class="row row1">
     <div class="col">
       <label for="identifiant" class="form-label"><b>Identifiant(Obligatoire et unique)</b></label>
-      <input type="text" class="form-control" placeholder="Identifiant(Obligatoire et unique)" aria-label="identifiant" id="identifiant" name="identifiant" [(ngModel)]="location.identifiant">
+      <input type="text" class="form-control" placeholder="Identifiant(Obligatoire et unique)" aria-label="identifiant" id="identifiant" name="identifiant" [(ngModel)]="location.identifiant"
+      minlength="3" maxlength="10" ngModel #identifiant="ngModel">
+       <div *ngIf="identifiant.touched && identifiant.invalid " style="color: red;">
+        <div *ngIf="identifiant.errors?.minlength">Minimum 3 caractéres !</div>
+      </div>
     </div>
     <div class="col">
       <label for="duree" class="form-label"><b>Duree (Nombre de mois)</b></label>
-      <input type="text" class="form-control" placeholder="Duree (Nombre de mois)" aria-label="duree" id="duree" name="duree" [(ngModel)]="location.duree">
+      <input type="text" class="form-control" placeholder="Duree (Nombre de mois)" aria-label="duree" id="duree" name="duree" [(ngModel)]="location.duree"
+      ngModel onkeypress="return event.charCode >= 48 && event.charCode <= 57" #duree="ngModel">
+      <small>La durée en mois.</small>
     </div>
   </div>
 <br>

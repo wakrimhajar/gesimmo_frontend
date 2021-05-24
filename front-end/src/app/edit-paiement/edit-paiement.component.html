@@ -1,0 +1,169 @@
+<div class="row">
+    <div class="col-sm-2">
+      <app-menu></app-menu>
+    </div>
+    <div class="col-sm-10" >
+      <app-header></app-header>
+      <div class="header bg-primary pb-6" style="background-color: #fff !important;"></div>
+    <div class="container ">
+      <div class="p-3 ">
+        <div class="container-fluid mt--6">
+          <div class="row ">
+          <div class=" col ">
+        <div class="card  " style="width: 100%; margin-left: 0px;" >
+          <div class="card-header text-center">     <strong>Enregistrer un paiement </strong> </div>
+         
+  <form method="POST"  (ngSubmit)="onSubmitform()"  enctype="multipart/form-data">
+  
+    <div class="card-body">
+      <div class="row">
+             <table class="table table-clear" style="margin-bottom: 2%;" >
+                  <thead class="thead-dark text-center">
+                    <tr>
+                      
+                      <th classe="col" colspan="2">Revenu  </th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                        <tr >
+                            <td class="left table-secondary" style="margin-left: 0px; width: 20%;">
+                                <strong>Bien</strong>
+                            </td>
+                            <td class="right">{{bien.adresse}}</td>
+                        </tr>
+                        <tr>
+                          <td class="left table-secondary">
+                              <strong>Propietaire</strong>
+                          </td>
+                          <td class="right">{{proprietaire.nom}} {{proprietaire.prenom}}</td>
+                      </tr>
+                        <tr>
+                            <td class="left table-secondary">
+                                <strong>Locataire</strong>
+                            </td>
+                            <td class="right">{{locataire.nom}} {{locataire.prenom}}</td>
+                        </tr>
+                        <tr>
+                          <td class="left table-secondary">
+                              <strong>Pour le mois :  </strong>
+                          </td>
+                          <td class="right">{{facture.mois_paiement}}</td>
+                      </tr>
+                      <tr>
+                        <td class="left table-secondary">
+                            <strong>Syndic</strong>
+                        </td>
+                        <td class="right">{{bien.syndic}} DH</td>
+                    </tr>
+                    <tr>
+                      <td class="left table-secondary">
+                          <strong>Loyer mensuel</strong>
+                      </td>
+                      <td class="right">{{bien.loyer_mensuel}} DH</td>
+                  </tr>
+                       
+                        <tr>
+                            <td class="left table-secondary">
+                                <strong>Montant total</strong>
+                            </td>
+                            <td class="right table-secondary">
+                                <strong>{{facture.montant_total}} DH</strong>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="table table-clear" >
+                  <thead class="thead-dark text-center">
+                    <tr>
+                      
+                      <th classe="col" colspan="2">Paiements  </th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                      <tr>
+                        <td class="left table-secondary" style="margin-left: 0px; width: 20%;">
+                            <strong>Date paiement  </strong>
+                        </td>
+                        <td class="right">
+                          <!--<input type='date'  [(ngModel)]="facture.date_paiement | date:'yyyy-MM-dd' "/><br>-->
+                          <input type="date" class="form-control" aria-label="date_entree" id="date_entree" name="date_entree" [(ngModel)]="facture.date_paiement" required>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="left table-secondary" style="margin-left: 0px; width: 20%;">
+                                <strong>Paiement recu </strong>
+                            </td>
+                            <td class="right"><input  type="number" class=" text-center input-sm" step='0.05'  placeholder='0.00' aria-label="montant" id="montant" name="montant" (mouseout)="sum(facture.montant_total, facture.montant_recu)" [(ngModel)]="facture.montant_recu" ><i> Montant en dirhams</i></td>
+                        </tr>
+                        <tr>
+                            <td class="left table-secondary">
+                                <strong>Mode de paiement </strong>
+                            </td>
+                            <td class="right">
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"  checked  [(ngModel)]="facture.mode_paiement" value="virement" required>
+                                <label class="form-check-label" for="exampleRadios1">
+                                 Virement
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" [(ngModel)]="facture.mode_paiement" value="cheque">
+                                <label class="form-check-label" for="exampleRadios2">
+                                 Cheque
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" [(ngModel)]="facture.mode_paiement" value="espece">
+                                <label class="form-check-label" for="exampleRadios2">
+                                 Espece
+                                </label>
+                              </div>
+                            </td>
+                        </tr>
+                        <tr>
+                          <td class="left table-secondary">
+                              <strong>Reste a payer</strong>
+                          </td>
+                          <td class="text-danger right" > <b>{{total}} DH</b></td>
+
+                      </tr>
+                      <tr>
+                        <td   colspan="2">
+                          <button type="submit" class="btn btn-success float-right" style="width: 10%;" [disabled]="message==true" > <i class="fa fa-usd"></i> <strong>Payer</strong></button>
+                          <button  class="btn btn-primary float-left" style="width: 10%;" routerLink="/paiement" >  <strong>Annuler</strong></button>
+
+                        </td>
+
+                    </tr>
+                   
+                   
+                       
+                        
+                    </tbody>
+                </table>
+
+              
+              
+           
+      </div>
+  </div>
+
+   </form>
+ 
+  
+
+  
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <app-footer></app-footer>
+
+
+
+ 

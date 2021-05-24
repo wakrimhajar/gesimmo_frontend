@@ -38,6 +38,8 @@ import { DetailsImmobilierComponent } from './details-immobilier/details-immobil
 import { SessionProprietaireComponent } from './session-proprietaire/session-proprietaire.component';
 import { SessionLocataireComponent } from './session-locataire/session-locataire.component';
 import { HeaderComponent } from './header/header.component';
+import { EditPaiementComponent } from './edit-paiement/edit-paiement.component';
+import { QuittancePaiementComponent } from './quittance-paiement/quittance-paiement.component';
 
 const routes: Routes = [
   { path:'' ,
@@ -96,12 +98,22 @@ const routes: Routes = [
           component:PaiementComponent
         },
         {
+          path:'details-paiement/:id',
+          component:EditPaiementComponent
+        },
+        {
           path:'charges',
           component:ChargesComponent
         },
         {
           path:'quittance',
           component:QuittanceComponent
+        },
+        {
+          path:'quittance_details/:id',
+          component:QuittancePaiementComponent
+          //component:EditPaiementComponent
+
         },
         {
           path:'documents',

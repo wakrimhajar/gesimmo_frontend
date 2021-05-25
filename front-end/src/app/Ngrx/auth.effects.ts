@@ -26,13 +26,14 @@ export class AuthEffects {
                  login=createEffect( 
                     ()=> this.actions.pipe(
                         ofType(loginStart),
+                        
                        // map((action: LogIn) => action.payload),
                         exhaustMap((action) =>
                           this.authService
                             .login(action.email, action.password)
                             .pipe(
                               map((user) => {
-                                
+                                sessionStorage.setItem('user', JSON.stringify(user));
                                //const user = this.authService.formatUser(data);
                                 console.log(user);
                                 return loginSuccess({user, redirect: true });

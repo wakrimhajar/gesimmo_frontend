@@ -59,6 +59,7 @@ export class HomeComponent implements OnInit {
 
       this.store.dispatch( loginStart(payload))
       this.store.dispatch(loginSuccess(payload2))
+      
            this.id = this.store.select(getInfoUser);
        console.log("id: "+this.id);
      

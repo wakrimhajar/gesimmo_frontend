@@ -58,6 +58,8 @@ import { AuthEffects } from './Ngrx/auth.effects';
 //import { reducers } from './Ngrx/app.states';
 import { AuthReducer } from './Ngrx/auth.reducer';
 import { appReducer } from './Ngrx/store/state';
+import { ContactsComponent } from './contacts/contacts.component';
+import { ServiceHomeComponent } from './service-home/service-home.component';
 
 @NgModule({
   declarations: [

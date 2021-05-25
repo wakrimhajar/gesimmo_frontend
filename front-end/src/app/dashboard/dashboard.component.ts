@@ -9,6 +9,7 @@ import { getInfoUser } from '../Ngrx/auth.selector';
 import { AppState } from '../Ngrx/store/state';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { browserReload } from '../Ngrx/auth.actions';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -28,6 +29,7 @@ export class DashboardComponent implements OnInit {
   id:any;
   InfoUser:any;
   ngOnInit(): void {
+   
    this.store.pipe(select(getInfoUser)).subscribe(
      (store:any)=> {
         console.log("hello "+store.user.prenom," id "+store.user.id);
@@ -35,7 +37,7 @@ export class DashboardComponent implements OnInit {
        this.InfoUser=store.user;
       });
       console.log("infouser "+this.InfoUser.prenom);
- 
+  this.store.dispatch(browserReload(this.user))
     this.listproprietaire();
     this.listlocataire();
     this.listlocation();

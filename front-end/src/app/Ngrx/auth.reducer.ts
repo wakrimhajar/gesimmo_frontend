@@ -6,13 +6,18 @@ import { loginSuccess ,browserReload} from './auth.actions';
   const _authReducer = createReducer(
     initialState,
     
-    on(loginSuccess,browserReload, (state, action) => {
+    on(loginSuccess, (state, action) => {
       return {
         ...state,
         user: action.user,
       }
     }),
-   
+   /* on(browserReload,(state, action) => {
+      return {
+        ...state,
+        user: action.user,
+      }
+    }),*/
  
   );
   

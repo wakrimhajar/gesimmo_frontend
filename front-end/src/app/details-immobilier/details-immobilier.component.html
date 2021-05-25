@@ -8,14 +8,9 @@
 
     <div class="collapse navbar-collapse" id="ftco-nav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item "><a href="index.html" class="nav-link" >Accueil</a></li>
-        <li class="nav-item"><a href="about.html" class="nav-link" >A propos</a></li>
-        <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-        <!--li class="nav-item"><a href="properties.html" class="nav-link">Properties</a></li>
-        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li-->
-        <li class="nav-item"><a href="contact.html" class="nav-link" >Contact</a></li>
-        <li class="nav-item"><a data-toggle="modal" data-target="#login" class="nav-link"
-            >Gestion</a></li>
+        <li class="nav-item "><a routerLink="" class="nav-link" >Accueil</a></li>
+        <li class="nav-item"><a routerLink="/service-home" class="nav-link">Services</a></li>
+        <li class="nav-item"><a routerLink="/contacts" class="nav-link" >Contact</a></li>
       </ul>
     </div>
   </div>
@@ -104,7 +99,7 @@
           <td class="pl-6"><label class="font-weight-bold">{{bien.syndic}}</label></td>
         </tr>
         <tr>
-          <td><label>Surface</label> </td>
+          <td><label>Frais Surface</label> </td>
           <td class="pl-6"><label class="font-weight-bold">{{bien.surface}}</label></td>
         </tr>
         <tr>
@@ -131,7 +126,7 @@
 
 <footer class="ftco-footer ftco-section">
   <div class="container">
-   
+
     <div class="row">
       <div class="col-md-12 text-center">
 

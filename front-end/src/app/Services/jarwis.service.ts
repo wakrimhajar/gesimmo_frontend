@@ -9,15 +9,15 @@ import { AppState } from '../Ngrx/store/state';
   providedIn: 'root'
 })
 export class JarwisService {
- //private baseUrl = 'http://localhost:8000/api/auth';
- private baseUrl = ' http://gesimmo.isga-elearning.ma/api/auth';
+ private baseUrl = 'http://localhost:8000/api/auth';
+ //private baseUrl = ' http://gesimmo.isga-elearning.ma/api/auth';
   constructor(private http:HttpClient,private store: Store<AppState>) { }
  login(email:string,password:string): Observable<User> {
    return  this.http.post<User>(`${this.baseUrl}/login`,{email,password})
  }
 
  /*formatUser(data: AuthResponseData) {
- 
+
   const user = new User(
     data.id,
     data.nom,
@@ -38,7 +38,7 @@ export class JarwisService {
     data.old_password,
     data.new_password,
     data.confirm_password
-  
+
   );
   return user;
 }*/
@@ -183,7 +183,7 @@ getnotification(id: number): Observable<any>{
 changerpassword(id: number,data:any): Observable<any>{
   return this.http.put(`${this.baseUrl}/change_password/`+id,data)
 }
-//paiement 
+//paiement
 getPaimentByMois(){
   return  this.http.get(`${this.baseUrl}/getFbyMonth`)
 

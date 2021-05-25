@@ -7,8 +7,8 @@ export class User
     password:any;
     role: any;
     email:any;
-   CIN: any;
-      adresse: any;
+    CIN: any;
+    adresse: any;
     telephone: any;
     image: any;
     nom_societe: any;
@@ -19,5 +19,5 @@ export class User
     old_password: any;
     new_password: any;
     confirm_password: any;
- 
+
 }

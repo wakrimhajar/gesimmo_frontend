@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit {
       error => console.log(error)
       );
   }
-  
+
   handleResponse(data:any){
     this.token.handle(data.access_token);
       this.id_user=data.user.id;

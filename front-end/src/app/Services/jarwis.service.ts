@@ -9,7 +9,8 @@ import { AppState } from '../Ngrx/store/state';
   providedIn: 'root'
 })
 export class JarwisService {
- private baseUrl = 'http://localhost:8000/api/auth';
+ //private baseUrl = 'http://localhost:8000/api/auth';
+ private baseUrl = ' http://gesimmo.isga-elearning.ma/api/auth';
   constructor(private http:HttpClient,private store: Store<AppState>) { }
  login(email:string,password:string): Observable<User> {
    return  this.http.post<User>(`${this.baseUrl}/login`,{email,password})

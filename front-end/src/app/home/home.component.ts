@@ -95,12 +95,12 @@ export class HomeComponent implements OnInit {
    else{console.log('vs n etes pas gestionnaire');}
 
    if(data.user.role==='proprietaire'){
-    this.router.navigate(['/session-proprietaire', this.id_user]);
-    this.router.navigate(['/header', this.id_user]);
+    this.router.navigate(['/session-proprietaire', this.user.id]);
+   // this.router.navigate(['/header', this.id_user]);
    }
     else{console.log('vs n etes pas proprietaire');}
     if(data.user.role==='locataire'){
-      this.router.navigate(['/session-locataire', this.id_user]);
+      this.router.navigate(['/session-locataire', this.user.id]);
      }
       else{console.log('vs n etes pas locataire');}
   }

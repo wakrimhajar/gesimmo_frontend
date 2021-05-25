@@ -14,7 +14,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler):
   Observable<HttpEvent<unknown>> {
-    if(request.url !=='http://localhost:8000/api/auth')
+    if(request.url !=='http://gesimmo.isga-elearning.ma/api/auth')
     {
       const token =localStorage.getItem('token');
       request=request.clone({

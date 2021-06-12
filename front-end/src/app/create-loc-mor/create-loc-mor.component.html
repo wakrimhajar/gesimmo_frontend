@@ -118,20 +118,21 @@
                 </div>
                 <div class="text-center"><h5 class="title"><b>Documents justificatifs</b></h5></div>
                 <span (click)="addForm()" class="btn btn-secondary">+</span>
-               <div class="row row1 " *ngFor="let obj of dataarray">
-                <div class="col">
-                  <div class="mb-3">
-                    <label for="nom_doc" class="form-label"><b>Nom du document</b></label>
-                    <input class="form-control" type="text" id="nom_doc" name="nom" placeholder="Nom du document" [(ngModel)]="obj.nom">
+                <div class="row row1 " *ngFor="let obj of dataarray">
+                  <div class="col">
+                    <div class="mb-3">
+                      <label for="nom_doc" class="form-label"><b>Nom du document</b></label>
+                      <input class="form-control" type="text" id="nom_doc" name="nomdoc" placeholder="Nom du document" [(ngModel)]="obj.nomdoc">
+                    </div>
                   </div>
-                </div>
-                <div class="col">
-                  <div class="mb-3">
-                    <label for="doc" class="form-label"><b>Fichier joint (format accepté : PNG, JPG, JPEG, Word, PDF)</b></label>
-                    <input class="form-control" type="file" id="doc" name="doc" [(ngModel)]="obj.doc">
+                  <div class="col">
+                    <div class="mb-3">
+                      <label for="doc" class="form-label"><b>Fichier joint (format accepté : PNG, JPG, JPEG, Word, PDF)</b></label>
+                      <input class="form-control" type="file" (change)="Event($event)"  id="doc" name="doc" [(ngModel)]="obj.doc">
+                      
+                    </div>
                   </div>
-                </div>
-               </div>
+                 </div>
                <div class="pull-right">
                 <div class="buttons">
                 <button type="button" class="btn btn-primary" style="background-color: #5e72e4 !important;">Annuler</button>

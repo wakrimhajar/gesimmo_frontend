@@ -32,18 +32,20 @@ export class CreateProprietaireComponent implements OnInit {
   event:any
   Event(e:any){
   this.event=e.target.files[0];
-  console.log(event);
+  console.log(this.event);
   }
 
    filedata:any;
    fileEvent(e:any){
     this.filedata = e.target.files[0];
+    console.log(this.filedata);
 
    }
 
     onSubmitform(f: NgForm) {
       var myFormData = new FormData();
       myFormData.append('doc', this.event);
+      myFormData.append('nomdoc',this.document.nomdoc);
       myFormData.append('image', this.filedata);
       myFormData.append('nom',this.user.nom);
       myFormData.append('prenom',this.user.prenom);
@@ -58,7 +60,8 @@ export class CreateProprietaireComponent implements OnInit {
       //myFormData.append('documents',JSON.stringify(this.dataarray));
       this.Jarwis.addpropriétaire(myFormData).subscribe(
 
-        data => console.log(myFormData), error => console.log(error)
+        myFormData => console.log(myFormData), 
+        error => console.log(error)
         );
       this.user = new User();
       this.router.navigate(['/societe']);

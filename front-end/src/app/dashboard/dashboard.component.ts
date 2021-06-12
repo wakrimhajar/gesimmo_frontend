@@ -35,9 +35,12 @@ export class DashboardComponent implements OnInit {
         console.log("hello "+store.user.prenom," id "+store.user.id);
        // JSON.stringify()
        this.InfoUser=store.user;
+       localStorage.setItem('state', store.user);
       });
+     var infos = localStorage.getItem('user');
+     console.log("storage: "+infos);
       console.log("infouser "+this.InfoUser.prenom);
-  this.store.dispatch(browserReload(this.user))
+    this.store.dispatch(browserReload(this.user))
     this.listproprietaire();
     this.listlocataire();
     this.listlocation();

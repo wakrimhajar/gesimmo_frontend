@@ -122,13 +122,13 @@
           <div class="col">
             <div class="mb-3">
               <label for="nom_doc" class="form-label"><b>Nom du document</b></label>
-              <input class="form-control" type="text" id="nom_doc" name="nom" placeholder="Nom du document" [(ngModel)]="obj.nom">
+              <input class="form-control" type="text" id="nom_doc" name="nomdoc" placeholder="Nom du document" [(ngModel)]="obj.nomdoc">
             </div>
           </div>
           <div class="col">
             <div class="mb-3">
               <label for="doc" class="form-label"><b>Fichier joint (format accepté : PNG, JPG, JPEG, Word, PDF)</b></label>
-              <input class="form-control" type="file" id="doc" name="doc" [(ngModel)]="obj.doc">
+              <input class="form-control" type="file" (change)="Event($event)" id="doc" name="doc" [(ngModel)]="obj.doc">
             </div>
           </div>
          </div>

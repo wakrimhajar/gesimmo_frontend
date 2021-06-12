@@ -24,6 +24,11 @@ export class CreateLocMorComponent implements OnInit {
     this.dataarray.push(this.document);
 
   }
+  docdata:any;
+  Event(e:any){
+    this.docdata = e.target.files[0];
+  console.log(this.docdata);
+  }
   filedata:any;
   fileEvent(e:any){
    this.filedata = e.target.files[0];}
@@ -41,9 +46,9 @@ export class CreateLocMorComponent implements OnInit {
       myFormData.append('telephone',this.user.telephone);
       myFormData.append('RC',this.user.RC);
       myFormData.append('statut_societe',this.user.statut_societe);
-      //myFormData.append('document',this.dataarray);
-      myFormData.append('nomdoc',this.filedata);
-      myFormData.append('doc',this.document.doc);
+      myFormData.append('document',this.dataarray);
+      myFormData.append('doc', this.docdata);
+      myFormData.append('nomdoc',this.document.nomdoc);
     console.log(this.dataarray);
     this.Jarwis.addlocatairemor(this.user).subscribe(
 

@@ -25,8 +25,8 @@ export class TokenService {
     if(token){
       const payload = this.payload(token);
       if(payload){
-      // return (payload.iss === 'http://localhost:8000/api/auth/login') ? true : false;
-      return (payload.iss === 'http://gesimmo.isga-elearning.ma/api/auth/login') ? true : false;
+       return (payload.iss === 'http://localhost:8000/api/auth/login') ? true : false;
+      //return (payload.iss === 'http://gesimmo.isga-elearning.ma/api/auth/login') ? true : false;
       }
     }
     return false;

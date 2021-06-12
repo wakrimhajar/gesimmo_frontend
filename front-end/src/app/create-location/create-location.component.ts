@@ -104,13 +104,20 @@ export class CreateLocationComponent implements OnInit {
           doc.text('ci-après "le Locataire"',150,100);
 
           doc.text('Il a été convenu et arrêté ce qui suit.',13,115);
-          doc.text(this.civPro,13,125);
+          if(this.cinLoc!==null){
+          doc.text(this.civPro,13,125);}
+          else {doc.text('',13,125);}
           doc.text('.........................................................',25,125);
           doc.text(this.nomPro,25,125);
           doc.text(this.prenomPro,55,125);
           doc.text('donne loyer à :',90,125);
 
-          doc.text(this.civLoc,118,125);
+          if(this.civLoc!==null){
+            doc.text(this.civLoc,118,125);
+          }else{
+            doc.text('',118,125); 
+          }
+          
           doc.text('.........................................................',127,125);
           doc.text(this.nomLoc,127,125);
           doc.text(this.prenomLoc,156,125);

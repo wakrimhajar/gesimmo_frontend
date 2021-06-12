@@ -25,9 +25,16 @@ export class CreateSocieteComponent implements OnInit {
   filedata:any;
    fileEvent(e:any){
     this.filedata = e.target.files[0];}
+
+    event:any
+    Event(e:any){
+    this.event=e.target.files[0];
+    console.log(this.event);
+    }
   onSubmit(){
       var myFormData = new FormData();
-      //myFormData.append('doc', this.event);
+      myFormData.append('doc', this.event);
+      myFormData.append('nomdoc', this.document.nomdoc);
       myFormData.append('image', this.filedata);
       myFormData.append('nom',this.user.nom);
       myFormData.append('prenom',this.user.prenom);

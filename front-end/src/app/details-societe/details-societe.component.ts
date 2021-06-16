@@ -96,7 +96,7 @@ export class DetailsSocieteComponent implements OnInit {
 
       var img=new Image();
 img.src='../assets/images/ISGA.png';
-doc.addImage(img, 'png', 25, 30, 20, 20);
+doc.addImage(img, 'png', 25, 20, 50, 50);
 doc.setFontSize(11);
 doc.text('Nom du société ', 25, 60);
 doc.text(': '+this.user.nom_societe, 75, 60);

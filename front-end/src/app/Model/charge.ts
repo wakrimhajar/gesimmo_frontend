@@ -20,4 +20,5 @@ export class Charge
   loyer_mensuel:any;
   syndic:any;
   taxe:any;
+  bien_id:any;
 }

@@ -48,14 +48,23 @@
       </div>
       <div class="col">
       <label for="montant" class="form-label"><b>Montant</b></label>
-      <input type="text" class="form-control" placeholder="Montant du charge" aria-label="montant" id="montant" name="montant" [(ngModel)]="charge.montant"
+      <input type="text" class="form-control" placeholder="Montant du charge" aria-label="montant" id="montant" name="montant" [(ngModel)]="charge.montant_total"
       required minlength="3" maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ngModel #Mantant="ngModel">
         <div *ngIf="Mantant.touched && Mantant.invalid " style="color: red;">
           <div *ngIf="Mantant.errors?.required">Champ obligatoire !</div>
           <div *ngIf="Mantant.errors?.minlength">Minimum 3 caractéres !</div>
         </div>
     </div>
-
+    <div class="col">
+      <label for="bien_id" class="form-label"><b>Bien </b></label>
+      <select class="form-control" name="bien_id" [(ngModel)]="charge.bien_id" required ngModel #bien="ngModel">
+        <option>Bien</option>
+        <option  *ngFor="let bien of biens" value="{{ bien.id }}">{{ bien.identifiant }}</option>
+      </select>
+      <div *ngIf="bien.touched && bien.invalid " style="color: red;">
+        <div *ngIf="bien.errors?.required">Champ obligatoire !</div>
+      </div>
+    </div>
   </div>
   <br>
    <div class="pull-right">

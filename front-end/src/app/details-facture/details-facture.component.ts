@@ -32,7 +32,7 @@ export class DetailsFactureComponent implements OnInit {
     console.log(data)
     this.charge=data;
     ////console.log(this.charge.montant)
-    this.y=this.charge.montant;
+    this.y=this.charge.montant_total;
     console.log(this.y);
     this.x=this.y*0.2;
     console.log(this.x);
@@ -84,11 +84,11 @@ export class DetailsFactureComponent implements OnInit {
     doc.setLineWidth(0.1);
     doc.text(this.charge.date_paiement,15,96);
     doc.text(this.charge.description,85,96);
-    const montant = this.charge.montant;
+    const montant = this.charge.montant_total;
     doc.text(montant.toString(),165,96);
     doc.line(11,100,200,100);
     doc.setLineWidth(0.1);
-    const mntTVA = this.charge.montant*0.2;
+    const mntTVA = this.charge.montant_total*0.2;
 
     doc.text('TVA ',85,106);
     doc.text((montant+mntTVA).toString(),165,116);

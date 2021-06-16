@@ -19,16 +19,20 @@
               <!-- Card body -->
                       <div class="card-body">
                         <div class="row">
-                          <div class="col-6 text-left">
-                            <!--<span class="card-title" style="color: #5e72e4;"><b>Filtrer</b></span>-->
-                            <div class="input-group m-1 " style="width: 90%;"> <input type="text" class="form-control" placeholder="Chercher" (change)="fonction($event)">
-                              <div class="input-group-append" style="width: 50px;"><button class="btn btn-primary" style="background-color: #5e72e4 !important;"><i class="fas fa-search"></i></button></div>
-                           </div>
-                           </div>
-                          <div class=" col-6 text-right">
-                            <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;color: white" (click)="listActif()">Actifs </button>
-                            <button type="button"  class="btn btn-secondary" style="background-color: #5e72e4; color: white" routerLink="/create-charge">Nouveau </button>
-                          </div>
+                          <div class="col-md-6 text-left">
+                            <div class=" input-group " >
+                              <label class="card-title mr-4 mt-2"><b>Filtrer</b></label>
+                              <input type="text" class="form-control mb-2"   placeholder="Chercher" id='chercher'  (change)="fonction($event)">
+                                 <div class="input-group-append mb-2" >
+                                  <button class="btn btn-primary" style="background-color: #5e72e4 !important; " >
+                                    <i class="fas fa-search" ></i></button>
+                                  </div>
+                             </div>
+                         </div>
+                         <div class=" col-md-6 text-right mt-4">
+                          <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;color: white" (click)="listActif()">Actifs </button>
+                          <button type="button"  class="btn btn-secondary" style="background-color: #5e72e4; color: white" routerLink="/create-charge">Nouveau </button>
+                        </div>
                         </div>
                    <!--    <div class="input-group mb-2">
                         <input type="date" name="" class="form-control" style="width: 20%; top:20px; margin-right: 20px; margin-left: 2px;">
@@ -65,7 +69,7 @@
                       <thead class="thead-light">
                         <tr >
                           <th scope="col">Date Paiement</th>
-                          <th scope="col">Type</th>
+                          <!--th scope="col">Type</th-->
                           <th scope="col">Description</th>
                           <th scope="col">Montant</th>
                           <th scope="col">Action</th>
@@ -74,9 +78,9 @@
                       <tbody >
                         <tr *ngFor="let charge of charges">
                           <td>{{charge.date_paiement}}</td>
-                          <td>{{charge.type}}</td>
+                          <!--td>{{charge.type}}</td-->
                           <td>{{charge.description}}</td>
-                          <td>{{charge.montant}}</td>
+                          <td>{{charge.montant_total}}</td>
                           <td><a style="background-color: #5e72e4 !important;"  class="btn btn-primary" (click)="detailfacture(charge.id)" >Détails</a>
                       </td>
                         </tr>

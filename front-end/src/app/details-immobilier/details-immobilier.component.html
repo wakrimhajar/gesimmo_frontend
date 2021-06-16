@@ -8,7 +8,6 @@
 
     <div class="collapse navbar-collapse" id="ftco-nav">
       <ul class="navbar-nav ml-auto">
-<<<<<<< HEAD
         <li class="nav-item "><a href="index.html" class="nav-link" >Accueil</a></li>
         <li class="nav-item"><a href="about.html" class="nav-link" >A propos</a></li>
         <li class="nav-item"><a routerLink="/service-home" class="nav-link">Services</a></li>
@@ -17,11 +16,6 @@
         <li class="nav-item"><a routerLink="/contacts" class="nav-link" >Contact</a></li>
         <!--li class="nav-item"><a data-toggle="modal" data-target="#login" class="nav-link"
             >Gestion</a></li-->
-=======
-        <li class="nav-item "><a routerLink="" class="nav-link" >Accueil</a></li>
-        <li class="nav-item"><a routerLink="/service-home" class="nav-link">Services</a></li>
-        <li class="nav-item"><a routerLink="/contacts" class="nav-link" >Contact</a></li>
->>>>>>> cdddf74e26307b62c84aa54badd795ed3473a278
       </ul>
     </div>
   </div>
@@ -44,7 +38,7 @@
     <div class="col-md-8 col-sm-12">
       <div class="card">
         <div class="card-header">
-          <h5 class="card-title ">The Blue Sky Home</h5>
+          <!--h5 class="card-title ">The Blue Sky Home</h5-->
           <h6>{{bien.adresse}}</h6>
         </div>
         <div class="card-body">
@@ -86,7 +80,7 @@
           <h5> Contact</h5>
         </div>
         <div class="card-body">
-        <label>N° de téléphone :</label>
+        <label>N° de téléphone : </label> <strong>&nbsp; 0612345678</strong>
         </div>
       </div>
 
@@ -106,11 +100,11 @@
           <td class="pl-6"><label class="font-weight-bold">{{bien.loyer_mensuel}}</label></td>
         </tr>
         <tr>
-          <td><label>Syndic</label> </td>
+          <td><label>Frais de syndic</label> </td>
           <td class="pl-6"><label class="font-weight-bold">{{bien.syndic}}</label></td>
         </tr>
         <tr>
-          <td><label>Frais Surface</label> </td>
+          <td><label>Surface</label> </td>
           <td class="pl-6"><label class="font-weight-bold">{{bien.surface}}</label></td>
         </tr>
         <tr>

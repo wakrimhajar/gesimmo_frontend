@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { JarwisService } from '../Services/jarwis.service';
 import { TokenService } from '../Services/token.service';
 import Swal from 'sweetalert2' ;
+import { Bien } from '../Model/bien';
 @Component({
   selector: 'app-create-charge',
   templateUrl: './create-charge.component.html',
@@ -13,7 +14,12 @@ export class CreateChargeComponent implements OnInit {
 
   constructor(private Jarwis:JarwisService,private router:Router,private Token:TokenService) { }
 charge=new Charge;
+bien = new Bien();
+biens = [] as any;
   ngOnInit(): void {
+    this.Jarwis.getbienLibre().subscribe(
+      data => { console.log(data); this.biens = Object.values(data); }, error => console.log(error)
+  );
   }
 
   onSubmit(){
@@ -52,5 +58,10 @@ charge=new Charge;
     else
     this.erreur();
    }
+   listActif() {
+    this.Jarwis.getbienLibre().subscribe(
+        data => { console.log(data); this.biens = Object.values(data); }, error => console.log(error)
+    );
 
+}
 }

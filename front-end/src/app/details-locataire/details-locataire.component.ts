@@ -122,9 +122,13 @@ doc.setFontSize(11);
 /*var img=new Image();
 img.src='../assets/images/team-7.jpg';
 doc.addImage(img, 'JPEG', 25, 30, 20, 20);*/
+if(this.user.civilite==null){
 
-doc.text('Civilité ', 25, 60);
+}else{
+  doc.text('Civilité ', 25, 60);
 doc.text(': '+this.user.civilite, 55, 60);
+}
+
 doc.text('Numéro du CIN ', 25, 70)
 doc.text(': '+this.user.CIN, 55, 70);
 doc.text('Nom ', 25, 80);

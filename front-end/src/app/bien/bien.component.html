@@ -53,8 +53,8 @@
                         <td>{{bien.adresse}}</td>
                         <td>{{bien.surface}}</td>
                         <!--td>{{bien.statut}}</td-->
-                        <td *ngIf="bien.statut == 'libre'"><span class="badge badge-success p-2 text-white" style="width: 100%;">{{bien.statut}}</span></td>
-                        <td *ngIf="bien.statut == 'occupé'"><span class="badge badge-warning p-2 text-white" style="width: 100%;">{{bien.statut}}</span></td>
+                        <td *ngIf="bien.statut == 'libre'"><span class="badge badge-success p-2 text-white" style="width: 50%;">{{bien.statut}}</span></td>
+                        <td *ngIf="bien.statut == 'occupé'"><span class="badge badge-warning p-2 text-white" style="width: 50%;">{{bien.statut}}</span></td>
                         <td>{{bien.loyer_mensuel}}</td>
                         <td><a style="background-color: #5e72e4 !important;"  class="btn btn-primary" (click)="detailbien(bien.id)" >Détails</a>
                     </td>
@@ -67,6 +67,6 @@
 </div>
 </div>
 </div>
-<app-footer></app-footer>
+<!--app-footer></app-footer-->
 </div>
 </div>

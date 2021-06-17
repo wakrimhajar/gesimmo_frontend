@@ -84,12 +84,16 @@ export class DetailsProprietaireComponent implements OnInit {
 doc.rect(15, 10,180,15);
 doc.text('FICHE DE PROPRIETAIRE', 70, 20);
       doc.setFontSize(11);
-      var img=new Image();
+    /*  var img=new Image();
 img.src='../assets/images/team-7.jpg';
-doc.addImage(img, 'JPEG', 25, 30, 20, 20);
+doc.addImage(img, 'JPEG', 25, 30, 20, 20);*/
 
-doc.text('Civilité ', 25, 60);
+if(this.user.civilite==null){
+
+}else{
+  doc.text('Civilité ', 25, 60);
 doc.text(': '+this.user.civilite, 55, 60);
+}
 doc.text('Numéro du CIN ', 25, 70)
 doc.text(': '+this.user.CIN, 55, 70);
 doc.text('Nom ', 25, 80);

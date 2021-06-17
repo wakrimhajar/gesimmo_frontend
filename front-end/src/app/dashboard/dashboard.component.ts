@@ -10,6 +10,8 @@ import { AppState } from '../Ngrx/store/state';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { browserReload } from '../Ngrx/auth.actions';
+//import { Chart, BarElement ,BarController, CategoryScale, Filler, Legend, Title, Tooltip} from 'chart.js';
+import { Chart, registerables } from 'chart.js';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -18,7 +20,11 @@ import { browserReload } from '../Ngrx/auth.actions';
 export class DashboardComponent implements OnInit {
 
   constructor(private Jarwis:JarwisService,
-    private store: Store<any>) { }
+    private store: Store<any>) {
+     // Chart.register(BarElement, BarController, CategoryScale, Filler, Legend, Title, Tooltip);
+     Chart.register(...registerables);
+    }
+ 
   user = new User() as any;
   bien = new Bien() as any;
   location = new Location() as any;
@@ -29,7 +35,7 @@ export class DashboardComponent implements OnInit {
   id:any;
   InfoUser:any;
   ngOnInit(): void {
-   
+
    this.store.pipe(select(getInfoUser)).subscribe(
      (store:any)=> {
         console.log("hello "+store.user.prenom," id "+store.user.id);
@@ -45,6 +51,49 @@ export class DashboardComponent implements OnInit {
     this.listlocataire();
     this.listlocation();
     this.listbien();
+
+/*SELECT mois_paiement,SUM(montant_recu) FROM
+ `factures` WHERE YEAR(NOW())=YEAR(mois_paiement) 
+ GROUP BY mois_paiement;
+*/ 
+    var ctx = document.getElementById('myChart');
+    const labels = [
+      'Janvier',
+      'Février',
+      'Mars',
+      'Avril',
+      'Mai',
+      'Juin',
+      'Juillet',
+      'Août',
+      'Septembre',
+      'Octobre',
+      'Novembre',
+      'Décembre'
+    ];
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: 'My First dataset',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [0, 10, 5, 2, 20, 30, 45 ],
+        
+      },
+      {
+        label: 'My Second dataset',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [10, 2, 50, 30, 20, 45, 30 ],
+        
+      }]
+    };
+var myChart = new Chart("myChart", {
+  type: 'line',
+  data,
+  options: {}
+});
+
   }
 
   listproprietaire(){

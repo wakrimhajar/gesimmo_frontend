@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
        this.InfoUser=store.user;
        localStorage.setItem('state', store.user);
       });
-     var infos = localStorage.getItem('user');
+     var infos = sessionStorage.getItem('user');
      console.log("storage: "+infos);
       console.log("infouser "+this.InfoUser.prenom);
     this.store.dispatch(browserReload(this.user))

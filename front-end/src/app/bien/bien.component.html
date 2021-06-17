@@ -41,6 +41,7 @@
                     <table class="table " >
                     <thead class="thead-light">
                       <tr >
+                        <th scope="col">Propriétaire</th>
                         <th scope="col">Adresse</th>
                         <th scope="col">Surface</th>
                         <th scope="col">Statut</th>
@@ -50,11 +51,12 @@
                     </thead>
                     <tbody >
                       <tr *ngFor="let bien of biens">
+                        <td>{{bien.user.nom}} {{bien.user.prenom}}</td>
                         <td>{{bien.adresse}}</td>
                         <td>{{bien.surface}}</td>
                         <!--td>{{bien.statut}}</td-->
-                        <td *ngIf="bien.statut == 'libre'"><span class="badge badge-success p-2 text-white" style="width: 50%;">{{bien.statut}}</span></td>
-                        <td *ngIf="bien.statut == 'occupé'"><span class="badge badge-warning p-2 text-white" style="width: 50%;">{{bien.statut}}</span></td>
+                        <td *ngIf="bien.statut == 'libre'"><span class="badge badge-success p-2 text-white" style="width: 60%;">{{bien.statut}}</span></td>
+                        <td *ngIf="bien.statut == 'occupé'"><span class="badge badge-warning p-2 text-white" style="width: 60%;">{{bien.statut}}</span></td>
                         <td>{{bien.loyer_mensuel}}</td>
                         <td><a style="background-color: #5e72e4 !important;"  class="btn btn-primary" (click)="detailbien(bien.id)" >Détails</a>
                     </td>

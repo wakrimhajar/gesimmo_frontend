@@ -30,6 +30,7 @@
                          </div>
                          
                           <div class=" col-md-6 text-right mt-4" >
+                            <button *ngIf="table" type="button" class="btn btn-secondary " style="background-color: #5e72e4;" (click)="exportexcel()">Exporter</button>
                             <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;" (click)="listActif()">Actifs </button>
                             <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;color: white" (click)="listArchiv()">Archives </button>
                             <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-secondary" style="background-color: #5e72e4;">Nouveau </button>
@@ -41,7 +42,7 @@
                      
 
                   <div>
-<div class="table-responsive " *ngIf="table">
+<div class="table-responsive " *ngIf="table" id="excel-table">
   <table class="table " >
     <thead class="thead-light">
       <tr >

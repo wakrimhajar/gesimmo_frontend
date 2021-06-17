@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { User } from '../Model/user';
 import { Router } from '@angular/router';
 import { JarwisService } from '../Services/jarwis.service';
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-societe',
   templateUrl: './societe.component.html',
@@ -13,6 +14,7 @@ export class SocieteComponent implements OnInit {
  table:boolean=false;
   user = new User();
   users=[] as any ;
+  fileName='ExcelSheet.xlsx';
   id:any;
   value:any;
   imagepath:any='http://127.0.0.1:8000/storage/img/';
@@ -68,6 +70,20 @@ export class SocieteComponent implements OnInit {
       this.table=true;
     },error=>console.log(error));
  }
+ exportexcel(): void
+  {
+    /* pass here the table id */
+    let element = document.getElementById('excel-table');
+    const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+ 
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+ 
+    /* save to file */  
+    XLSX.writeFile(wb, this.fileName);
+ 
+  }
 
 
 }

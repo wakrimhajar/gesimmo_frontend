@@ -12,7 +12,12 @@ import { loginSuccess ,browserReload} from './auth.actions';
         user: action.user,
       }
     }),
-
+  /*  on(browserReload, (state, action) => {
+      return {
+        ...state,
+        user: action.user,
+      }
+    }),*/
  
   );
   

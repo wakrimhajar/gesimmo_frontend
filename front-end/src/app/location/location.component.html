@@ -28,8 +28,9 @@
                              </div>
                          </div>
                          <div class=" col-md-6 text-right mt-4">
+                          <button *ngIf="table" type="button" class="btn btn-secondary " style="background-color: #5e72e4;" (click)="exportexcel()">Exporter</button>
                           <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;color: white" (click)="listActif()">Actifs </button>
-                          <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;color: white" (click)="listArchiv()">Archive </button>
+                          <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;color: white" (click)="listArchiv()">Archives </button>
                           <button type="button"  class="btn btn-secondary" style="background-color: #5e72e4; color: white" routerLink="/create-location">Nouveau </button>
                         </div>
                         </div>
@@ -37,7 +38,7 @@
                       </div>
                      
                     <div class="table-responsive" *ngIf="table">
-                      <table class="table " >
+                      <table class="table " id="excel-table">
                       <thead class="thead-light">
                         <tr >
                           <th scope="col">Date entrée</th>

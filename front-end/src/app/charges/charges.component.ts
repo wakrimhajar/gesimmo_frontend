@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Charge } from '../Model/charge';
 import { Router } from '@angular/router';
+import * as XLSX from 'xlsx';
 import { JarwisService } from '../Services/jarwis.service';
 @Component({
   selector: 'app-charges',
@@ -13,6 +14,7 @@ export class ChargesComponent implements OnInit {
   table:boolean=false;
   charge = new Charge();
   charges=[] as any ;
+  fileName='Charges.xlsx';
   value:any;
   constructor(private Jarwis:JarwisService,private router:Router) { }
 
@@ -39,5 +41,19 @@ export class ChargesComponent implements OnInit {
         console.log(this.charges);
         this.table=true;
       },error=>console.log(error));
+   }
+   exportexcel(): void
+   {
+     /* pass here the table id */
+     let element = document.getElementById('excel-table');
+     const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+  
+     /* generate workbook and add the worksheet */
+     const wb: XLSX.WorkBook = XLSX.utils.book_new();
+     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+  
+     /* save to file */  
+     XLSX.writeFile(wb, this.fileName);
+  
    }
 }

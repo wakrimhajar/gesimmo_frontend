@@ -5,7 +5,7 @@ import { Location } from '../Model/location';
 import { JarwisService } from '../Services/jarwis.service';
 import { Router } from '@angular/router';
 import { Charge } from '../Model/charge';
-
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-paiement',
@@ -16,6 +16,7 @@ export class PaiementComponent implements OnInit {
   table:boolean=true;
   factures=[] as any ;
   facturesInfos=[] as any ;
+  fileName='Paiements.xlsx';
  facture = new Charge();
  public form = {
   date_paiement:null,
@@ -85,6 +86,21 @@ message : boolean = false;
   },
        error => console.log(error)
       );
+  }
+
+  exportexcel(): void
+  {
+    /* pass here the table id */
+    let element = document.getElementById('excel-table');
+    const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+ 
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+ 
+    /* save to file */  
+    XLSX.writeFile(wb, this.fileName);
+ 
   }
 
 }

@@ -21,6 +21,7 @@
                         <div class="row">
                           <div class="col-lg-2 text-left"><span class="card-title" style="color: #5e72e4;"><b>Filtrer</b></span><!--span style="color: grey"> Utilisez les options pour filtrer</span--></div>
                           <div class=" col-10 text-right">
+                            <button *ngIf="table" type="button" class="btn btn-secondary " style="background-color: #5e72e4;" (click)="exportexcel()">Exporter</button>
                             <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;color: white" (click)="listActif()">Actifs </button>
                             <button type="button"  class="btn btn-secondary" style="background-color: #5e72e4; color: white">Bilan </button>
                           </div>
@@ -57,7 +58,7 @@
                       </div-->
                     </div>
                     <div class="table-responsive" *ngIf="table">
-                      <table class="table " >
+                      <table class="table " id="excel-table">
                       <thead class="thead-secondary text-dark text-center">
                         <tr >
                           <th scope="col">Mois</th>
@@ -78,7 +79,7 @@
                         <!--<td>{{facture.date_paiement}}</td>
                           <td>{{facture.statut}}</td>-->  
                           <td class="text-center ">{{facture.mois_paiement}}</td>
-                          <td class="text-center">{{facture["location"]["bien"].identifiant}}</td>
+                          <td class="text-center">{{facture["location"]["bien"].adresse}}</td>
                           <td class="text-center">{{facture["location"]["user"].nom}}</td>
                           <td class="text-center">{{facture["location"].identifiant}}</td>
 

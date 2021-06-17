@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { Bien } from '../Model/bien';
 import { Router } from '@angular/router';
 import { JarwisService } from '../Services/jarwis.service';
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-bien',
   templateUrl: './bien.component.html',
@@ -14,6 +15,7 @@ export class BienComponent implements OnInit {
   table:boolean=false;
   bien = new Bien();
   biens=[] as any ;
+  fileName='Biens.xlsx';
   value:any;
   constructor(private Jarwis:JarwisService,private router:Router) { }
 
@@ -55,4 +57,18 @@ fonction(event :any){
       this.table=true;
     },error=>console.log(error));
  }
+ exportexcel(): void
+   {
+     /* pass here the table id */
+     let element = document.getElementById('excel-table');
+     const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+  
+     /* generate workbook and add the worksheet */
+     const wb: XLSX.WorkBook = XLSX.utils.book_new();
+     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+  
+     /* save to file */  
+     XLSX.writeFile(wb, this.fileName);
+  
+   }
 }

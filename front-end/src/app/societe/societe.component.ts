@@ -14,7 +14,7 @@ export class SocieteComponent implements OnInit {
  table:boolean=false;
   user = new User();
   users=[] as any ;
-  fileName='ExcelSheet.xlsx';
+  fileName='Propriétaires.xlsx';
   id:any;
   value:any;
   imagepath:any='http://127.0.0.1:8000/storage/img/';

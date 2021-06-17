@@ -45,6 +45,8 @@ export class EditLocationComponent implements OnInit {
       data => console.log(data), error => console.log(error)
       );
     this.location = new Location();
+    var element = document.getElementById("CloseButtonEdit") as any;
+    element.click();
     this.router.navigate(['/location']);
 }
 

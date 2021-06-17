@@ -40,7 +40,7 @@ export class DetailsLocationComponent implements OnInit {
         this.opensweetalert();
         else
         this.erreur();
-        var element = document.getElementById("CloseButton") as any;
+        var element = document.getElementById("CloseButtonArc") as any;
         element.click();
         this.router.navigate(['location'])
   }

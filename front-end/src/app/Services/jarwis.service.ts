@@ -163,6 +163,10 @@ getPaimentByMois(){
  updatePaie(id: number,data:any){
   return  this.http.put(`${this.baseUrl}/updateF/`+id,data)
  }
+ updateImp(){
+  return  this.http.get(`${this.baseUrl}/imp`)
+ }
+
 
  getInfos(id: number){
   return  this.http.get(`${this.baseUrl}/getInfos/`+id)

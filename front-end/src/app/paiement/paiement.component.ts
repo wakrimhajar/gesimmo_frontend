@@ -28,14 +28,15 @@ message : boolean = false;
 
   ngOnInit(): void {
     this.message = false;
-    this.Jarwis.getPaimentByMois().subscribe(
+    
+    this.Jarwis.updateImp().subscribe(
       
       data => {console.log("clicked!");
       console.log(data);  
       
      this.factures=Object.values(data);
-     console.log(this.factures);
-    
+     //console.log(this.factures);
+
      
      //this.handleResponse(data, this.factures.id)
     }, 

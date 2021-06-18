@@ -80,7 +80,9 @@
                           <td>{{facture.statut}}</td>-->  
                           <td class="text-center ">{{facture.mois_paiement}}</td>
                           <td class="text-center">{{facture["location"]["bien"].adresse}}</td>
-                          <td class="text-center">{{facture["location"]["user"].nom}}</td>
+                          <td class="text-center">{{facture["location"]["user"].nom}}
+                            {{facture["location"]["user"].prenom}}
+                          </td>
                           <td class="text-center">{{facture["location"].identifiant}}</td>
 
                           <td class="text-center">{{facture.montant_total}}  <p *ngIf="facture.mois_impaye >= 1" class="text-danger" style="font-size: smaller;"><b> *{{facture.mois_impaye}} </b> </p></td>

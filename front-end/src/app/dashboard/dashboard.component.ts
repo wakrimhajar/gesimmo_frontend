@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit {
   user = new User() as any;
   bien = new Bien() as any;
   location = new Location() as any;
+  charts=[] as any;
   x:any;
   y:any;
   z:any;
@@ -46,11 +47,15 @@ export class DashboardComponent implements OnInit {
      var infos = sessionStorage.getItem('user');
      console.log("storage: "+infos);
       console.log("infouser "+this.InfoUser.prenom);
-    this.store.dispatch(browserReload(this.user))
+   // this.store.dispatch(browserReload(this.user))
     this.listproprietaire();
     this.listlocataire();
     this.listlocation();
     this.listbien();
+
+    this.Jarwis.getChats().subscribe(
+      data => {console.log(data);  this.charts=Object.values(data);}, error => console.log(error)
+      );
 
 /*SELECT mois_paiement,SUM(montant_recu) FROM
  `factures` WHERE YEAR(NOW())=YEAR(mois_paiement) 

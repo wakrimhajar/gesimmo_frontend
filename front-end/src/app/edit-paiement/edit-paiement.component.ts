@@ -9,6 +9,8 @@ import {NgForm} from '@angular/forms';
 import { TestBed } from '@angular/core/testing';
 import { Bien } from '../Model/bien';
 import { User } from '../Model/user';
+import { Mode } from '../Model/mode';
+import { Location } from '../Model/location';
 import { NgModule } from '@angular/core';
 
 
@@ -23,6 +25,8 @@ export class EditPaiementComponent implements OnInit {
   public bien : Bien=new Bien;
   public proprietaire : User=new User;
   public factures : Charge[]=[];
+  public mode : Mode=new Mode;
+  public location : Location=new Location;
   test : any;
   id: any;
   a:any;
@@ -43,6 +47,7 @@ export class EditPaiementComponent implements OnInit {
     .subscribe(data => {
       console.log(data);
      this.test1(data);
+     this.total = this.location.montant - this.facture.montant_recu;
     
     // data[0]=this.id;
    // console.log(data[0]);
@@ -59,6 +64,30 @@ export class EditPaiementComponent implements OnInit {
     
   }
 
+  //Nouveau  
+  addPaiement(){
+    this.mode.facture_id = this.id;
+    this.Jarwis.addP(this.mode).subscribe(
+      
+      data => {console.log("clicked!");console.log(data); this.alert();this.back();
+
+    }, error => console.log(error)
+      );
+
+  }
+  //Nouveau 
+  updateM(){
+    console.log(this.mode.id)
+    /*this.Jarwis.updateMP(this.mode.id, this.mode).subscribe(
+      
+      data => {console.log("clicked!");console.log(data); //this.alert(); this.back();
+
+    }, error => console.log(error)
+      );*/
+
+  }
+
+
   updateFac(){
     this.Jarwis.updatePaie(this.id, this.facture).subscribe(
       
@@ -73,18 +102,22 @@ export class EditPaiementComponent implements OnInit {
     this.bien = data["location"]["bien"];
     this.proprietaire = data["location"]["bien"]["user"];
     this.locataire = data["location"]["user"];
+    this.location = data["location"];
    console.log(data["location"].id);
 
   }
  
-  sum (ab:any, ad:any) {
-    this.total = ab - ad;
-    if((this.total > 0) || (this.total<0)) {this.message = true;this.alertError()}
+  //Nouveau
+  sum (mt:any, mr:any, m:any) {
+    this.total = mt - mr -m;
+   // if((this.total > 0) || (this.total<0)) {this.message = true;this.alertError()}
     if(this.total==0){
       this.message = false;
       
     }
   }
+
+
   alert(){
     Swal.fire({
       title: 'paiement ',
@@ -107,7 +140,7 @@ export class EditPaiementComponent implements OnInit {
       cancelButtonText: 'annuler'  
     }).then((result) => {  
       if (result.value) {  
-        this.updateFac();
+        this.addPaiement();
       } /*else if (result.dismiss === Swal.DismissReason.cancel) {  
         Swal.fire(  
           'Annulé!',  

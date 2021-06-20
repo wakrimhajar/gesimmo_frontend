@@ -175,5 +175,13 @@ getPaimentByMois(){
  getChats(){
   return  this.http.get(`${this.baseUrl}/Charts`)
  }
+
+ //MODE 
+ addP(data:any){
+  return  this.http.post(`${this.baseUrl}/addM`,data)
+ }
+ updateMP(id: number,data:any){
+  return  this.http.put(`${this.baseUrl}/updateM/`+id,data)
+ }
 }
 

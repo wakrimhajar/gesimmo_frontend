@@ -7,6 +7,8 @@ export class Location
   date_sortie:any;
   montant:any;
   type:any;
+  caution : any;
+  nbr_mois_caution : any;
   bien_id:any;
   user_id:any;
 }

@@ -31,6 +31,7 @@ export class DashboardComponent implements OnInit {
   charts=[] as any;
   dates=[] as any;
   montants=[] as any;
+  charges=[] as any;
   x:any;
   y:any;
   z:any;
@@ -56,42 +57,54 @@ export class DashboardComponent implements OnInit {
     this.listbien();
 
     this.Jarwis.getChats().subscribe(
-      data => {console.log(data);  this.charts=Object.values(data);
+      data1 => {console.log(data1);  this.charts=Object.values(data1);
         console.log(this.charts);
-        this.dates = this.charts.map(function(elem:any){
+        
+        this.dates = this.charts[0].map(function(elem:any){
           return elem.mois_paiement;
         
-        }).join(', ');
+        });
         
-        this.montants = this.charts.map(function(elem:any){
+        this.montants = this.charts[0].map(function(elem:any){
           return elem.montant;
         
-        }).join(', ');
-      /*  this.charts.forEach((element:any) => {
-          console.log(element.mois_paiement);
+        });
 
-        });*/
+        this.charges = this.charts[1].map(function(elem:any){
+          return elem.montant;
+        
+        });
+
+        const data = {
+          //labels: ['2021-05-01','2021-06-01','2021-07-01','2021-08-01','2021-09-01','2021-10-01','2021-11-01','2021-12-01'],
+          labels:this.dates,
+          datasets: [{
+            label: 'Les bénéfices',
+            backgroundColor: 'rgb(102, 231, 145)',
+            borderColor: 'rgb(102, 231, 145)',
+          // data:[12350, 23300, 0, 0, 0, 0, 0 ,0],
+            data:this.montants
+          },
+          /*{
+            label: 'My Second dataset',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            //data: [10, 2, 50, 30, 20, 45, 30 ],
+            data:this.charges
+          }*/]
+        };
+/*SELECT date_paiement,SUM(montant_total) as montant FROM
+`charges`  WHERE YEAR(NOW())=YEAR(date_paiement) 
+ GROUP BY MONTH(date_paiement)  ;*/ 
+    var myChart = new Chart("myChart", {
+      type: 'line',
+      data,
+      options: { }
+    });
         
       }, error => console.log(error)
       );
-
-/*SELECT mois_paiement,SUM(montant_recu) FROM
- `factures` WHERE YEAR(NOW())=YEAR(mois_paiement) 
- GROUP BY mois_paiement;
-*/ 
-/*this.charts.forEach((element:any) => {
-  this.dates.push(element.mois_paiement);
-  console.log("dates : "+this.dates);
-});
-this.charts.forEach((element:any) => {
-  this.montants.push(element.montant);
-  console.log("montants : "+this.montants);
-});*/
-
-
-
-/*var equipements=this.charts.map((obj: { mois_paiement: any; })=>obj.mois_paiement).join(' , ');
-    console.log("equip : "+equipements);*/
+     
     var ctx = document.getElementById('myChart');
     const labels = [
       'Janvier',
@@ -107,29 +120,7 @@ this.charts.forEach((element:any) => {
       'Novembre',
       'Décembre'
     ];
-    const data = {
-      //labels: ['2021-05-01','2021-06-01','2021-07-01','2021-08-01','2021-09-01','2021-10-01','2021-11-01','2021-12-01'],
-        labels:this.dates,
-      datasets: [{
-        label: 'My First dataset',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-       // data:[12350, 23300, 0, 0, 0, 0, 0 ,0],
-        data:this.montants
-      },
-     /* {
-        label: 'My Second dataset',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: [10, 2, 50, 30, 20, 45, 30 ],
-        
-      }*/]
-    };
-var myChart = new Chart("myChart", {
-  type: 'line',
-  data,
-  options: {}
-});
+
 
   }
 

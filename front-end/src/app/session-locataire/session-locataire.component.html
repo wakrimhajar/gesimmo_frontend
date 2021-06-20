@@ -14,7 +14,7 @@
       <i class="fas fa-home fa-2x"></i>
     </div>
     <div class="  text-center">
-      <button class="btn "style=" color: blanchedalmond;" (click)="bien_user()">Mes location</button>
+      <button class="btn "style=" color: blanchedalmond;" ><!--(click)="bien_user()"-->Mes location</button>
     </div>
   </div>
 
@@ -23,7 +23,7 @@
       <i class="ni ni-pin-3 fa-2x"></i>
     </div>
     <div class="  text-center">
-      <button class="btn "style=" color: blanchedalmond;" (click)="location_user()">Mes loyers</button>
+      <button class="btn "style=" color: blanchedalmond;" ><!--(click)="location_user()"--> Mes loyers</button>
     </div>
   </div>
 
@@ -32,7 +32,7 @@
       <i class="fas fa-euro-sign fa-2x"></i>
     </div>
     <div class="  text-center">
-      <button class="btn "style=" color: blanchedalmond;" (click)="paiement_user()">Paiement</button>
+      <button class="btn "style=" color: blanchedalmond;" ><!--(click)="paiement_user()"-->Paiement</button>
     </div>
   </div>
 
@@ -41,13 +41,13 @@
       <i class="fas fa-euro-sign fa-2x"></i>
     </div>
     <div class="  text-center">
-      <button class="btn "style=" color: blanchedalmond;" (click)="charge_user()">Mes propriétaires</button>
+      <button class="btn "style=" color: blanchedalmond;" ><!--(click)="charge_user()"-->Mes propriétaires</button>
     </div>
   </div>
 </div>
 
 <!--table bien-->
-<div class="col-9 mt-4 my-2" *ngIf="bien">
+<div class="col-9 mt-4 my-2" ><!--*ngIf="bien"-->
   <div class="table-responsive">
     <table class="table " >
     <thead class="thead-light">
@@ -59,21 +59,21 @@
       <!--  <th scope="col">Action</th>-->
       </tr>
     </thead>
-    <tbody >
+    <!--tbody >
       <tr *ngFor="let bien of biens">
         <td>{{bien.adresse}}</td>
         <td>{{bien.surface}}</td>
         <td>{{bien.statut}}</td>
         <td>{{bien.loyer_mensuel}}</td>
-   <!--     <td><a style="background-color: #5e72e4 !important;"  class="btn btn-primary"  >Détails</a>-->
+  
       </tr>
-    </tbody>
+    </tbody-->
     </table>
   </div>
 </div>
 
 <!--table charge-->
-<div class="col-9 mt-4 my-2" *ngIf="charge">
+<div class="col-9 mt-4 my-2" ><!--*ngIf="charge"-->
   <table class="table">
     <thead>
       <tr>

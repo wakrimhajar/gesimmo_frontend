@@ -94,7 +94,7 @@
                           <td class="text-center">{{facture.date_paiement}}</td>
                          
                           <!-- message erreur /  message de confirmation / editer apres payer / affichage locataires par mois / notification et mail dans le cas de paiement et des impayés -->
-                          <td class="text-center">
+                          
                             <td class="text-center">
                               <button *ngIf="facture.etat_paiement != 'Payé'" class="btn btn-sm btn-light" (click)="paie(facture.id)"   data-toggle="tooltip" data-placement="bottom" title="ajouter un enregistrements">
                                 <i  class="fa fa-plus"></i>

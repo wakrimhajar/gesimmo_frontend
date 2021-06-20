@@ -26,7 +26,7 @@ export class AuthEffects {
     private router: Router
   ) {}
 
-  login$ = createEffect(() => {
+  /*login$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(loginStart),
       exhaustMap((action) => {
@@ -34,9 +34,9 @@ export class AuthEffects {
           map((data) => {
            /* this.store.dispatch(setLoadingSpinner({ status: false }));
             this.store.dispatch(setErrorMessage({ message: '' }));*/
-            const user = this.authService.formatUser(data);
-         /*   this.authService.setUserInLocalStorage(user);*/
-            return loginSuccess({ user, redirect: true });
+           // const user = this.authService.formatUser(data);
+         //   this.authService.setUserInLocalStorage(user);*/
+           /* return loginSuccess({ user, redirect: true });
           }),
        /*   catchError((errResp) => {
            this.store.dispatch(setLoadingSpinner({ status: false }));
@@ -45,10 +45,10 @@ export class AuthEffects {
             );
             return of(setErrorMessage({ message: errorMessage }));
           })*/
-        );
+     /*   );
       })
     );
-  });
+  });*/
 
   loginRedirect$ = createEffect(
     () => {

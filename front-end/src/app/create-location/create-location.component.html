@@ -118,7 +118,7 @@
         </label>
       </div>
     </div>
-    <div class="col">
+    <div class="col" *ngIf="location.caution == 1">
       <label for="duree" class="form-label"><b>Nombre de mois de Caution</b></label>
       <input type="text" class="form-control" placeholder="(Nombre de mois)" aria-label="duree_caution" id="duree_caution" name="duree_caution" [(ngModel)]="location.nbr_mois_caution">
     </div>

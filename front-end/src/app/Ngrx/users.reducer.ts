@@ -8,7 +8,8 @@ const _authReducer = createReducer(
     return {
       ...state,
     //  user: action.user,
-    user: action.user,
+    email: action.email,
+    password: action.password
     };
   }),
 

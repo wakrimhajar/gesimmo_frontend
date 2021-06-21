@@ -14,7 +14,7 @@
       <i class="fas fa-home fa-2x"></i>
     </div>
     <div class="  text-center">
-      <button class="btn "style=" color: blanchedalmond;" ><!--(click)="bien_user()"-->Mes location</button>
+      <button class="btn "style=" color: blanchedalmond;" (click)="locations_users()">Mes location</button>
     </div>
   </div>
 
@@ -23,7 +23,7 @@
       <i class="ni ni-pin-3 fa-2x"></i>
     </div>
     <div class="  text-center">
-      <button class="btn "style=" color: blanchedalmond;" ><!--(click)="location_user()"--> Mes loyers</button>
+      <button class="btn "style=" color: blanchedalmond;"(click)="biens_users()"> Mes loyers</button>
     </div>
   </div>
 
@@ -46,34 +46,64 @@
   </div>
 </div>
 
-<!--table bien-->
-<div class="col-9 mt-4 my-2" ><!--*ngIf="bien"-->
+<!--table location-->
+<div class="col-9 mt-4 my-2" *ngIf="location">
   <div class="table-responsive">
     <table class="table " >
     <thead class="thead-light">
       <tr >
-        <th scope="col">Adresse</th>
-        <th scope="col">Surface</th>
-        <th scope="col">Statut</th>
+        <th scope="col">Identifiant</th>
+        <th scope="col">Date entrée</th>
+        <th scope="col">Date de sortie</th>
         <th scope="col">Loyer mensuel</th>
       <!--  <th scope="col">Action</th>-->
       </tr>
     </thead>
-    <!--tbody >
-      <tr *ngFor="let bien of biens">
-        <td>{{bien.adresse}}</td>
-        <td>{{bien.surface}}</td>
-        <td>{{bien.statut}}</td>
-        <td>{{bien.loyer_mensuel}}</td>
-  
+
+    <tbody >
+      <tr *ngFor="let location of locations">
+        <td>{{location.identifiant}}</td>
+        <td>{{location.date_entree}}</td>
+        <td>{{location.date_sortie}}</td>
+        <td>{{location.montant}}</td>
+
       </tr>
-    </tbody-->
+    </tbody>
+
+    </table>
+  </div>
+</div>
+
+<!--table bien-->
+<div class="col-9 mt-4 my-2" *ngIf="bien">
+  <div class="table-responsive">
+    <table class="table " >
+    <thead class="thead-light">
+      <tr >
+        <th scope="col">Identifiant</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Surface</th>
+        <th scope="col">Type</th>
+      <!--  <th scope="col">Action</th>-->
+      </tr>
+    </thead>
+
+    <tbody >
+      <!--<tr *ngFor="let location of locations">
+        <td>{{location.identifiant}}</td>
+        <td>{{location.date_entree}}</td>
+        <td>{{location.date_sortie}}</td>
+        <td>{{location.montant}}</td>
+
+      </tr>-->
+    </tbody>
+
     </table>
   </div>
 </div>
 
 <!--table charge-->
-<div class="col-9 mt-4 my-2" ><!--*ngIf="charge"-->
+<div class="col-9 mt-4 my-2" ><!--*ngIf="charge"
   <table class="table">
     <thead>
       <tr>
@@ -86,7 +116,7 @@
     <tbody>
 
     </tbody>
-  </table>
+  </table>-->
 </div>
 </div>
 

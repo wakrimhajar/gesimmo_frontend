@@ -10,7 +10,7 @@ import { JarwisService } from '../Services/jarwis.service';
 //import { AuthActionTypes, LogIn, LogInSuccess } from './auth.actions';
 import { User } from '../Model/user';
 import { loginStart, loginSuccess } from './auth.actions';
-
+import * as AuthActions from './auth.actions';
 
 @Injectable()
 export class AuthEffects {
@@ -21,28 +21,23 @@ export class AuthEffects {
     private router: Router,
   ) {}
 
- 
-                 
                  login=createEffect( 
                     ()=> {return this.actions.pipe(
-                        ofType(loginStart),
-                        
+                        ofType(AuthActions.loginStart),
                        // map((action: LogIn) => action.payload),
                         exhaustMap((action) =>
                           this.authService
                             .login(action.email, action.password)
                             .pipe(
                               map((user) => {
-                                sessionStorage.setItem('user', JSON.stringify(user));
+                                localStorage.setItem('user', JSON.stringify(user));
                                //const user = this.authService.formatUser(data);
                                 console.log(user);
-                                return loginSuccess({user, redirect: true });
-                                
-                              },
-                             
+                              return AuthActions.loginSuccess({user, redirect: true });
                               
+                              //  return AuthActions.browserReload({user });
+                              },
                               ),
-                            
                             )
                         )
                  ) });  

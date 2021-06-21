@@ -19,5 +19,5 @@ export class User
     old_password: any;
     new_password: any;
     confirm_password: any;
-
+    archive:any;
 }

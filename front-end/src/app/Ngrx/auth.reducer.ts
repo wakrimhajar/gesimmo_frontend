@@ -1,27 +1,29 @@
 import { createReducer, on } from '@ngrx/store';
 import { User } from '../Model/user';
 import { initialState } from './app.states';
+import * as AuthActions from './auth.actions';
 import { loginSuccess ,browserReload} from './auth.actions';
 
-  const _authReducer = createReducer(
+ export const AuthReducer = createReducer(
     initialState,
     
-    on(loginSuccess, (state, action) => {
+    on(AuthActions.loginSuccess, (state, action) => {
       return {
         ...state,
         user: action.user,
-      }
+      };
     }),
-  /*  on(browserReload, (state, action) => {
+    /* AuthActions.browserReload, */
+  /*  on(AuthActions.browserReload, (state, action) => {
       return {
         ...state,
         user: action.user,
       }
-    }),*/
+    }), */
  
   );
   
-  export function AuthReducer(state:any, action:any) {
+ /* export function AuthReducer(state:any, action:any) {
     return _authReducer(state, action);
-  }
+  }*/
 

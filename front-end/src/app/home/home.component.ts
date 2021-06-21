@@ -57,7 +57,9 @@ export class HomeComponent implements OnInit {
       redirect: true
      };
 
-      this.store.dispatch( loginStart(payload))
+      this.store.dispatch( loginStart({email: this.user.email,
+        password: this.user.password})
+        );
       this.store.dispatch(loginSuccess(payload2))
 
            this.id = this.store.select(getInfoUser);

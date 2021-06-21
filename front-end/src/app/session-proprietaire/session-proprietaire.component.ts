@@ -24,7 +24,9 @@ constructor(private route: ActivatedRoute,private router: Router,private token: 
 
   listActif(){
     this.Jarwis.bienprop(this.id).subscribe(
-      data => {console.log(data);  this.biens=Object.values(data);}, error => console.log(error)
+      data => {console.log(data);
+        this.biens=Object.values(data);},
+        error => console.log(error)
       );
       this.bien=true;
   }

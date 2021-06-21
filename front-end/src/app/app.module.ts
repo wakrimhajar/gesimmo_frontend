@@ -60,6 +60,7 @@ import { AuthReducer } from './Ngrx/auth.reducer';
 import { appReducer } from './Ngrx/store/state';
 import { ContactsComponent } from './contacts/contacts.component';
 import { ServiceHomeComponent } from './service-home/service-home.component';
+import { ModePaiementComponent } from './mode-paiement/mode-paiement.component';
 
 @NgModule({
   declarations: [
@@ -107,6 +108,7 @@ import { ServiceHomeComponent } from './service-home/service-home.component';
     QuittancePaiementComponent,
     ServiceHomeComponent,
     ContactsComponent,
+    ModePaiementComponent,
 
   ],
   imports: [

@@ -188,5 +188,14 @@ getPaimentByMois(){
  updateMP(id: number,data:any){
   return  this.http.put(`${this.baseUrl}/updateM/`+id,data)
  }
+
+ //modes 
+ getModes(id: number){
+  return  this.http.get(`${this.baseUrl}/getMF/`+id)
+ }
+ //sum
+ getSomme(id: number){
+  return  this.http.get(`${this.baseUrl}/getS/`+id)
+ }
 }
 

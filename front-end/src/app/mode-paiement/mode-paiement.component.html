@@ -1,0 +1,171 @@
+<div class="row">
+    <div class="col-sm-2">
+      <app-menu></app-menu>
+    </div>
+    <div class="col-sm-10" >
+      <app-header></app-header>
+      <div class="header bg-primary pb-6" style="background-color: #fff !important;"></div>
+    <div class="container ">
+      <div class="p-3 ">
+        <div class="container-fluid mt--6">
+          <div class="row ">
+          <div class=" col ">
+        <div class="card  " style="width: 100%; margin-left: 0px; background-color: #fff !important;" >
+          <div class="card-header text-center">     <strong>Historique des paiements de : {{facture.mois_paiement}} </strong> </div>
+         
+  
+    <div class="card-body">
+      <div class="row">
+       
+             <table class="table table-clear table-borderless" style="margin-bottom: 2%;" >
+                <thead class="bg-secondary text-white text-center">
+                    <tr>
+                      
+                      <th classe="col" colspan="2">Informations générales :   </th>
+                    </tr>
+                  </thead>
+              
+                   <tbody>
+                        <tr >
+                            <td class="left table-light" style="margin-left: 0px; width: 20%;">
+                                <strong>Bien</strong>
+                            </td>
+                            <td class="right">{{bien.adresse}}</td>
+                        </tr>
+                        <tr>
+                          <td class="left table-light">
+                              <strong>Propietaire</strong>
+                          </td>
+                          <td class="right">{{proprietaire.nom}} {{proprietaire.prenom}}</td>
+                      </tr>
+                        <tr>
+                            <td class="left table-light">
+                                <strong>Locataire</strong>
+                            </td>
+                            <td class="right">{{locataire.nom}} {{locataire.prenom}}</td>
+                        </tr>
+                 
+                    </tbody>
+                </table>
+            
+                  
+                <div class="card" style="width: 100%;" [hidden]="!error">
+                  <div class="card-body">
+                    <div class="text-danger text-center" >
+                      <strong> {{error}}</strong> .
+                  </div>
+                  </div>
+                </div>
+                <div class="table-responsive" [hidden]= "error">
+                    <table class="table " >
+                    <thead class="bg-secondary text-white text-center">
+                      <tr >
+                        <th scope="col">Date de paiement</th>
+                        <th scope="col">Montant</th>
+                        <th scope="col">mode_paiement</th>
+                        <th scope="col">no cheque/ virement</th>
+
+                        <th scope="col">Banque</th>
+                        <th scope="col">Etat  </th>
+                        <th scope="col">no remise</th>
+                        <th scope="col"> Date de remise  </th>
+
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                   
+                    <tbody >
+                        <tr class="shadow p-3 mb-5 bg-white rounded" *ngFor="let mode of modes">
+                            <!--<td>{{facture.date_paiement}}</td>
+                              <td>{{facture.statut}}</td>-->  
+                              
+                              
+                              <td class="text-center ">{{mode.date}}</td>
+                              <td class="text-center"><b>{{mode.montant}}</b></td>
+                              <td class="text-center">{{mode.mode_paiement}}</td>
+                              <td class="text-center" *ngIf="mode.numero_operation != null">{{mode.numero_operation}}</td>
+                              <td class="text-center" *ngIf="mode.numero_operation == null">*******</td>
+      
+                              <td class="text-center" >{{mode.banque}}  </td>
+                            
+                              <td *ngIf="mode.etat == 'Encaissé'"><span class="badge badge-success p-2 text-white" style="width: 100%;">Encaissé</span></td>
+                              <td *ngIf="mode.etat == 'reglé'"><span class="badge badge-success p-2 text-white" style="width: 100%;">réglé</span></td>
+                              <td *ngIf="mode.etat == 'appliqué'"><span class="badge badge-success p-2 text-white" style="width: 100%;">Payé</span></td>
+                            
+                             <td *ngIf="mode.etat == 'En cours de traitement'"><span class="badge badge-warning p-2 text-white" style="width: 100%;">En cours de traitement</span></td>
+      
+                             <td class="text-center "  *ngIf="mode.etat == 'Encaissé' || mode.etat == 'Executé' || mode.etat == 'reglé' || mode.etat == 'appliqué'" >{{mode.numero_remise}}</td>
+                             <td class="text-center "  *ngIf="mode.etat == 'En cours de traitement'" > <i>En attente </i></td>
+                             <td class="text-center" *ngIf="mode.date_remise != null">{{mode.date_remise}}</td>
+                              <td class="text-center" *ngIf="mode.date_remise == null">*******</td>
+                             
+                              <!-- message erreur /  message de confirmation / editer apres payer / affichage locataires par mois / notification et mail dans le cas de paiement et des impayés -->
+                              <td class="text-center" *ngIf="mode.mode_paiement == 'cheque' || mode.mode_paiement == 'virement' ">
+                                <button class="btn btn-sm btn-light addMore"  *ngIf="mode.etat == 'En cours de traitement'" data-toggle="tooltip" data-placement="bottom" title="modifier" [disabled]="mode.etat == 'Encaissé' || mode.etat == 'Executé'">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                                <button class="btn btn-sm btn-light addMore"  *ngIf="mode.etat == 'En cours de traitement' ||  mode.etat == 'Encaissé' || mode.etat == 'Executé'" data-toggle="tooltip" data-placement="bottom" title="signaler un probleme de paiement " >
+                                    <i class="fa fa-question-circle"></i>
+                                </button>
+                       
+                              </td>
+                              <td class="text-center" *ngIf="mode.mode_paiement == 'espece' || mode.mode_paiement == 'caution' "> ___ </td>
+                            </tr>
+                     
+                    </tbody>
+                    </table>
+                   
+
+                   </div>
+                   <div>
+                          
+         
+  </div>
+                
+  <div class="container " style="margin-top: 30px ;">
+    <div class="row" style=" font-weight: bolder; margin-bottom: 10px;">
+        <div class="col-9"></div>
+        <div class="col-3 ">Montant total : <b> {{facture.montant_total}} DH </b></div>
+</div>
+<div class="row" style=" font-weight: bolder; margin-bottom: 10px;">
+    <div class="col-9"></div>
+    <div class="col-3 ">Montant payé : <b class="text-success"> {{facture.montant_recu}} DH </b></div>
+</div>
+<div class="row" style=" font-weight: bolder; margin-bottom: 10px;">
+    <div class="col-9"></div>
+    <div class="col-3 " ><i>Montant en attente   : <p class="text-danger"> {{total}} Dh </p></i></div>
+</div>
+
+
+
+
+</div>
+
+
+<div class="pull-right">
+    <div class="buttons">
+    <button type="button" class=" float-left btn btn-primary" style="background-color: #5e72e4 !important;">Retour</button>
+    <button type="submit" class="float-right btn btn-primary" style="background-color: #5e72e4 !important;">exporter</button>
+    </div>
+  </div>
+
+
+
+ 
+  
+
+  
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <app-footer></app-footer>
+
+
+
+ 
+ 

@@ -62,7 +62,7 @@ opensweetalert(){
  }
 
  onClick(){
-  var element = document.getElementById("CloseButton") as any;
+  var element = document.getElementById("CloseButMP") as any;
   element.click();
 
   if(Object.values(this.user).length!=0)
@@ -72,7 +72,7 @@ opensweetalert(){
 }
 
 close(){
-  var element = document.getElementById("CloseButton") as any;
+  var element = document.getElementById("CloseButMP") as any;
   element.click();
 }
 

@@ -69,7 +69,7 @@ alert(){
  }
 
  onClick(){
-  var element = document.getElementById("CloseButton") as any;
+  var element = document.getElementById("CloseButMPM") as any;
   element.click();
 
   if(Object.values(this.user).length!=0)
@@ -79,7 +79,7 @@ alert(){
 }
 
 close(){
-  var element = document.getElementById("CloseButton") as any;
+  var element = document.getElementById("CloseButMPM") as any;
   element.click();
 }
 

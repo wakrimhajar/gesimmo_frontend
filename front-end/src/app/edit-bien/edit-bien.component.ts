@@ -130,7 +130,7 @@ opensweetalert(){
 }
 
 onClick(){
-  var element = document.getElementById("CloseButton") as any;
+  var element = document.getElementById("CloseButMB") as any;
   element.click();
 
   if(Object.values(this.bien).length!=0)
@@ -149,7 +149,7 @@ onSelectAll(items: any) {
 
 
 close(){
-  var element = document.getElementById("CloseButton") as any;
+  var element = document.getElementById("CloseButMB") as any;
   element.click();
 }
 

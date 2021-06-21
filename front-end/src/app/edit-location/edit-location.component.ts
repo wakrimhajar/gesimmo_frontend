@@ -85,7 +85,7 @@ opensweetalert(){
  }
 
  onClick(){
-  var element = document.getElementById("CloseButton") as any;
+  var element = document.getElementById("CloseButtonEdit") as any;
   element.click();
 
   if(Object.values(this.location).length!=0)
@@ -95,7 +95,7 @@ opensweetalert(){
 }
 
 close(){
-  var element = document.getElementById("CloseButton") as any;
+  var element = document.getElementById("CloseButtonEdit") as any;
   element.click();
 }
 

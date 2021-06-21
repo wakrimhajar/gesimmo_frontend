@@ -111,7 +111,7 @@ export class DetailsLocationComponent implements OnInit {
 
 
    close(){
-    var element = document.getElementById("CloseButton") as any;
+    var element = document.getElementById("CloseButtonArc") as any;
     element.click();
   }
 }

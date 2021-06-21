@@ -109,7 +109,8 @@ export class EditPaiementComponent implements OnInit {
  
   //Nouveau
   sum (mt:any, mr:any, m:any) {
-    this.total = mt - mr -m;
+    if(m == null) {m = 0;}
+    else {this.total = mt - mr -m;}
    // if((this.total > 0) || (this.total<0)) {this.message = true;this.alertError()}
     if(this.total==0){
       this.message = false;

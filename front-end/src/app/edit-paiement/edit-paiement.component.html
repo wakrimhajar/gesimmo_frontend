@@ -21,7 +21,7 @@
                 <thead class="thead-dark text-center">
                   <tr>
                     
-                    <th classe="col" colspan="2">Revenu  </th>
+                    <th classe="col" colspan="2">Informations sur la location  </th>
                   </tr>
                 </thead>
                   <tbody>
@@ -66,15 +66,15 @@
                           <td class="left table-secondary">
                               <strong>Montant total</strong>
                           </td>
-                          <td class="right table-secondary">
+                          <td class="right ">
                               <strong>{{facture.montant_total}} DH</strong>
                           </td>
                       </tr>
                       <tr>
-                        <td class="left table-secondary">
+                        <td class="left table-secondary  ">
                             <strong>Montant payé</strong>
                         </td>
-                        <td class="right table-secondary text-green">
+                        <td class="right text-green">
                             <strong>{{facture.montant_recu}} DH</strong>
                         </td>
                     </tr>
@@ -124,12 +124,18 @@
                               </label>
                             </div>
                             <!---->
-                            <div class="row" *ngIf="mode.mode_paiement == 'virement' ">
-                              <div class="col">
-                                <input type="text" class="text-center input-sm" placeholder="Numero de virement" [(ngModel)]="mode.numero_operation" style="margin-left: 20px; width: 250px;">
+                            <div *ngIf="mode.mode_paiement == 'virement' ">
+                              <div class="row" >
+                                <div class="col-6">
+                                <input type="text" class="text-center input-sm" id="numeroVirement" name="numeroVirement" placeholder="Numero du virement" [(ngModel)]="mode.numero_operation" required style="width: 90%;">
                               </div>
-                              <div class="col">
-                                <input type="text" class="text-center input-sm" placeholder="Nom de la banque" [(ngModel)]="mode.banque" style="margin-left: 20px;width: 250px;">
+                              <div class="col-6">
+                                <input type="text" class="text-center input-sm" id="banqueVirement" name="banqueVirement" placeholder="Nom de la banque" [(ngModel)]="mode.banque" required style="width: 90%;">
+                              </div>
+                              </div>
+                              <div class="row" >
+                                <div class="text-danger" style="margin-top: 10px; margin-left: 20px;"> <i><b>NB : Ce montant  ne sera pris en considération qu'apres validation du virement.</b></i></div>
+
                               </div>
                             </div>
                             <!---->
@@ -140,13 +146,20 @@
                               </label>
                             </div>
                             <!---->
-                            <div class="row" *ngIf="mode.mode_paiement == 'cheque' ">
-                              <div class="col">
-                                <input type="text" class="text-center input-sm" placeholder="Numero du cheque" [(ngModel)]="mode.numero_operation">
+                            <div  *ngIf="mode.mode_paiement == 'cheque' ">
+                              <div class="row" >
+                                <div class="col-6">
+                                <input type="text" class="text-center input-sm" id="numeroCheque" name="numeroCheque" placeholder="Numero du cheque" [(ngModel)]="mode.numero_operation" required style="width: 90%;">
                               </div>
-                              <div class="col">
-                                <input type="text" class="text-center input-sm" placeholder="Nom de la banque" [(ngModel)]="mode.banque">
+                              <div class="col-6">
+                                <input type="text" class="text-center input-sm" id="banqueCheque"  name="banqueCheque" placeholder="Nom de la banque" [(ngModel)]="mode.banque" required style="width: 90%;">
                               </div>
+                              </div>
+                              <div class="row" >
+                                <div class="text-danger" style="margin-top: 10px; margin-left: 20px;"> <i><b>NB : Ce montant  ne sera pris en considération qu'apres validation de cheque.</b></i></div>
+
+                              </div>
+
                             </div>
                             <!---->
                             

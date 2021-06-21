@@ -64,7 +64,7 @@
   </div>
   <br>
     <div class="row row1">
-      <div class="col">
+      <!--div class="col">
         <label for="montant" class="form-label"><b>Montant</b></label>
         <input type="text" class="form-control" placeholder="Montant" aria-label="montant" id="montant" name="montant" [(ngModel)]="location.montant"
       required minlength="3" maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ngModel #Mantant="ngModel">
@@ -72,7 +72,7 @@
           <div *ngIf="Mantant.errors?.required">Champ obligatoire !</div>
           <div *ngIf="Mantant.errors?.minlength">Minimum 3 caractéres !</div>
         </div>
-      </div>
+      </div-->
       <div class="col">
         <label for="type" class="form-label"><b>Type</b></label>
         <select class="form-control" aria-label="Default select example" id="type" name="type" [(ngModel)]="location.type" required ngModel #type="ngModel">

@@ -11,4 +11,5 @@ export class Location
   nbr_mois_caution : any;
   bien_id:any;
   user_id:any;
+  archive:any
 }

@@ -54,7 +54,7 @@
               <div class="  text-right">
                 <button type="button" class="btn btn-secondary" routerLink="/locataire" style="background-color: #5e72e4;">Retour </button>
                 <button type="button" class="btn btn-secondary" (click)="createPdf()" style="background-color: #5e72e4;">Exporter </button>
-                <button type="button" class="btn btn-secondary"  data-toggle="modal" data-target="#myModal" style="background-color: #5e72e4;">Archiver</button>
+                <button *ngIf="user.archive==0" type="button" class="btn btn-secondary"  data-toggle="modal" data-target="#myModal" style="background-color: #5e72e4;">Archiver</button>
                 <button type="button" class="btn btn-secondary" (click)="editer(user.id)" style="background-color: #5e72e4;">Editer</button>
               </div>
           </div>
@@ -79,7 +79,7 @@
       <div  class="container-fluid" >
         <br>
         <i class="fa fa-exclamation-triangle text-warning" style="font-size:100px !important;"></i>
-        <button hidden id="CloseButton" type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+        <button hidden id="CloseButLM" type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
       </div><br>
     </div>
     <h5 class=" text-center" >Etes vous sur de vouloir Archiver</h5>

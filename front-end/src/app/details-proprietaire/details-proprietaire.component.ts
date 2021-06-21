@@ -41,7 +41,7 @@ export class DetailsProprietaireComponent implements OnInit {
         else
         this.erreur();
 
-        var element = document.getElementById("CloseButton") as any;
+        var element = document.getElementById("CloseButArP") as any;
         element.click();
         this.router.navigate(['societe']);
     }
@@ -140,7 +140,7 @@ opensweetalert(){
  }
 
  close(){
-  var element = document.getElementById("CloseButton") as any;
+  var element = document.getElementById("CloseButArP") as any;
   element.click();
 }
 

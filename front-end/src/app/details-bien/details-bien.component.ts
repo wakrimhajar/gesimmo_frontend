@@ -44,12 +44,12 @@ export class DetailsBienComponent implements OnInit {
         else
         this.erreur();
         this.router.navigate(['bien'])
-        var element = document.getElementById("CloseButton") as any;
+        var element = document.getElementById("CloseButArchB") as any;
         element.click();
   }
 
   close(){
-    var element = document.getElementById("CloseButton") as any;
+    var element = document.getElementById("CloseButArchB") as any;
     element.click();
   }
 

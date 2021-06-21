@@ -50,7 +50,7 @@
               <div class="  text-right">
                 <button type="button" class="btn btn-secondary" routerLink="/bien" style="background-color: #5e72e4;">Retour </button>
                 <button type="button" class="btn btn-secondary" style="background-color: #5e72e4;" (click)="createPdf()">Exporter </button>
-                <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-secondary"  style="background-color: #5e72e4;">Archiver</button>
+                <button type="button" *ngIf="bien.archive==0" data-toggle="modal" data-target="#myModal" class="btn btn-secondary"  style="background-color: #5e72e4;">Archiver</button>
                 <button type="button" class="btn btn-secondary" style="background-color: #5e72e4;"(click)="editer(bien.id)">Modifier</button>
               </div>
           </div>
@@ -74,7 +74,7 @@
       <div  class="container-fluid" >
         <br>
         <i class="fa fa-exclamation-triangle text-warning" style="font-size:100px !important;"></i>
-        <button hidden id="CloseButton" type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+        <button hidden id="CloseButArchB" type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
       </div><br>
     </div>
     <h5 class=" text-center" >Etes vous sur de vouloir Archiver</h5>

@@ -41,7 +41,7 @@ export class DetailsLocataireComponent implements OnInit {
         else
         this.erreur();
 
-        var element = document.getElementById("CloseButton") as any;
+        var element = document.getElementById("CloseButArL") as any;
         element.click();
         this.router.navigate(['locataire'])
   }
@@ -173,7 +173,7 @@ doc.setTextColor(100);
    }
 
    close(){
-    var element = document.getElementById("CloseButton") as any;
+    var element = document.getElementById("CloseButArL") as any;
     element.click();
   }
 }

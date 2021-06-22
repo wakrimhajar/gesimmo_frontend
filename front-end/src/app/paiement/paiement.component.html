@@ -102,9 +102,9 @@
                             <button  *ngIf="facture.etat_paiement == 'Payé'" class="btn btn-sm btn-light" (click)="paie(facture.id)"  [disabled]="facture.etat_paiement == 'Payé'" >
                               <i class="fas fa-check" style="color: green;"></i>
                           </button>
-                            <button class="btn btn-sm btn-light"  data-toggle="tooltip" data-placement="bottom" title="voir tous les enregistrements" >
-                              <i class="fa fa-align-justify"></i>
-                          </button>
+                          <button class="btn btn-sm btn-light"  data-toggle="tooltip" data-placement="bottom" title="voir tous les enregistrements" (click)="modes(facture.id)">
+                            <i class="fa fa-align-justify"></i>
+                        </button>
                             <button class="btn btn-sm btn-light addMore" (click)="quittance(facture.id)"  [disabled]="facture.etat_paiement != 'Payé'" data-toggle="tooltip" data-placement="bottom" title="Voir quittance" >
                               <i class="fa fa-info-circle"></i>
                           </button>

@@ -104,4 +104,16 @@ message : boolean = false;
  
   }
 
+  modes(id:number){
+    
+    console.log("Clicked!!!!!")
+    /*this.Jarwis.updatePaie(this.id, this.facture).subscribe(
+      
+      data => {console.log("clicked!");console.log(data);  this.factures=Object.values(data);}, error => console.log(error)
+      );*/
+      this.router.navigate(['/modes_paiement', id]);
+      //this.router.navigate(['/details-paiement', id]);
+
+  }
+
 }

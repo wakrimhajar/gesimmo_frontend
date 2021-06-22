@@ -86,6 +86,21 @@
               <input type="text" class="form-control" placeholder="Patente" aria-label="Patente" id="Patente" name="patente" [(ngModel)]="user.patente">
             </div>
           </div>
+          <div class="row row1">
+            <div class="col">
+              <label for="ICE" class="form-label"><b>ICE</b></label>
+                    <input type="text" class="form-control" placeholder="ICE" aria-label="ICE" id="ICE" name="ICE" [(ngModel)]="user.ICE"
+                    required minlength="6" maxlength="10" ngModel #ICE="ngModel">
+       <div *ngIf="ICE.touched && ICE.invalid " style="color: red;">
+        <div *ngIf="ICE.errors?.required">Champ obligatoire !</div>
+        <div *ngIf="ICE.errors?.minlength">Minimum 6 caractéres !</div>
+      </div>
+            </div>
+            <div class="col">
+              <label for="activite" class="form-label"><b>Activité du Société</b></label>
+                    <input type="text" class="form-control" placeholder="Activité du Société" aria-label="activite" id="activite" name="activite" [(ngModel)]="user.activite">
+            </div>
+          </div>
           <br>
           <div class="text-center"><h5 class="title"><b>Création du compte</b></h5></div>
           <div class="row row1">
@@ -108,7 +123,7 @@
           </div>
          <div class="pull-right">
           <div class="buttons">
-          <button type="button" class="btn btn-primary" style="background-color: #5e72e4 !important;">Annuler</button>
+          <button type="button" class="btn btn-primary" routerLink="/societe" style="background-color: #5e72e4 !important;">Annuler</button>
           <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success" style="background-color: #5e72e4 !important;">Modifier</button>
           <div class="modal" id="myModal">
             <div class="modal-dialog">

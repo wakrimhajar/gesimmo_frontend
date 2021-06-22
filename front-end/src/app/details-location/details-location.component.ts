@@ -77,8 +77,8 @@ export class DetailsLocationComponent implements OnInit {
     doc.text(': '+this.location.type, 55, 80);
     doc.text('La durée ', 25, 90);
     doc.text(': '+this.location.duree, 55, 90);
-    doc.text('Montant ', 25, 100);
-    doc.text(': '+this.location.montant, 55, 100);
+    /*doc.text('Montant ', 25, 100);
+    doc.text(': '+this.location.montant, 55, 100);*/
     doc.setTextColor(100);
      // below line for Open PDF document in new tab
      doc.output('dataurlnewwindow')

@@ -20,4 +20,6 @@ export class User
     new_password: any;
     confirm_password: any;
     archive:any;
+    activite:any;
+    ICE:any;
 }

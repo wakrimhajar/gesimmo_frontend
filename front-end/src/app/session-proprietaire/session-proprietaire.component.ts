@@ -15,6 +15,7 @@ location:boolean=false;
 paiement:boolean=false;
 charge:boolean=false;
 biens=[] as any ;
+charges=[] as any;
 public user: User = new User;
 constructor(private route: ActivatedRoute,private router: Router,private token: TokenService,private Jarwis:JarwisService) { }
 
@@ -29,6 +30,9 @@ constructor(private route: ActivatedRoute,private router: Router,private token: 
         error => console.log(error)
       );
       this.bien=true;
+      this.location=false;
+      this.paiement=false;
+      this.charge=true;
   }
 
   bien_user()
@@ -47,6 +51,36 @@ constructor(private route: ActivatedRoute,private router: Router,private token: 
     this.listActif();
   }
 
+  listCharge(){
+    this.Jarwis.charge(this.id).subscribe(
+      data => {console.log(data);
+        this.charges=Object.values(data);},
+        error => console.log(error)
+      );
+      this.bien=false;
+      this.location=false;
+      this.paiement=false;
+      this.charge=true;
+  }
+
+  charge_user()
+  {
+    this.id = this.route.snapshot.params['id'];
+    this.Jarwis.getuserbyid(this.id)
+    .subscribe(data => {
+    console.log(this.user)
+    data[0]=this.id;
+    console.log(data[0]);
+    this.user= data[0];
+    console.log(data)
+    this.user=data;
+    console.log(this.user)
+    }, error => console.log(error));
+    this.listCharge();
+  }
+
+
+
   location_user()
   {
     this.bien=false;
@@ -60,13 +94,6 @@ constructor(private route: ActivatedRoute,private router: Router,private token: 
     this.paiement=true;
   }
 
-  charge_user()
-  {
-    this.bien=false;
-    this.location=false;
-    this.paiement=false;
-    this.charge=true;
-  }
 
  /* detailbien(id : number){
     this.router.navigate(['/details-bien', id]);

@@ -77,14 +77,20 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Numéro</th>
+        <th scope="col">Description</th>
+        <th scope="col">Montant</th>
+        <th scope="col">Date de paiement</th>
       </tr>
     </thead>
     <tbody>
-
+      <tr *ngFor="let charge of charges">
+        <td>{{charge.id}}</td>
+        <td>{{charge.description}}</td>
+        <td>{{charge.montant_total}}</td>
+        <td>{{charge.date_paiement}}</td>
+   <!--     <td><a style="background-color: #5e72e4 !important;"  class="btn btn-primary"  >Détails</a>-->
+      </tr>
     </tbody>
   </table>
 </div>

@@ -141,6 +141,14 @@ addlocatairemor(data: any){
   return  this.http.get(`${this.baseUrl}/location/`+id);
  }
 
+ bien(id: number){
+  return  this.http.get(`${this.baseUrl}/biens/`+id);
+ }
+
+ charge(id: number){
+  return  this.http.get(`${this.baseUrl}/chargeByProp/`+id);
+ }
+
 getImmoById(id:number): Observable<any>{
   return this.http.get(`${this.baseUrl}/getImmoById/`+id)
 }
@@ -189,7 +197,7 @@ getPaimentByMois(){
   return  this.http.put(`${this.baseUrl}/updateM/`+id,data)
  }
 
- //modes 
+ //modes
  getModes(id: number){
   return  this.http.get(`${this.baseUrl}/getMF/`+id)
  }

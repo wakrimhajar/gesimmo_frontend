@@ -12,7 +12,7 @@ import { User } from '../Model/user';
 import { Mode } from '../Model/mode';
 import { Location } from '../Model/location';
 import { NgModule } from '@angular/core';
-
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-mode-paiement',
   templateUrl: './mode-paiement.component.html',
@@ -28,6 +28,7 @@ export class ModePaiementComponent implements OnInit {
   public mode : Mode=new Mode;
   public location : Location=new Location;
   public error=null;
+  fileName='Historique_Paiements.xlsx';
 //  test : any;
   id: any;
  // a:any;
@@ -87,6 +88,21 @@ export class ModePaiementComponent implements OnInit {
 
   handleError(error:any){
     this.error = error.error.error;
+  }
+
+  exportexcel(): void
+  {
+    /* pass here the table id */
+    let element = document.getElementById('excel-table');
+    const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+ 
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+ 
+    /* save to file */  
+    XLSX.writeFile(wb, this.fileName);
+ 
   }
 
 }

@@ -57,7 +57,7 @@
                   </div>
                 </div>
                 <div class="table-responsive" [hidden]= "error">
-                    <table class="table " >
+                    <table class="table " id="excel-table" >
                     <thead class="bg-secondary text-white text-center">
                       <tr >
                         <th scope="col">Date de paiement</th>
@@ -145,7 +145,7 @@
 <div class="pull-right">
     <div class="buttons">
     <button type="button" class=" float-left btn btn-primary" style="background-color: #5e72e4 !important;" routerLink="/paiement" >Retour</button>
-    <button type="submit" class="float-right btn btn-primary" style="background-color: #5e72e4 !important;">exporter</button>
+    <button type="submit" class="float-right btn btn-primary" style="background-color: #5e72e4 !important;" (click)="exportexcel()">exporter</button>
     </div>
   </div>
 

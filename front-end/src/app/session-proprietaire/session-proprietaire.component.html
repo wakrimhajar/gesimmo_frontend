@@ -6,7 +6,7 @@
       <i class="fas fa-chart-bar fa-2x"></i>
     </div>
     <div class="  text-center">
-      <button class="btn "style=" color: blanchedalmond;">Bilan</button>
+      <button class="btn "style=" color: blanchedalmond;" (click)="chart()">Bilan</button>
     </div>
   </div>
   <div class="p-2" style=" color: blanchedalmond;border-bottom: solid blanchedalmond;">
@@ -63,7 +63,9 @@
       <tr *ngFor="let bien of biens">
         <td>{{bien.adresse}}</td>
         <td>{{bien.surface}}</td>
-        <td>{{bien.statut}}</td>
+        <!--td>{{bien.statut}}</td-->
+        <td *ngIf="bien.statut == 'libre'"><span class="badge badge-success p-2 text-white" style="width: 60%;">{{bien.statut}}</span></td>
+        <td *ngIf="bien.statut == 'occupé'"><span class="badge badge-warning p-2 text-white" style="width: 60%;">{{bien.statut}}</span></td>
         <td>{{bien.loyer_mensuel}}</td>
    <!--     <td><a style="background-color: #5e72e4 !important;"  class="btn btn-primary"  >Détails</a>-->
       </tr>
@@ -143,7 +145,9 @@
         <td>{{paie.identifiant}}</td>
         <td>{{paie.mois_paiement}}</td>
         <td>{{paie.date_paiement}}</td>
-        <td>{{paie.etat_paiement}}</td>
+        <td *ngIf="paie.etat_paiement == 'Payé'"><span class="badge badge-success p-2 text-white" style="width: 100%;">Payé</span></td>
+        <td *ngIf="paie.etat_paiement == 'En attente'"><span class="badge badge-secondary p-2 text-white" style="width: 100%;">En attente</span></td>
+        <td *ngIf="paie.etat_paiement == 'Impayé'"><span class="badge badge-danger p-2 text-white" style="width: 100%;">Impayé</span></td>
         <td>{{paie.montant_recu}}</td>
         <td>{{paie.montant_total}}</td>
       </tr>
@@ -151,6 +155,11 @@
 
     </table>
   </div>
+</div>
+<div class="col-9 mt-4 my-2" *ngIf="bilan">
+<div class="card p-3" id="divChart">
+  <canvas id="myChart"></canvas>  
+</div>
 </div>
 </div>
 

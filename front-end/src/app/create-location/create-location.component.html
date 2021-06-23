@@ -44,7 +44,7 @@
       <div class="col">
       <label for="user_id" class="form-label"><b>Locataire</b></label>
       <select class="form-control" name="user_id" [(ngModel)]="location.user_id" required ngModel #locataire="ngModel">
-        <option>Locataire</option>
+        <option default selected disabled>Locataire</option>
         <option  *ngFor="let user of users" value="{{ user.id }}">{{ user.nom }}-{{ user.prenom }}</option>
       </select>
       <div *ngIf="locataire.touched && locataire.invalid " style="color: red;">
@@ -54,7 +54,7 @@
     <div class="col">
       <label for="bien_id" class="form-label"><b>Bien </b></label>
       <select class="form-control" name="bien_id" [(ngModel)]="location.bien_id" required ngModel #bien="ngModel">
-        <option>Bien</option>
+        <option selected disabled>Bien</option>
         <option  *ngFor="let bien of biens" value="{{ bien.id }}">{{ bien.identifiant }}</option>
       </select>
       <div *ngIf="bien.touched && bien.invalid " style="color: red;">
@@ -76,7 +76,7 @@
       <div class="col">
         <label for="type" class="form-label"><b>Type</b></label>
         <select class="form-control" aria-label="Default select example" id="type" name="type" [(ngModel)]="location.type" required ngModel #type="ngModel">
-          <option selected>Type</option>
+          <option selected disabled >Type</option>
           <option value="Personnelle">PERSONNELLE</option>
           <option value="Professionnelle">PROFESSIONNELLE</option>
         </select>

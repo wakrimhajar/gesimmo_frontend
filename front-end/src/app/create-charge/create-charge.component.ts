@@ -17,7 +17,7 @@ charge=new Charge;
 bien = new Bien();
 biens = [] as any;
   ngOnInit(): void {
-    this.Jarwis.getbienLibre().subscribe(
+    this.Jarwis.getBiens().subscribe(
       data => { console.log(data); this.biens = Object.values(data); }, error => console.log(error)
   );
   }

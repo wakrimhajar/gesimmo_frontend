@@ -160,6 +160,9 @@ addlocatairemor(data: any){
  paipro(id: number){
   return  this.http.get(`${this.baseUrl}/paipro/`+id);
  }
+ bilanpro(id: number){
+  return  this.http.get(`${this.baseUrl}/bilan_prop/`+id);
+ }
 
 
  charge(id: number){

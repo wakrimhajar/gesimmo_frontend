@@ -16,14 +16,14 @@
             <h3 class="mb-0">Suivi Paiement</h3>
           </div>
               <!-- Card body -->
-              <div class="card" style="width: 100%">
+              <div class="" style="width: 100%">
                       <div class="card-body">
                         <div class="row">
                           <div class="col-lg-2 text-left"><span class="card-title" style="color: #5e72e4;"><b>Filtrer</b></span><!--span style="color: grey"> Utilisez les options pour filtrer</span--></div>
                           <div class=" col-10 text-right">
                            <button *ngIf="table" type="button" class="btn btn-secondary " style="background-color: #5e72e4;" (click)="exportexcel()">Exporter</button>
 
-                            <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;color: white" (click)="listActif()">Actifs </button>
+                            <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;color: white" (click)="actifsPaiement()">Actifs </button>
                             <button type="button"  class="btn btn-secondary" style="background-color: #5e72e4; color: white">Bilan </button>
                           </div>
                         </div>
@@ -31,16 +31,16 @@
                         <input type="date" class="form-control" name="" style="width: 20%; top:20px; margin-right: 20px; margin-left: 2px;"  [(ngModel)]="d" (ngModelChange)="s2(d)" >
                        
                         <select aria-label="Bien" class="form-control" name="bien_id"  [(ngModel)]="selc1" (ngModelChange)="s1(selc1)" >
-                          <option selected>Bien</option>
+                          <option disabled selected >Bien</option>
                           <option  *ngFor="let bien of biens" value="{{ bien.id }}" >{{bien.adresse}}</option>
                         </select>
  
                         <select aria-label="Locataire"class="form-control" name="user_id"  [(ngModel)]="selc" (ngModelChange)="s(selc)" >
-                          <option selected>Locataire</option>
+                          <option disabled selected>Locataire</option>
                           <option  *ngFor="let user of users" value="{{ user.id }}" >{{user.nom}} {{user.prenom}}</option>
                         </select>
                         <select aria-label="Etat" class="form-control" name="etat_id"  [(ngModel)]="e" (ngModelChange)="s3(e)" >
-                          <option selected>Etat</option>
+                          <option disabled selected>Etat</option>
                           <option   value="Impayé" >Impayé</option>
                           <option   value="Payé" >Payé</option>
                           <option   value="En attente" >En attente</option>
@@ -72,7 +72,7 @@
                         <!--<td>{{facture.date_paiement}}</td>
                           <td>{{facture.statut}}</td>-->  
                           <td class="text-center ">{{facture.mois_paiement}}</td>
-                          <td class="text-center">{{facture["location"]["user"].nom}}</td>
+                          <td class="text-center">{{facture["location"]["user"].nom}} {{facture["location"]["user"].prenom}}</td>
                           <td class="text-center">{{facture["location"]["bien"].adresse}}</td>
                          
 
@@ -234,7 +234,7 @@
                           <!--<td>{{facture.date_paiement}}</td>
                             <td>{{facture.statut}}</td>-->  
                             <td class="text-center ">{{facture.mois_paiement}}</td>
-                            <td class="text-center">{{facture["location"]["user"].nom}}</td>
+                            <td class="text-center">{{facture["location"]["user"].nom}}{{facture["location"]["user"].prenom}}</td>
                             <td class="text-center">{{facture["location"]["bien"].adresse}}</td>
                            
   
@@ -288,7 +288,7 @@
                             <!--<td>{{facture.date_paiement}}</td>
                               <td>{{facture.statut}}</td>-->  
                               <td class="text-center ">{{facture.mois_paiement}}</td>
-                              <td class="text-center">{{facture["location"]["user"].nom}}</td>
+                              <td class="text-center">{{facture["location"]["user"].nom}}{{facture["location"]["user"].prenom}}</td>
                               <td class="text-center">{{facture["location"]["bien"].adresse}}</td>
                              
     
@@ -329,7 +329,7 @@
 
           <!--Modal Paiement-->
     
-<app-footer></app-footer>
+<!--app-footer></app-footer-->
 </div>
 </div>
 </div>

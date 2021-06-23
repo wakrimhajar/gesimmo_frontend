@@ -15,7 +15,7 @@ import * as XLSX from 'xlsx';
 export class PaiementComponent implements OnInit {
  
   fileName='Paiements.xlsx';
-  table:boolean=true;
+  table:boolean=false;
   t:boolean=false;
     dt:boolean=false;
     et:boolean=false;
@@ -50,21 +50,9 @@ message : boolean = false;
     this.message = false;
     this.t = false;
     this.dt = false;
-    this.table=true;
+   // this.table=true;
     
-    this.Jarwis.updateImp().subscribe(
-      
-      data => {console.log("clicked!");
-      console.log(data);  
-      
-     this.factures=Object.values(data);
-     //console.log(this.factures);
-
-     
-     //this.handleResponse(data, this.factures.id)
-    }, 
-      error => console.log(error)
-      );
+   
       
       this.listLocataire();
       this.listBiens();
@@ -236,5 +224,21 @@ test1(data:any){
 
 }
 
+actifsPaiement()
+{
+  this.Jarwis.updateImp().subscribe(
+      
+    data => {console.log("clicked!");
+    console.log(data);  
+    
+   this.factures=Object.values(data);
+   //console.log(this.factures);
+   this.table=true;
+   
+   //this.handleResponse(data, this.factures.id)
+  }, 
+    error => console.log(error)
+    );
+}
 
 }

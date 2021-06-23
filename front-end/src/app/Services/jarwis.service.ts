@@ -149,6 +149,10 @@ addlocatairemor(data: any){
   return  this.http.get(`${this.baseUrl}/locataire/`+id);
  }
 
+ proprietaire(id: number){
+  return  this.http.get(`${this.baseUrl}/proprietaire/`+id);
+ }
+
  charge(id: number){
   return  this.http.get(`${this.baseUrl}/chargeByProp/`+id);
  }

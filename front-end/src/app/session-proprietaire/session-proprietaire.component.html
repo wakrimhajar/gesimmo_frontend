@@ -73,7 +73,7 @@
 </div>
 
 <!--table locataire-->
-<div class="col-9 mt-4 my-2" *ngIf="bien">
+<div class="col-9 mt-4 my-2" *ngIf="location">
   <div class="table-responsive">
     <table class="table " >
     <thead class="thead-light">
@@ -87,10 +87,10 @@
     </thead>
     <tbody >
       <tr *ngFor="let locataire of locataires">
+        <td>{{locataire.nom}}</td>
+        <td>{{locataire.prenom}}</td>
+        <td>{{locataire.nom_societe}}</td>
         <td>{{locataire.adresse}}</td>
-        <td>{{locataire.surface}}</td>
-        <td>{{locataire.statut}}</td>
-        <td>{{locataire.loyer_mensuel}}</td>
    <!--     <td><a style="background-color: #5e72e4 !important;"  class="btn btn-primary"  >Détails</a>-->
       </tr>
     </tbody>

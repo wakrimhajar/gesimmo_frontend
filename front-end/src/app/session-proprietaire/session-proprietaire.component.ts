@@ -33,7 +33,7 @@ constructor(private route: ActivatedRoute,private router: Router,private token: 
       this.bien=true;
       this.location=false;
       this.paiement=false;
-      this.charge=true;
+      this.charge=false;
   }
 
   bien_user()
@@ -61,7 +61,7 @@ constructor(private route: ActivatedRoute,private router: Router,private token: 
       this.bien=false;
       this.location=true;
       this.paiement=false;
-      this.charge=true;
+      this.charge=false;
   }
 
   locataire()
@@ -109,14 +109,6 @@ constructor(private route: ActivatedRoute,private router: Router,private token: 
     this.listCharge();
   }
 
-
-
-  location_user()
-  {
-    this.bien=false;
-    this.location=true;
-  }
-
   paiement_user()
   {
     this.bien=false;
@@ -124,9 +116,4 @@ constructor(private route: ActivatedRoute,private router: Router,private token: 
     this.paiement=true;
   }
 
-
- /* detailbien(id : number){
-    this.router.navigate(['/details-bien', id]);
-    console.log(id);
-  }*/
 }

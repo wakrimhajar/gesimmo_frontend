@@ -41,7 +41,7 @@
       <i class="fas fa-euro-sign fa-2x"></i>
     </div>
     <div class="  text-center">
-      <button class="btn "style=" color: blanchedalmond;" ><!--(click)="charge_user()"-->Mes propriétaires</button>
+      <button class="btn "style=" color: blanchedalmond;" (click)="proprietaire()">Mes propriétaire</button>
     </div>
   </div>
 </div>
@@ -102,21 +102,31 @@
   </div>
 </div>
 
-<!--table charge-->
-<div class="col-9 mt-4 my-2" ><!--*ngIf="charge"
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+<!--table proprietaire-->
+<div class="col-9 mt-4 my-2" *ngIf="prop">
+  <div class="table-responsive">
+    <table class="table " >
+    <thead class="thead-light">
+      <tr >
+        <th scope="col">Nom</th>
+        <th scope="col">Prénom</th>
+        <th scope="col">Sociéte</th>
+        <th scope="col">Adresse</th>
+      <!--  <th scope="col">Action</th>-->
       </tr>
     </thead>
-    <tbody>
+    <tbody >
+      <tr *ngFor="let proprietaire of proprietaires">
+        <td>{{proprietaire.nom}}</td>
+        <td>{{proprietaire.prenom}}</td>
+        <td>{{proprietaire.nom_societe}}</td>
+        <td>{{proprietaire.adresse}}</td>
 
+      </tr>
     </tbody>
-  </table>-->
+    </table>
+  </div>
 </div>
 </div>
+
 

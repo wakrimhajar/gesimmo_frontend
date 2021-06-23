@@ -104,5 +104,11 @@ export class ModePaiementComponent implements OnInit {
     XLSX.writeFile(wb, this.fileName);
  
   }
+  remise(id:any){
+    this.router.navigate(['/r_paiement', id]);
+    
+   
+   
+     }
 
 }

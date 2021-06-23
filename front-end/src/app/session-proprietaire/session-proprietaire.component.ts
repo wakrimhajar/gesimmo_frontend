@@ -16,6 +16,7 @@ paiement:boolean=false;
 charge:boolean=false;
 biens=[] as any ;
 charges=[] as any;
+locataires=[] as any ;
 public user: User = new User;
 constructor(private route: ActivatedRoute,private router: Router,private token: TokenService,private Jarwis:JarwisService) { }
 
@@ -50,6 +51,35 @@ constructor(private route: ActivatedRoute,private router: Router,private token: 
     }, error => console.log(error));
     this.listActif();
   }
+
+  listLocataire(){
+    this.Jarwis.locataire(this.id).subscribe(
+      data => {console.log(data);
+        this.locataires=Object.values(data);},
+        error => console.log(error)
+      );
+      this.bien=false;
+      this.location=true;
+      this.paiement=false;
+      this.charge=true;
+  }
+
+  locataire()
+  {
+    this.id = this.route.snapshot.params['id'];
+    this.Jarwis.getuserbyid(this.id)
+    .subscribe(data => {
+    console.log(this.user)
+    data[0]=this.id;
+    console.log(data[0]);
+    this.user= data[0];
+    console.log(data)
+    this.user=data;
+    console.log(this.user)
+    }, error => console.log(error));
+    this.listLocataire();
+  }
+
 
   listCharge(){
     this.Jarwis.charge(this.id).subscribe(

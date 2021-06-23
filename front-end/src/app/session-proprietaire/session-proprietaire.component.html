@@ -23,7 +23,7 @@
       <i class="ni ni-pin-3 fa-2x"></i>
     </div>
     <div class="  text-center">
-      <button class="btn "style=" color: blanchedalmond;" (click)="location_user()">Mes locataires</button>
+      <button class="btn "style=" color: blanchedalmond;" (click)="locataire()">Mes locataires</button>
     </div>
   </div>
 
@@ -71,6 +71,33 @@
     </table>
   </div>
 </div>
+
+<!--table locataire-->
+<div class="col-9 mt-4 my-2" *ngIf="bien">
+  <div class="table-responsive">
+    <table class="table " >
+    <thead class="thead-light">
+      <tr >
+        <th scope="col">Nom</th>
+        <th scope="col">Prénom</th>
+        <th scope="col">Sociéte</th>
+        <th scope="col">Adresse</th>
+      <!--  <th scope="col">Action</th>-->
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let locataire of locataires">
+        <td>{{locataire.adresse}}</td>
+        <td>{{locataire.surface}}</td>
+        <td>{{locataire.statut}}</td>
+        <td>{{locataire.loyer_mensuel}}</td>
+   <!--     <td><a style="background-color: #5e72e4 !important;"  class="btn btn-primary"  >Détails</a>-->
+      </tr>
+    </tbody>
+    </table>
+  </div>
+</div>
+
 
 <!--table charge-->
 <div class="col-9 mt-4 my-2" *ngIf="charge">

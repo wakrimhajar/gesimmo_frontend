@@ -46,7 +46,7 @@ export class CreateSocieteComponent implements OnInit {
       myFormData.append('patente',this.user.patente);
       myFormData.append('telephone',this.user.telephone);
       myFormData.append('RC',this.user.RC);
-      myFormData.append('statut_societe',this.user.statut_societe);
+      //myFormData.append('statut_societe',this.user.statut_societe);
       myFormData.append('ICE',this.user.ICE);
       myFormData.append('activite',this.user.activite);
       myFormData.append('document',this.dataarray);

@@ -101,7 +101,7 @@
                              
                               <!-- message erreur /  message de confirmation / editer apres payer / affichage locataires par mois / notification et mail dans le cas de paiement et des impayés -->
                               <td class="text-center" *ngIf="mode.mode_paiement == 'cheque' || mode.mode_paiement == 'virement' ">
-                                <button class="btn btn-sm btn-light addMore"  *ngIf="mode.etat == 'En cours de traitement'" data-toggle="tooltip" data-placement="bottom" title="modifier" [disabled]="mode.etat == 'Encaissé' || mode.etat == 'Executé'">
+                                <button class="btn btn-sm btn-light addMore"  *ngIf="mode.etat == 'En cours de traitement'" data-toggle="tooltip" data-placement="bottom" title="modifier" [disabled]="mode.etat == 'Encaissé' || mode.etat == 'Executé'" (click)="remise(mode.id)">
                                     <i class="fa fa-edit"></i>
                                 </button>
                                 <button class="btn btn-sm btn-light addMore"  *ngIf="mode.etat == 'En cours de traitement' ||  mode.etat == 'Encaissé' || mode.etat == 'Executé'" data-toggle="tooltip" data-placement="bottom" title="signaler un probleme de paiement " >

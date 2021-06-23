@@ -239,5 +239,9 @@ getPaimentByMois(){
   return  this.http.get(`${this.baseUrl}/getPB/`+id)
  }
 
+ getMode(id: number){
+  return  this.http.get(`${this.baseUrl}/getModeI/`+id)
+ }
+
 }
 

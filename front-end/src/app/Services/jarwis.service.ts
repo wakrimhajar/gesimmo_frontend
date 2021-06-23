@@ -245,6 +245,9 @@ getPaimentByMois(){
  getMode(id: number){
   return  this.http.get(`${this.baseUrl}/getModeI/`+id)
  }
+ annuler(id: number,data:any){
+  return  this.http.put(`${this.baseUrl}/annuler/`+id,data)
+ }
 
 }
 

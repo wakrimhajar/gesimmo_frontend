@@ -33,6 +33,7 @@ export class ModePaiementComponent implements OnInit {
   id: any;
  // a:any;
   total: any;
+  test : any;
  /* input1: number = 0
   input2: number = 0
   message: boolean =true;*/
@@ -110,5 +111,59 @@ export class ModePaiementComponent implements OnInit {
    
    
      }
+     ann(id:any){
+      this.test=id;
+      console.log("clicked!!");
+      this.alertConfirm();
+      
+      
+     
+     
+       }
+     updateM(){
+      console.log(this.test);
+      this.Jarwis.annuler(this.test, this.mode).subscribe(
+      
+        data => {console.log("clicked!");console.log(data); this.alert(); this.back();
+  
+      }, error => console.log(error)
+        );
+    }
+    alert(){
+      Swal.fire({
+        title: 'paiement ',
+        width: 500,
+        text: 'Paiement annulé avec succés   ',
+        icon: 'success',
+        showCancelButton: false,
+        
+        confirmButtonText: 'ok',
+        cancelButtonText: 'No, keep it'
+      })
+    }
+    back(){
+      this.router.navigateByUrl('/paiement');
+    }
+     alertConfirm(){
+      Swal.fire({  
+        title: 'Etes vous sur de vouloir annuler ce paiement?',  
+        text: "L'annulation de ce paiement entraine se ",  
+        icon: 'warning',  
+        showCancelButton: true,  
+        confirmButtonText: 'valider',  
+        cancelButtonText: 'annuler'  
+      }).then((result) => {  
+        if (result.value) {  
+          this.updateM();
+          //this.updateM();
+        } /*else if (result.dismiss === Swal.DismissReason.cancel) {  
+          Swal.fire(  
+            'Annulé!',  
+            'Paiement non enregistré',  
+            'error'  
+          )  
+        }  */
+      })  
+    }
 
 }

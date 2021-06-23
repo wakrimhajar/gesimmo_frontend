@@ -43,6 +43,8 @@ import { QuittancePaiementComponent } from './quittance-paiement/quittance-paiem
 import { ServiceHomeComponent } from './service-home/service-home.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { ModePaiementComponent } from './mode-paiement/mode-paiement.component';
+import { RemisePaiementComponent } from './remise-paiement/remise-paiement.component';
+
 
 
 const routes: Routes = [
@@ -134,6 +136,13 @@ const routes: Routes = [
           //component:EditPaiementComponent
 
         },
+        {
+          path:'r_paiement/:id',
+          component:RemisePaiementComponent
+          //component:EditPaiementComponent
+
+        },
+
         {
           path:'documents',
           component:DocumentsComponent

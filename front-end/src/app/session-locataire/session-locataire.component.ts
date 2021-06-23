@@ -15,6 +15,8 @@ export class SessionLocataireComponent implements OnInit {
   biens=[] as any ;
   bien:boolean=false;
   prop:boolean=false;
+  paiement:boolean=false;
+  paiements=[] as any ;
   public user: User = new User;
   constructor(private route: ActivatedRoute,private router: Router,private Jarwis:JarwisService) { }
 
@@ -30,6 +32,7 @@ export class SessionLocataireComponent implements OnInit {
       this.location=true;
       this.bien=false;
       this.prop=false;
+      this.paiement=false;
 
   }
 
@@ -58,6 +61,7 @@ export class SessionLocataireComponent implements OnInit {
       this.location=false;
       this.bien=true;
       this.prop=false;
+      this.paiement=false;
 
   }
   biens_users()
@@ -86,6 +90,7 @@ export class SessionLocataireComponent implements OnInit {
       this.location=false;
       this.bien=false;
       this.prop=true;
+      this.paiement=false;
 
   }
   proprietaire()
@@ -102,6 +107,35 @@ export class SessionLocataireComponent implements OnInit {
     console.log(this.user)
     }, error => console.log(error));
     this.listProprietaire();
+  }
+
+  listPaiement(){
+    this.Jarwis.paloc(this.id).subscribe(
+      data => {console.log(data);
+      this.paiements=Object.values(data);
+    console.log(this.paiements)},
+      error => console.log(error)
+      );
+      this.location=false;
+      this.bien=false;
+      this.prop=false;
+      this.paiement=true;
+
+  }
+  paiemen()
+  {
+    this.id = this.route.snapshot.params['id'];
+    this.Jarwis.getuserbyid(this.id)
+    .subscribe(data => {
+    console.log(this.user)
+    data=this.id;
+    console.log(data[0]);
+    this.user= data[0];
+    console.log(data)
+    this.user=data;
+    console.log(this.user)
+    }, error => console.log(error));
+    this.listPaiement();
   }
 
 }

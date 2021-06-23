@@ -17,6 +17,7 @@ charge:boolean=false;
 biens=[] as any ;
 charges=[] as any;
 locataires=[] as any ;
+paiements=[] as any ;
 public user: User = new User;
 constructor(private route: ActivatedRoute,private router: Router,private token: TokenService,private Jarwis:JarwisService) { }
 
@@ -109,11 +110,33 @@ constructor(private route: ActivatedRoute,private router: Router,private token: 
     this.listCharge();
   }
 
-  paiement_user()
-  {
-    this.bien=false;
+  listPaiement(){
+    this.Jarwis.paipro(this.id).subscribe(
+      data => {console.log(data);
+        this.paiements=Object.values(data);},
+        error => console.log(error)
+      );
+      this.bien=false;
     this.location=false;
     this.paiement=true;
+    this.charge=false;
+  }
+
+
+  paiement_user()
+  {
+    this.id = this.route.snapshot.params['id'];
+    this.Jarwis.getuserbyid(this.id)
+    .subscribe(data => {
+    console.log(this.user)
+    data[0]=this.id;
+    console.log(data[0]);
+    this.user= data[0];
+    console.log(data)
+    this.user=data;
+    console.log(this.user)
+    }, error => console.log(error));
+    this.listPaiement();
   }
 
 }

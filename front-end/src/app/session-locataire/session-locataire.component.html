@@ -149,7 +149,10 @@
         <td>{{paie.identifiant}}</td>
         <td>{{paie.mois_paiement}}</td>
         <td>{{paie.date_paiement}}</td>
-        <td>{{paie.etat_paiement}}</td>
+        <td *ngIf="paie.etat_paiement == 'Payé'"><span class="badge badge-success p-2 text-white" style="width: 100%;">Payé</span></td>
+        <td *ngIf="paie.etat_paiement == 'En attente'"><span class="badge badge-secondary p-2 text-white" style="width: 100%;">En attente</span></td>
+        <td *ngIf="paie.etat_paiement == 'Impayé'"><span class="badge badge-danger p-2 text-white" style="width: 100%;">Impayé</span></td>
+        <!--td>{{paie.etat_paiement}}</td-->
         <td>{{paie.montant_recu}}</td>
         <td>{{paie.montant_total}}</td>
       </tr>

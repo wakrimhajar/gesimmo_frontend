@@ -213,5 +213,22 @@ getPaimentByMois(){
  getSomme(id: number){
   return  this.http.get(`${this.baseUrl}/getS/`+id)
  }
+ //Nouveau 
+ getPLoc(id: number){
+  return  this.http.get(`${this.baseUrl}/getPL/`+id)
+ }
+ getPDate(d: any){
+  return  this.http.get(`${this.baseUrl}/getPD/`+d)
+ }
+ getPEtat(d: any){
+  return  this.http.get(`${this.baseUrl}/getPE/`+d)
+ }
+ getBiens(){
+  return  this.http.get(`${this.baseUrl}/getB`)
+ }
+ getPBien(id: number){
+  return  this.http.get(`${this.baseUrl}/getPB/`+id)
+ }
+
 }
 

@@ -21,50 +21,43 @@
                         <div class="row">
                           <div class="col-lg-2 text-left"><span class="card-title" style="color: #5e72e4;"><b>Filtrer</b></span><!--span style="color: grey"> Utilisez les options pour filtrer</span--></div>
                           <div class=" col-10 text-right">
-                            <button *ngIf="table" type="button" class="btn btn-secondary " style="background-color: #5e72e4;" (click)="exportexcel()">Exporter</button>
+                           <button *ngIf="table" type="button" class="btn btn-secondary " style="background-color: #5e72e4;" (click)="exportexcel()">Exporter</button>
+
                             <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;color: white" (click)="listActif()">Actifs </button>
                             <button type="button"  class="btn btn-secondary" style="background-color: #5e72e4; color: white">Bilan </button>
                           </div>
                         </div>
                         <div class="input-group mb-2">
-                        <input type="date" class="form-control" name="" style="width: 20%; top:20px; margin-right: 20px; margin-left: 2px;">
-                        <select class="form-control" aria-label="Default select example" style="width: 19%" >
-                          <option selected>Tout les biens</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
+                        <input type="date" class="form-control" name="" style="width: 20%; top:20px; margin-right: 20px; margin-left: 2px;"  [(ngModel)]="d" (ngModelChange)="s2(d)" >
+                       
+                        <select aria-label="Bien" class="form-control" name="bien_id"  [(ngModel)]="selc1" (ngModelChange)="s1(selc1)" >
+                          <option selected>Bien</option>
+                          <option  *ngFor="let bien of biens" value="{{ bien.id }}" >{{bien.adresse}}</option>
                         </select>
-                        <select class="form-control" aria-label="Default select example" style="width: 19%">
-                          <option selected>Toutes les locations</option>
-                          <option value="1">Toutes les locations</option>
+ 
+                        <select aria-label="Locataire"class="form-control" name="user_id"  [(ngModel)]="selc" (ngModelChange)="s(selc)" >
+                          <option selected>Locataire</option>
+                          <option  *ngFor="let user of users" value="{{ user.id }}" >{{user.nom}} {{user.prenom}}</option>
                         </select>
-                        <select class="form-control" aria-label="Default select example" style="width: 19%">
-                          <option selected>Tout les locataires</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
+                        <select aria-label="Etat" class="form-control" name="etat_id"  [(ngModel)]="e" (ngModelChange)="s3(e)" >
+                          <option selected>Etat</option>
+                          <option   value="Impayé" >Impayé</option>
+                          <option   value="Payé" >Payé</option>
+                          <option   value="En attente" >En attente</option>
                         </select>
-                        <select class="form-control" aria-label="Default select example" style="width: 19%">
-                          <option selected>Tout les états</option>
-                          <option value="1">Tout les états</option>
-                          <option value="2">Payé</option>
-                          <option value="3">Impayée</option>
-                          <option value="3">En attente</option>
-                        </select>
+                      
                         </div>
                       </div>
-                      <!--div class="input-group mb-3" style="width: 90%;"> <input type="text" class="form-control" value="Chercher...">
-                         <div class="input-group-append" style="width: 50px;"><button class="btn btn-primary" style="background-color: #5e72e4 !important;"><i class="fas fa-search"></i></button></div>
-                      </div-->
+                   
                     </div>
-                    <div class="table-responsive" *ngIf="table">
-                      <table class="table " id="excel-table">
+                    <div class="table-responsive" >
+                      <table class="table " *ngIf="table==true" >
                       <thead class="thead-secondary text-dark text-center">
                         <tr >
                           <th scope="col">Mois</th>
-                          <th scope="col">Bien</th>
+                          
                           <th scope="col">Locataire</th>
-                          <th scope="col">Location</th>
+                          <th scope="col">Bien</th>
 
                           <th scope="col">Montant total</th>
                           <th scope="col">Etat Paiement </th>
@@ -79,11 +72,9 @@
                         <!--<td>{{facture.date_paiement}}</td>
                           <td>{{facture.statut}}</td>-->  
                           <td class="text-center ">{{facture.mois_paiement}}</td>
+                          <td class="text-center">{{facture["location"]["user"].nom}}</td>
                           <td class="text-center">{{facture["location"]["bien"].adresse}}</td>
-                          <td class="text-center">{{facture["location"]["user"].nom}}
-                            {{facture["location"]["user"].prenom}}
-                          </td>
-                          <td class="text-center">{{facture["location"].identifiant}}</td>
+                         
 
                           <td class="text-center">{{facture.montant_total}}  <p *ngIf="facture.mois_impaye >= 1" class="text-danger" style="font-size: smaller;"><b> *{{facture.mois_impaye}} </b> </p></td>
                         
@@ -94,32 +85,251 @@
                           <td class="text-center">{{facture.date_paiement}}</td>
                          
                           <!-- message erreur /  message de confirmation / editer apres payer / affichage locataires par mois / notification et mail dans le cas de paiement et des impayés -->
+                          <td class="text-center">
+                            <button *ngIf="facture.etat_paiement != 'Payé'" class="btn btn-sm btn-light" (click)="paie(facture.id)"   data-toggle="tooltip" data-placement="bottom" title="ajouter un enregistrements">
+                              <i  class="fa fa-plus"></i>
+                          </button>
+                          <button  *ngIf="facture.etat_paiement == 'Payé'" class="btn btn-sm btn-light"  [disabled]="facture.etat_paiement == 'Payé'" >
+                            <i class="fas fa-check" style="color: green;"></i>
+                        </button>
+                          <button class="btn btn-sm btn-light"  data-toggle="tooltip" data-placement="bottom" title="voir tous les enregistrements" (click)="modes(facture.id)">
+                            <i class="fa fa-align-justify"></i>
+                        </button>
+                          <button class="btn btn-sm btn-light addMore" (click)="quittance(facture.id)"  [disabled]="facture.etat_paiement != 'Payé'" data-toggle="tooltip" data-placement="bottom" title="Voir quittance" >
+                            <i class="fa fa-info-circle"></i>
+                        </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                      <!--************************-->
+           
+                      </table>
+
+                      <!--***************************-->
+                      <table class="table " *ngIf="message == true" >
+                        <thead class="thead-secondary text-dark text-center">
+                          <tr >
+                            <th scope="col">Mois</th>
+                            
+                            <th scope="col">Location</th>
+  
+                            <th scope="col">Montant total</th>
+                            <th scope="col">Etat Paiement </th>
+                            <th scope="col">Montant payé</th>
+                            <th scope="col"> Date de paiement  </th>
+  
+                            <th scope="col">Actions</th>
+                          </tr>
+                        </thead>
+                        
+                        <!--************************-->
+                        <tbody >
+                          <tr class="shadow p-3 mb-5 bg-white rounded" *ngFor="let facture of f">
+                          <!--<td>{{facture.date_paiement}}</td>
+                            <td>{{facture.statut}}</td>-->  
+                            <td class="text-center ">{{facture.mois_paiement}}</td>
+                            <td class="text-center">{{facture.location_id}}</td>
+                           
+  
+                            <td class="text-center">{{facture.montant_total}}  <p *ngIf="facture.mois_impaye >= 1" class="text-danger" style="font-size: smaller;"><b> *{{facture.mois_impaye}} </b> </p></td>
                           
+                            <td *ngIf="facture.etat_paiement == 'Payé'"><span class="badge badge-success p-2 text-white" style="width: 100%;">Payé</span></td>
+                            <td *ngIf="facture.etat_paiement == 'En attente'"><span class="badge badge-secondary p-2 text-white" style="width: 100%;">En attente</span></td>
+                            <td *ngIf="facture.etat_paiement == 'Impayé'"><span class="badge badge-danger p-2 text-white" style="width: 100%;">Impayé</span></td>
+                            <td class="text-center text-danger" style="font-weight: bolder;">{{facture.montant_recu}}</td>
+                            <td class="text-center">{{facture.date_paiement}}</td>
+                           
+                            <!-- message erreur /  message de confirmation / editer apres payer / affichage locataires par mois / notification et mail dans le cas de paiement et des impayés -->
                             <td class="text-center">
                               <button *ngIf="facture.etat_paiement != 'Payé'" class="btn btn-sm btn-light" (click)="paie(facture.id)"   data-toggle="tooltip" data-placement="bottom" title="ajouter un enregistrements">
                                 <i  class="fa fa-plus"></i>
                             </button>
-                            <button  *ngIf="facture.etat_paiement == 'Payé'" class="btn btn-sm btn-light" (click)="paie(facture.id)"  [disabled]="facture.etat_paiement == 'Payé'" >
+                            <button  *ngIf="facture.etat_paiement == 'Payé'" class="btn btn-sm btn-light"  [disabled]="facture.etat_paiement == 'Payé'" >
                               <i class="fas fa-check" style="color: green;"></i>
                           </button>
-                          <button class="btn btn-sm btn-light"  data-toggle="tooltip" data-placement="bottom" title="voir tous les enregistrements" (click)="modes(facture.id)">
-                            <i class="fa fa-align-justify"></i>
-                        </button>
+                            <button class="btn btn-sm btn-light"  data-toggle="tooltip" data-placement="bottom" title="voir tous les enregistrements" (click)="modes(facture.id)">
+                              <i class="fa fa-align-justify"></i>
+                          </button>
                             <button class="btn btn-sm btn-light addMore" (click)="quittance(facture.id)"  [disabled]="facture.etat_paiement != 'Payé'" data-toggle="tooltip" data-placement="bottom" title="Voir quittance" >
                               <i class="fa fa-info-circle"></i>
                           </button>
-                          </td>
-                        </tr>
-                      </tbody>
-                      </table>
-                     </div>
+                            </td>
+                          </tr>
+                        </tbody>
+             
+                        </table>
+                        <!----------------------------------------->
+                        <table class="table " *ngIf="t == true" >
+                          <thead class="thead-secondary text-dark text-center">
+                            <tr >
+                              <th scope="col">Mois</th>
+                              
+                              <th scope="col">Location</th>
+    
+                              <th scope="col">Montant total</th>
+                              <th scope="col">Etat Paiement </th>
+                              <th scope="col">Montant payé</th>
+                              <th scope="col"> Date de paiement  </th>
+    
+                              <th scope="col">Actions</th>
+                            </tr>
+                          </thead>
+                          
+                          <!--************************-->
+                          <tbody >
+                            <tr class="shadow p-3 mb-5 bg-white rounded" *ngFor="let facture of b">
+                            <!--<td>{{facture.date_paiement}}</td>
+                              <td>{{facture.statut}}</td>-->  
+                              <td class="text-center ">{{facture.mois_paiement}}</td>
+                              <td class="text-center">{{facture.location_id}}</td>
+                             
+    
+                              <td class="text-center">{{facture.montant_total}}  <p *ngIf="facture.mois_impaye >= 1" class="text-danger" style="font-size: smaller;"><b> *{{facture.mois_impaye}} </b> </p></td>
+                            
+                              <td *ngIf="facture.etat_paiement == 'Payé'"><span class="badge badge-success p-2 text-white" style="width: 100%;">Payé</span></td>
+                              <td *ngIf="facture.etat_paiement == 'En attente'"><span class="badge badge-secondary p-2 text-white" style="width: 100%;">En attente</span></td>
+                              <td *ngIf="facture.etat_paiement == 'Impayé'"><span class="badge badge-danger p-2 text-white" style="width: 100%;">Impayé</span></td>
+                              <td class="text-center text-danger" style="font-weight: bolder;">{{facture.montant_recu}}</td>
+                              <td class="text-center">{{facture.date_paiement}}</td>
+                             
+                              <!-- message erreur /  message de confirmation / editer apres payer / affichage locataires par mois / notification et mail dans le cas de paiement et des impayés -->
+                              <td class="text-center">
+                                <button *ngIf="facture.etat_paiement != 'Payé'" class="btn btn-sm btn-light" (click)="paie(facture.id)"   data-toggle="tooltip" data-placement="bottom" title="ajouter un enregistrements">
+                                  <i  class="fa fa-plus"></i>
+                              </button>
+                              <button  *ngIf="facture.etat_paiement == 'Payé'" class="btn btn-sm btn-light"  [disabled]="facture.etat_paiement == 'Payé'" >
+                                <i class="fas fa-check" style="color: green;"></i>
+                            </button>
+                              <button class="btn btn-sm btn-light"  data-toggle="tooltip" data-placement="bottom" title="voir tous les enregistrements" (click)="modes(facture.id)">
+                                <i class="fa fa-align-justify"></i>
+                            </button>
+                              <button class="btn btn-sm btn-light addMore" (click)="quittance(facture.id)"  [disabled]="facture.etat_paiement != 'Payé'" data-toggle="tooltip" data-placement="bottom" title="Voir quittance" >
+                                <i class="fa fa-info-circle"></i>
+                            </button>
+                              </td>
+                            </tr>
+                          </tbody>
+               
+                          </table>
+                          <!----------------------------->
+                          
+                      <table class="table " *ngIf="dt==true" >
+                        <thead class="thead-secondary text-dark text-center">
+                          <tr >
+                            <th scope="col">Mois</th>
+                            
+                            <th scope="col">Locataire</th>
+                            <th scope="col">Bien</th>
+  
+                            <th scope="col">Montant total</th>
+                            <th scope="col">Etat Paiement </th>
+                            <th scope="col">Montant payé</th>
+                            <th scope="col"> Date de paiement  </th>
+  
+                            <th scope="col">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody >
+                          <tr class="shadow p-3 mb-5 bg-white rounded" *ngFor="let facture of da">
+                          <!--<td>{{facture.date_paiement}}</td>
+                            <td>{{facture.statut}}</td>-->  
+                            <td class="text-center ">{{facture.mois_paiement}}</td>
+                            <td class="text-center">{{facture["location"]["user"].nom}}</td>
+                            <td class="text-center">{{facture["location"]["bien"].adresse}}</td>
+                           
+  
+                            <td class="text-center">{{facture.montant_total}}  <p *ngIf="facture.mois_impaye >= 1" class="text-danger" style="font-size: smaller;"><b> *{{facture.mois_impaye}} </b> </p></td>
+                          
+                            <td *ngIf="facture.etat_paiement == 'Payé'"><span class="badge badge-success p-2 text-white" style="width: 100%;">Payé</span></td>
+                            <td *ngIf="facture.etat_paiement == 'En attente'"><span class="badge badge-secondary p-2 text-white" style="width: 100%;">En attente</span></td>
+                            <td *ngIf="facture.etat_paiement == 'Impayé'"><span class="badge badge-danger p-2 text-white" style="width: 100%;">Impayé</span></td>
+                            <td class="text-center text-danger" style="font-weight: bolder;">{{facture.montant_recu}}</td>
+                            <td class="text-center">{{facture.date_paiement}}</td>
+                           
+                            <!-- message erreur /  message de confirmation / editer apres payer / affichage locataires par mois / notification et mail dans le cas de paiement et des impayés -->
+                            <td class="text-center">
+                              <button *ngIf="facture.etat_paiement != 'Payé'" class="btn btn-sm btn-light" (click)="paie(facture.id)"   data-toggle="tooltip" data-placement="bottom" title="ajouter un enregistrements">
+                                <i  class="fa fa-plus"></i>
+                            </button>
+                            <button  *ngIf="facture.etat_paiement == 'Payé'" class="btn btn-sm btn-light"  [disabled]="facture.etat_paiement == 'Payé'" >
+                              <i class="fas fa-check" style="color: green;"></i>
+                          </button>
+                            <button class="btn btn-sm btn-light"  data-toggle="tooltip" data-placement="bottom" title="voir tous les enregistrements" (click)="modes(facture.id)">
+                              <i class="fa fa-align-justify"></i>
+                          </button>
+                            <button class="btn btn-sm btn-light addMore" (click)="quittance(facture.id)"  [disabled]="facture.etat_paiement != 'Payé'" data-toggle="tooltip" data-placement="bottom" title="Voir quittance" >
+                              <i class="fa fa-info-circle"></i>
+                          </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                        <!--************************-->
+             
+                        </table>
+                        <!------------------------>
+                        <table class="table " *ngIf="et==true" >
+                          <thead class="thead-secondary text-dark text-center">
+                            <tr >
+                              <th scope="col">Mois</th>
+                              
+                              <th scope="col">Locataire</th>
+                              <th scope="col">Bien</th>
+    
+                              <th scope="col">Montant total</th>
+                              <th scope="col">Etat Paiement </th>
+                              <th scope="col">Montant payé</th>
+                              <th scope="col"> Date de paiement  </th>
+    
+                              <th scope="col">Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody >
+                            <tr class="shadow p-3 mb-5 bg-white rounded" *ngFor="let facture of etat">
+                            <!--<td>{{facture.date_paiement}}</td>
+                              <td>{{facture.statut}}</td>-->  
+                              <td class="text-center ">{{facture.mois_paiement}}</td>
+                              <td class="text-center">{{facture["location"]["user"].nom}}</td>
+                              <td class="text-center">{{facture["location"]["bien"].adresse}}</td>
+                             
+    
+                              <td class="text-center">{{facture.montant_total}}  <p *ngIf="facture.mois_impaye >= 1" class="text-danger" style="font-size: smaller;"><b> *{{facture.mois_impaye}} </b> </p></td>
+                            
+                              <td *ngIf="facture.etat_paiement == 'Payé'"><span class="badge badge-success p-2 text-white" style="width: 100%;">Payé</span></td>
+                              <td *ngIf="facture.etat_paiement == 'En attente'"><span class="badge badge-secondary p-2 text-white" style="width: 100%;">En attente</span></td>
+                              <td *ngIf="facture.etat_paiement == 'Impayé'"><span class="badge badge-danger p-2 text-white" style="width: 100%;">Impayé</span></td>
+                              <td class="text-center text-danger" style="font-weight: bolder;">{{facture.montant_recu}}</td>
+                              <td class="text-center">{{facture.date_paiement}}</td>
+                             
+                              <!-- message erreur /  message de confirmation / editer apres payer / affichage locataires par mois / notification et mail dans le cas de paiement et des impayés -->
+                              <td class="text-center">
+                                <button *ngIf="facture.etat_paiement != 'Payé'" class="btn btn-sm btn-light" (click)="paie(facture.id)"   data-toggle="tooltip" data-placement="bottom" title="ajouter un enregistrements">
+                                  <i  class="fa fa-plus"></i>
+                              </button>
+                              <button  *ngIf="facture.etat_paiement == 'Payé'" class="btn btn-sm btn-light"  [disabled]="facture.etat_paiement == 'Payé'" >
+                                <i class="fas fa-check" style="color: green;"></i>
+                            </button>
+                              <button class="btn btn-sm btn-light"  data-toggle="tooltip" data-placement="bottom" title="voir tous les enregistrements" (click)="modes(facture.id)">
+                                <i class="fa fa-align-justify"></i>
+                            </button>
+                              <button class="btn btn-sm btn-light addMore" (click)="quittance(facture.id)"  [disabled]="facture.etat_paiement != 'Payé'" data-toggle="tooltip" data-placement="bottom" title="Voir quittance" >
+                                <i class="fa fa-info-circle"></i>
+                            </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                          <!--************************-->
+               
+                          </table>
+                      
               </div>
+              <!--**************-->
+        
             </div>
           </div>
 
           <!--Modal Paiement-->
     
-<!--app-footer></app-footer-->
+<app-footer></app-footer>
 </div>
 </div>
 </div>

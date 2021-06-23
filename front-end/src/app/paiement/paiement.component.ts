@@ -13,21 +13,44 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./paiement.component.css']
 })
 export class PaiementComponent implements OnInit {
-  table:boolean=true;
-  factures=[] as any ;
-  facturesInfos=[] as any ;
+ 
   fileName='Paiements.xlsx';
+  table:boolean=true;
+  t:boolean=false;
+    dt:boolean=false;
+    et:boolean=false;
+  factures=[] as any ;
+  b =[] as any ;
+  f=[] as any ;
+  da=[] as any ;
+  etat=[] as any ;
+  users = [] as any;
+  biens = [] as any;
+  facturesInfos=[] as any ;
+  public fac : Charge[]=[];
+
  facture = new Charge();
  public form = {
   date_paiement:null,
   montant_paye:null,
+  
+  
    
 }; 
+selc           : any;
+selc1           : any;
+d           : any;
+e          : any;
+selectedValue : any;
 message : boolean = false;
+
   constructor(private Jarwis:JarwisService,private router:Router) { }
 
   ngOnInit(): void {
     this.message = false;
+    this.t = false;
+    this.dt = false;
+    this.table=true;
     
     this.Jarwis.updateImp().subscribe(
       
@@ -42,7 +65,9 @@ message : boolean = false;
     }, 
       error => console.log(error)
       );
-      this.table=true;
+      
+      this.listLocataire();
+      this.listBiens();
 
     
   }
@@ -115,5 +140,101 @@ message : boolean = false;
       //this.router.navigate(['/details-paiement', id]);
 
   }
+
+  //Nouveau 
+  listBiens(){
+
+    this.Jarwis.getBiens().subscribe(
+      data => {console.log(data);  this.biens=Object.values(data);}, error => console.log(error)
+      );
+  }
+
+
+listLocataire(){
+  this.Jarwis.getLocPhyActif().subscribe(
+    data => {console.log(data);  this.users=Object.values(data);}, error => console.log(error)
+    );
+}
+s(id:any){
+  this.table = false;
+  this.message= true;
+  this.dt = false;
+  this.et = false;
+  this.t = false;
+  console.log("clicked!!!!!!!!!!!!!!!");
+  //console.log(id);
+  this.Jarwis.getPLoc(id).subscribe(
+    
+    data => { this.test1(data); // this.factures=Object.values(data);
+},
+     error => console.log(error)
+    );
+
+}
+s1(id:any){
+  this.table = false;
+  this.t= true;
+  this.dt = false;
+  this.et = false;
+  this.message = false;
+  console.log("clicked!!!!!!!!!!!!!!!");
+  //console.log(id);
+  this.Jarwis.getPBien(id).subscribe(
+    
+    data => { this.b=Object.values(data);
+},
+     error => console.log(error)
+    );
+
+
+}
+s2(d:any){
+  this.table = false;
+  this.dt= true;
+  this.et = false;
+  this.message = false;
+  this.t = false;
+  console.log(d);
+    this.Jarwis.getPDate(d).subscribe(
+    
+    data => { console.log(data);this.da=Object.values(data);
+},
+     error => console.log(error)
+    );
+
+
+
+}
+  s3(d:any){
+  this.table = false;
+  this.message = false;
+  this.dt = false;
+  this.t = false;
+  this.et= true;
+  console.log(d);
+  this.Jarwis.getPEtat(d).subscribe(
+    
+    data => { console.log(data);this.etat=Object.values(data);
+},
+     error => console.log(error)
+    );
+
+
+
+
+}
+test1(data:any){
+
+ console.log("***********************");
+ console.log(data);
+ console.log("***********************");
+
+ this.f = Object.values(data);
+//this.factures=Object.values(data);
+ //************************ */
+
+
+}
+
 
 }

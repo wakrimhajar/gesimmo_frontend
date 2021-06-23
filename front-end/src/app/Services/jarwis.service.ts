@@ -153,6 +153,15 @@ addlocatairemor(data: any){
   return  this.http.get(`${this.baseUrl}/proprietaire/`+id);
  }
 
+ paloc(id: number){
+  return  this.http.get(`${this.baseUrl}/paloc/`+id);
+ }
+
+ paipro(id: number){
+  return  this.http.get(`${this.baseUrl}/paipro/`+id);
+ }
+
+
  charge(id: number){
   return  this.http.get(`${this.baseUrl}/chargeByProp/`+id);
  }

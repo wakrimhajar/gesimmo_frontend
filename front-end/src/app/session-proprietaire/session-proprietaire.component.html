@@ -121,5 +121,36 @@
     </tbody>
   </table>
 </div>
+
+<!--table paiement-->
+<div class="col-9 mt-4 my-2" *ngIf="paiement">
+  <div class="table-responsive">
+    <table class="table " >
+    <thead class="thead-light">
+      <tr >
+        <th scope="col">Location</th>
+        <th scope="col">Mois de paiement</th>
+        <th scope="col">Date de paiement</th>
+        <th scope="col">Etat de paiement</th>
+        <th scope="col">Montant Recu</th>
+        <th scope="col">Montant Total</th>
+      <!--  <th scope="col">Action</th>-->
+      </tr>
+    </thead>
+
+    <tbody >
+      <tr *ngFor="let paie of paiements">
+        <td>{{paie.identifiant}}</td>
+        <td>{{paie.mois_paiement}}</td>
+        <td>{{paie.date_paiement}}</td>
+        <td>{{paie.etat_paiement}}</td>
+        <td>{{paie.montant_recu}}</td>
+        <td>{{paie.montant_total}}</td>
+      </tr>
+    </tbody>
+
+    </table>
+  </div>
+</div>
 </div>
 

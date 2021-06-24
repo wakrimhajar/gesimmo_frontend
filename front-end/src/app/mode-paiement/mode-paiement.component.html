@@ -21,7 +21,7 @@
               <thead class="bg-secondary text-white text-center">
                   <tr>
                     
-                    <th classe="col" colspan="2">Informations générales :   </th>
+                    <th classe="col" colspan="2">Informations sur la location :   </th>
                   </tr>
                 </thead>
             
@@ -93,10 +93,10 @@
                             <td *ngIf="mode.etat == 'appliqué'"><span class="badge badge-success p-2 text-white" style="width: 100%;">Payé</span></td>
                             <td *ngIf="mode.etat == 'Annulé'"><span class="badge badge-danger p-2 text-white" style="width: 100%;">Annulé</span></td>
 
-                          
+                            <td *ngIf="mode.etat == 'Executé'"><span class="badge badge-success p-2 text-white" style="width: 100%;">Executé</span></td>
                            <td *ngIf="mode.etat == 'En cours de traitement'"><span class="badge badge-warning p-2 text-white" style="width: 100%;">En cours de traitement</span></td>
     
-                           <td class="text-center "  *ngIf="mode.etat == 'Encaissé' || mode.etat == 'Executé' || mode.etat == 'reglé' || mode.etat == 'appliqué'" >{{mode.numero_remise}}</td>
+                           <td class="text-center "  *ngIf="mode.etat == 'Encaissé' || mode.etat == 'Executé' || mode.etat == 'reglé' || mode.etat == 'appliqué' || mode.etat == 'Annulé'" >{{mode.numero_remise}}</td>
                            <td class="text-center "  *ngIf="mode.etat == 'En cours de traitement'" > <i>En attente </i></td>
                            <td class="text-center" *ngIf="mode.date_remise != null">{{mode.date_remise}}</td>
                             <td class="text-center" *ngIf="mode.date_remise == null">*******</td>
@@ -106,7 +106,7 @@
                               <button class="btn btn-sm btn-light addMore"  *ngIf="mode.etat == 'En cours de traitement' || mode.etat == 'Annulé' || mode.etat == 'Encaissé' || mode.etat == 'Executé'" data-toggle="tooltip" data-placement="bottom" title="modifier" [disabled]="mode.etat == 'Encaissé' || mode.etat == 'Executé' || mode.etat == 'Annulé' " (click)="remise(mode.id)">
                                   <i class="fa fa-edit"></i>
                               </button>
-                              <button class="btn btn-sm btn-light addMore"  *ngIf="mode.etat == 'En cours de traitement' || mode.etat == 'Annulé'|| mode.etat == 'Encaissé' || mode.etat == 'Executé'" data-toggle="tooltip" data-placement="bottom" title="signaler un probleme de paiement " (click)="ann(mode.id)">
+                              <button class="btn btn-sm btn-light addMore"  *ngIf="mode.etat == 'En cours de traitement' || mode.etat == 'Annulé'|| mode.etat == 'Encaissé' || mode.etat == 'Executé'" data-toggle="tooltip" data-placement="bottom" title="signaler un probleme de paiement " [disabled]="mode.etat=='Annulé'" (click)="ann(mode.id)">
                                   <i class="fa fa-question-circle"></i>
                               </button>
                      

@@ -15,10 +15,22 @@ export class LocationComponent implements OnInit {
   location = new Location();
   locations=[] as any ;
   fileName='Locations.xlsx';
+  value:any;
   constructor(private Jarwis:JarwisService,private router:Router) { }
 
   ngOnInit(): void {
   }
+
+  fonction(event :any){
+    this.value=event.target.value;
+    console.log(this.value);
+    this.Jarwis.chercherLoc(this.value)
+      .subscribe(data => {
+        this.locations=Object.values(data);
+        console.log(this.locations);
+        this.table=true;
+      },error=>console.log(error));
+   }
 
   listActif(){
     this.Jarwis.getlocationActif().subscribe(

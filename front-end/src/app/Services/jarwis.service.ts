@@ -97,6 +97,10 @@ addlocatairemor(data: any){
  getchargebyid(id: number): Observable<any> {
   return  this.http.get(`${this.baseUrl}/getchargeById/`+id)
  }
+
+ getbilanbyid(id: number): Observable<any> {
+  return  this.http.get(`${this.baseUrl}/bilan/`+id)
+ }
  archiverUser(id: number,data:any){
   return  this.http.put(`${this.baseUrl}/archiverUser/`+id,data)
  }
@@ -174,6 +178,10 @@ getImmoById(id:number): Observable<any>{
 }
 chercher(search:string): Observable<any>{
   return this.http.get(`${this.baseUrl}/search/`+search)
+}
+
+chercherLoc(search:string): Observable<any>{
+  return this.http.get(`${this.baseUrl}/searchLocation/`+search)
 }
 chercherbien(search:string): Observable<any>{
   return this.http.get(`${this.baseUrl}/searchbien/`+search)

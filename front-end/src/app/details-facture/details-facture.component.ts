@@ -7,6 +7,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { stringify } from '@angular/compiler/src/util';
+import { User } from '../Model/user';
 @Component({
   selector: 'app-details-facture',
   templateUrl: './details-facture.component.html',
@@ -18,7 +19,9 @@ export class DetailsFactureComponent implements OnInit {
   x:any;
   y:any;
   total:any;
-  public charge: Charge = new Charge;
+  //public charge: Charge = new Charge;
+  charge=[] as any;
+  public user : User = new User();
   constructor(private route: ActivatedRoute,private router: Router,private Jarwis:JarwisService) { }
 
   ngOnInit(): void {
@@ -31,6 +34,7 @@ export class DetailsFactureComponent implements OnInit {
     this.charge= data[0];
     console.log(data)
     this.charge=data;
+    this.user=data['bien']['user'];
     ////console.log(this.charge.montant)
     this.y=this.charge.montant_total;
     console.log(this.y);
@@ -62,13 +66,9 @@ export class DetailsFactureComponent implements OnInit {
     doc.text('48 Casablanca',11,30);
     doc.text('Maroc',11,35);
     doc.text('Facturé a',11,50);
-    doc.text('Wakrim Hajar',11,55);
-    doc.text('48 Casablanca',11,60);
-    doc.text('11200',11,65);
-    doc.text('Facturé a',80,50);
-    doc.text('Wakrim Hajar',80,55);
-    doc.text('48 Casablanca',80,60);
-    doc.text('11200',80,65);
+    doc.text(this.user.nom,11,55);
+    doc.text(this.user.prenom,30,55);
+    doc.text(this.user.adresse,11,60);
     doc.text('Facture N° :',150,50);
     const idCharge=this.charge.id;
     doc.text(idCharge.toString(),175,50);
@@ -101,8 +101,7 @@ export class DetailsFactureComponent implements OnInit {
     doc.text('Condition et modalité de paiement :',11,160);
     doc.text('Le paiement est du le :',11,165);
     doc.text(this.charge.date_paiement,52,165);
-    doc.text('48 Casablanca',11,170);
-    doc.text('11200',11,175);
+    doc.text(this.user.adresse,11,170);
     doc.setFontSize(11);
     doc.setTextColor(100);
 

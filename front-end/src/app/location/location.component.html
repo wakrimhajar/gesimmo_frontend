@@ -20,7 +20,7 @@
                           <div class="col-md-6 text-left">
                             <div class=" input-group " >
                               <label class="card-title mr-4 mt-2"><b>Filtrer</b></label>
-                              <input type="text" class="form-control mb-2"   placeholder="Chercher" id='chercher'  >
+                              <input type="text" class="form-control mb-2"  (change)="fonction($event)"  placeholder="Chercher" id='chercher'  >
                                  <div class="input-group-append mb-2" >
                                   <button class="btn btn-primary" style="background-color: #5e72e4 !important; " >
                                     <i class="fas fa-search" ></i></button>
@@ -52,7 +52,7 @@
                         <tr *ngFor="let location of locations">
                           <td>{{location.date_entree}}</td>
                           <td>{{location.date_sortie}}</td>
-                          <td>{{location.montant}}</td>
+                          <td>{{location.montant}} DH</td>
                           <td>{{location.type}}</td>
                           <td><a style="background-color: #5e72e4 !important;"  class="btn btn-primary" (click)="detaillocation(location.id)">Détails</a>
                       </td>

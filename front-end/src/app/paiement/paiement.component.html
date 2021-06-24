@@ -24,15 +24,31 @@
                            <button *ngIf="table" type="button" class="btn btn-secondary " style="background-color: #5e72e4;" (click)="exportexcel()">Exporter</button>
 
                             <button type="button" class="btn btn-secondary " style="background-color: #5e72e4;color: white" (click)="actifsPaiement()">Actifs </button>
-                            <button type="button"  class="btn btn-secondary" style="background-color: #5e72e4; color: white">Bilan </button>
+                            
                           </div>
                         </div>
+                        <!--div class="row ">
+                          <div class="col-md-6 ">
+                              Mois
+                          </div>
+                          <div class="col-md-2">
+                            Bien
+                          </div>
+                          <div class="col-md-2">
+                            Locataire
+                          </div>
+                          <div class="col-md-2">
+                            Etat
+                          </div>
+                        </div-->
                         <div class="input-group mb-2">
                         <input type="date" class="form-control" name="" style="width: 20%; top:20px; margin-right: 20px; margin-left: 2px;"  [(ngModel)]="d" (ngModelChange)="s2(d)" >
                        
                         <select aria-label="Bien" class="form-control" name="bien_id"  [(ngModel)]="selc1" (ngModelChange)="s1(selc1)" >
                           <option disabled selected >Bien</option>
-                          <option  *ngFor="let bien of biens" value="{{ bien.id }}" >{{bien.adresse}}</option>
+                          <option  *ngFor="let bien of biens" value="{{ bien.id }}" >{{bien.adresse}} etage n° {{bien.etage}}
+                             porte n° {{bien.porte}}
+                          </option>
                         </select>
  
                         <select aria-label="Locataire"class="form-control" name="user_id"  [(ngModel)]="selc" (ngModelChange)="s(selc)" >
@@ -111,8 +127,8 @@
                           <tr >
                             <th scope="col">Mois</th>
                             
-                            <th scope="col">Location</th>
-  
+                            <th scope="col">Locataire</th>
+                            <th scope="col">Bien</th>
                             <th scope="col">Montant total</th>
                             <th scope="col">Etat Paiement </th>
                             <th scope="col">Montant payé</th>
@@ -128,8 +144,8 @@
                           <!--<td>{{facture.date_paiement}}</td>
                             <td>{{facture.statut}}</td>-->  
                             <td class="text-center ">{{facture.mois_paiement}}</td>
-                            <td class="text-center">{{facture.location_id}}</td>
-                           
+                            <td class="text-center">{{facture.nom}} {{facture.prenom}}</td>
+                            <td class="text-center">{{facture.adresse}} </td>
   
                             <td class="text-center">{{facture.montant_total}}  <p *ngIf="facture.mois_impaye >= 1" class="text-danger" style="font-size: smaller;"><b> *{{facture.mois_impaye}} </b> </p></td>
                           
@@ -164,8 +180,8 @@
                             <tr >
                               <th scope="col">Mois</th>
                               
-                              <th scope="col">Location</th>
-    
+                              <th scope="col">Locataire</th>
+                              <th scope="col">Bien</th>
                               <th scope="col">Montant total</th>
                               <th scope="col">Etat Paiement </th>
                               <th scope="col">Montant payé</th>
@@ -181,8 +197,8 @@
                             <!--<td>{{facture.date_paiement}}</td>
                               <td>{{facture.statut}}</td>-->  
                               <td class="text-center ">{{facture.mois_paiement}}</td>
-                              <td class="text-center">{{facture.location_id}}</td>
-                             
+                              <td class="text-center">{{facture.nom}} {{facture.prenom}}</td>
+                              <td class="text-center">{{facture.adresse}}</td>
     
                               <td class="text-center">{{facture.montant_total}}  <p *ngIf="facture.mois_impaye >= 1" class="text-danger" style="font-size: smaller;"><b> *{{facture.mois_impaye}} </b> </p></td>
                             

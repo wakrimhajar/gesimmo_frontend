@@ -170,6 +170,7 @@ s1(id:any){
   this.Jarwis.getPBien(id).subscribe(
     
     data => { this.b=Object.values(data);
+      
 },
      error => console.log(error)
     );
@@ -234,7 +235,10 @@ actifsPaiement()
    this.factures=Object.values(data);
    //console.log(this.factures);
    this.table=true;
-   
+   this.message = false;
+   this.t = false;
+   this.dt = false;
+   this.et=false;
    //this.handleResponse(data, this.factures.id)
   }, 
     error => console.log(error)

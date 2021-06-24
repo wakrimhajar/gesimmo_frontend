@@ -13,7 +13,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class DetailsLocationComponent implements OnInit {
 
   id :any;
-  public location: Location = new Location;
+   location=[] as any;
   constructor(private route: ActivatedRoute,private router: Router,private Jarwis:JarwisService) { }
 
   ngOnInit(): void {
@@ -23,7 +23,8 @@ export class DetailsLocationComponent implements OnInit {
       //console.log(this.user)
    data[0]=this.id;
     console.log(data[0]);
-    this.location= data[0];
+    console.log(data['user']);
+    this.location= data;
     console.log(data)
     this.location=data;
     console.log(this.location)

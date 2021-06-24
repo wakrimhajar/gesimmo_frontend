@@ -30,9 +30,13 @@
                     <h4>Date Sortie : {{ location.date_sortie }}</h4>
                 </div>
                 <div class="col-md-6 col-sm-12 pt-3 pb-3">
-                  <h4>Montant :  {{ location.montant }}</h4>
+                  <h4>Montant :  {{ location.montant }} DH</h4>
                   <hr>
                   <h4>Durée :  {{ location.duree }}</h4>
+                  <hr>
+                  <h4>Locataire :  {{ location['user'].nom }} {{ location['user'].prenom }}</h4>
+                  <hr>
+                  <h4>Bien :  {{ location['bien'].adresse }}</h4>
                   <hr>
                   <!--h4>Propriétaire :  {{ location.user_id }}</h4>
                   <hr>

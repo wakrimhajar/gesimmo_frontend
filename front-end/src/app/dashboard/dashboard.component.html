@@ -89,11 +89,12 @@
 
         </div>
         <div class="row">
-        <div class="card p-3 col-md-6" id="divChart">
+          <div class="col-md-6">
+        <div class="card p-3 " id="divChart">
           <canvas id="myChart"></canvas>  
         </div>
-      
-          
+        </div>
+
               <div class="col-md-6" >
                 <div class="card">
                   <table class="table">
@@ -105,7 +106,7 @@
                     <tbody>
                       <tr *ngFor="let u of users">
                         <td>
-                         {{u.nom}} - {{u.prenom}} 
+                         {{u.nom}} {{u.prenom}} 
                         </td>
                         <td>
                           <button type="button" class="btn btn-secondary" style="background-color: #5e72e4;" (click)="getBilan(u.id)">Bilan</button>
@@ -116,6 +117,7 @@
         
           </div>
         </div>
+      </div>
         <table class="table " *ngIf="message == true" id="excel-table">
           <thead class="thead-secondary text-dark text-center">
             <tr >
@@ -123,6 +125,8 @@
               
               <th scope="col">Locataire</th>
               <th scope="col"> Date de paiement  </th>
+              <th scope="col"> N° de chèque  </th>
+              <th scope="col"> N° de remise   </th>
               <th scope="col">Chiffre d'affaire</th>
               <th scope="col">Chiffre d'affaire Prévisionnel </th>
               <th scope="col">Reliquat</th>
@@ -134,6 +138,8 @@
               <td class="text-center ">{{b.mois_paiement}}</td>
               <td class="text-center">{{b.nom}} {{b.prenom}}</td>
               <td class="text-center">{{b.date_paiement}}</td>
+              <td class="text-center">{{b.num_cheque}}</td>
+              <td class="text-center">{{b.num_remise}}</td>
               <td class="text-center text-danger" style="font-weight: bolder;">{{b.montant_recu}}</td>
               <td class="text-center">{{b.montant_total}} </td>
               <td class="text-center">  {{b.montant_total*1 - b.montant_recu*1}}</td>
@@ -141,11 +147,11 @@
           </tbody>
 
           </table>
-      </div>
+    
       </div>
     </div>
   </div>
 
 
-    <app-footer></app-footer>
+    <!--app-footer></app-footer-->
 
